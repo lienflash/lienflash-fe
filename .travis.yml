@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "node"
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: gky+RTKlysLYI1ieepj9G91hGazygUZxXaYC2d2B4xF4dmrnf1w9hJUkF/iwCD2FPR32WNJXnm0ax+BD2MRcCgfuBHMcvAXcQhuMWLTCWuwbakeSmxYml//ftZd/TQ9fQRgz6+F/3n7Slz/uQcJODFBZVjv9eTvuC/vdp4iiL0FDyMGRFIpIJnB8yoisnXgTeslT2oIedNuRYHHUZJ5FKVyy6p6nOhf3vI7qoyWM89RLEcxvN3SpbSz9RYGytymSGRSF2jOnPRgA+fTUvlp4gYNa8I+bMMT4QQ0s/BHndql4OlpdzFfGlPhkZxywKuUU4DMSkBMtET7gH+C/gM4rgtx/VGjyfTj/vZxBgX33ObKC96AhRf2FhZCRRc7wqLZo0WQm6EFnwj4YBvS7vMcQXOTGC5D12Q2LxjvsjojuYuSgdyvzTNNGwSANlTcc0zYxwLCfp5xQn94HgSBYzucJRx1NCQz/LcvD0bK6UzgSCnRz+o9lY18XH6a6FmLm7/EWi1Qt0EPhs4u/YSIPcaYROVHTNqcr9vJ3isPqEI0wWtULdv8BSkO5gyYMQbvlsIDw8hlJX0xIWGecdEYqf7JmHazdA4GOnj43KfJcGYqllp5Cooq02eI+iGQEdms7czJnfb8s5FppeGdP2W124PvgeuOpwp5gSU8c6kvBGBU8Ag0=
+  app: lienflash
+  skip_cleanup: true

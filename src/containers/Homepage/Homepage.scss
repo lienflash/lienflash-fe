@@ -1,0 +1,36 @@
+.homepage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto repeat(2, 1fr);
+  margin: 0.2em;
+}
+
+.home-title {
+  grid-column: 1 / span 2;
+  margin-top: 0;
+}
+
+.home {
+  width: 95%;
+  height: 6em;
+  margin: .1em;
+  border: none;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.add {
+  background-color: blue;
+}
+
+.eligible {
+  background-color: maroon;
+}
+
+.filed {
+  background-color: darkgreen;
+}
+
+.profile {
+  background-color: purple;
+}

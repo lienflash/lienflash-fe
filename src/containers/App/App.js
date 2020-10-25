@@ -7,7 +7,6 @@ import { Route } from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-      <Header />
       <Route exact path="/addjob" render={() => {
         return (
           <h2>This will be the job form</h2>

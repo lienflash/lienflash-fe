@@ -18,6 +18,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             name='jobType'
             value='Labor'
             className='radioBtns'
+            aria-label='job-type'
             onChange={handleInputChange}
             required
           /> Labor only<br />
@@ -33,6 +34,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           <input
             type='text'
             name='siteName'
+            aria-label='job-site-name'
             maxLength='50'
             style={{ width: '80%' }}
             onChange={handleInputChange}
@@ -43,6 +45,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           <input
             type='text'
             name='siteStreetAddress'
+            aria-label='job-site-address'
             maxLength='100'
             onChange={handleInputChange}
             required
@@ -51,6 +54,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='siteAddressLine2'
+          aria-label='job-site-address-line-2'
           placeholder='Apt/Suite'
           maxLength='100'
           onChange={handleInputChange}
@@ -59,6 +63,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           <input
             type='text'
             name='siteCity'
+            aria-label='job-site-city'
             style={{ width: '50%' }}
             maxLength='20'
             onChange={handleInputChange}
@@ -69,6 +74,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           <input
             type='text'
             name='siteState'
+            aria-label='job-site-state'
             maxLength='3'
             style={{ width: '30%' }}
             onChange={handleInputChange}
@@ -79,6 +85,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           <input
             type='text'
             name='siteZipCode'
+            aria-label='job-site-zip-code'
             inputMode='decimal'
             style={{ width: '30%' }}
             maxLength='10'
@@ -91,6 +98,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           <input
             type='date'
             name='dateCompletion'
+            aria-label='job-completion-date'
             placeholder='mm/dd/yyyy'
             style={{ width: '50%' }}
             maxLength='10'
@@ -103,6 +111,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             type='text'
             inputMode='decimal'
             name='laborCost'
+            aria-label='labor-costs-due'
             style={{ width: '30%' }}
             maxLength='10'
             placeholder='USD'
@@ -114,6 +123,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             type='text'
             inputMode='decimal'
             name='materialCost'
+            aria-label='material-costs-due'
             maxLength='10'
             style={{ width: '30%' }}
             placeholder='USD'
@@ -125,6 +135,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             type='text'
             inputMode='decimal'
             name='totalCost'
+            aria-label='total-costs-due'
             maxLength='10'
             style={{ width: '30%' }}
             placeholder='USD'

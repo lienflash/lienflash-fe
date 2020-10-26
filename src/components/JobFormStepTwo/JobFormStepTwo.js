@@ -17,6 +17,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='companyName'
+          aria-label='client-name'
           maxLength='50'
           style={{ width: '80%' }}
           onChange={handleInputChange}
@@ -27,6 +28,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='contactName'
+          aria-label='client-contact-name'
           maxLength='50'
           style={{ width: '80%' }}
           onChange={handleInputChange}
@@ -37,6 +39,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='street'
+          aria-label='client-address'
           autoComplete='street-address'
           maxLength='100'
           onChange={handleInputChange}
@@ -45,6 +48,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='addressLine2'
+          aria-label='client-address-line-2'
           maxLength='100'
           placeholder='Apt/Suite'
           onChange={handleInputChange}
@@ -54,6 +58,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='siteCity'
+          aria-label='client-address-city'
           maxLength='20'
           style={{ width: '50%' }}
           onChange={handleInputChange}
@@ -64,6 +69,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='siteState'
+          aria-label='client-address-state'
           style={{ width: '30%' }}
           maxLength='3'
           onChange={handleInputChange}
@@ -74,6 +80,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='siteZipCode'
+          aria-label='client-address-zipcode'
           inputMode='decimal'
           style={{ width: '30%' }}
           maxLength='10'
@@ -85,6 +92,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='email'
           name='email'
+          aria-label='client-email'
           maxLength='50'
           style={{ width: '75%' }}
           onChange={handleInputChange}
@@ -95,6 +103,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='tel'
           name='phone'
+          aria-label='client-phone'
           inputMode='decimal'
           maxLength='10'
           style={{ width: '50%' }}

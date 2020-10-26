@@ -17,7 +17,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='companyName'
-          aria-label='client-name'
+          aria-label='client-company-name'
           maxLength='50'
           style={{ width: '80%' }}
           onChange={handleInputChange}

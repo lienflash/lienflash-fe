@@ -31,7 +31,7 @@ const JobForm = () => {
       { (currentStep === 1) &&
         <button
           className='btn btn-secondary'
-          type='Submit' onClick={e => updateStep(currentStep + 1)}>
+          type='button' onClick={e => updateStep(currentStep + 1)}>
           Next
         </button>
       }

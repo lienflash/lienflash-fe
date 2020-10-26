@@ -98,7 +98,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             required
           /><br />
         </label>
-        <label>Labor Costs due:<br />
+        <label>Labor Costs Due:<br />
           <input
             type='text'
             inputMode='decimal'
@@ -109,7 +109,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             onChange={handleInputChange}
           /><br />
         </label>
-        <label>Material Costs due:<br />
+        <label>Material Costs Due:<br />
           <input
             type='text'
             inputMode='decimal'
@@ -120,7 +120,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             onChange={handleInputChange}
           /><br />
         </label>
-        <label>Total Costs due:<br />
+        <label>Total Costs Due:<br />
           <input
             type='text'
             inputMode='decimal'

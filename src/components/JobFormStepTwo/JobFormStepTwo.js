@@ -81,7 +81,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           required
         /><br />
       </label>
-      <label>Client / Contact Email:<br />
+      <label>Client Email:<br />
         <input
           type='email'
           name='email'
@@ -91,7 +91,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           required
         /><br />
       </label>
-      <label>Client / Contact Phone: <br />
+      <label>Client Phone number: <br />
         <input
           type='tel'
           name='phone'

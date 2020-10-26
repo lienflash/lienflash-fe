@@ -12,7 +12,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
       {/* Site details */}
       <h2>Job Site Details</h2>
       <div className='jobType'>
-        <label>Job Type:<br />
+        <label>Job Type: <abbr className='required' aria-label="required">*</abbr><br />
           <input
             type='radio'
             name='jobType'
@@ -41,7 +41,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             required
           /><br />
         </label>
-        <label>Job Site Address:<br />
+        <label>Job Site Address: <abbr className="required" aria-label="required">*</abbr><br />
           <input
             type='text'
             name='siteStreetAddress'
@@ -59,7 +59,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           maxLength='100'
           onChange={handleInputChange}
         /><br />
-        <label>City:<br />
+        <label>City: <abbr className="required" aria-label="required">*</abbr><br />
           <input
             type='text'
             name='siteCity'
@@ -70,7 +70,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             required
           /><br />
         </label>
-        <label>State:<br />
+        <label>State: <abbr className="required" aria-label="required">*</abbr><br />
           <input
             type='text'
             name='siteState'
@@ -81,7 +81,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             required
           /><br />
         </label>
-        <label>Zip Code:<br />
+        <label>Zip Code: <abbr className="required" aria-label="required">*</abbr><br />
           <input
             type='text'
             name='siteZipCode'
@@ -93,11 +93,11 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             required
           /><br />
         </label>
-        <label>Date of Substantial Completion:<br />
+        <label>Date of Substantial Completion: <abbr className="required" aria-label="required">*</abbr><br />
           <span className='date-help-info'>What is this?</span><br />
           <input
             type='date'
-            name='dateCompletion'
+            name='jobCompletionDate'
             aria-label='job-completion-date'
             placeholder='mm/dd/yyyy'
             style={{ width: '50%' }}
@@ -130,11 +130,11 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             onChange={handleInputChange}
           /><br />
         </label>
-        <label>Total Costs Due:<br />
+        <label>Total Costs Due: <abbr className="required" aria-label="required">*</abbr><br />
           <input
             type='text'
             inputMode='decimal'
-            name='totalCost'
+            name='totalCostDue'
             aria-label='total-costs-due'
             maxLength='10'
             style={{ width: '30%' }}

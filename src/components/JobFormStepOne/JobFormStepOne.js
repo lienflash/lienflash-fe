@@ -20,7 +20,6 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             className='radioBtns'
             aria-label='job-type'
             onChange={handleInputChange}
-            required
           /> Labor only<br />
           <input
             type='radio'
@@ -38,7 +37,6 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             maxLength='50'
             style={{ width: '80%' }}
             onChange={handleInputChange}
-            required
           /><br />
         </label>
         <label>Job Site Address: <abbr className="required" aria-label="required">*</abbr><br />
@@ -48,7 +46,6 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             aria-label='job-site-address'
             maxLength='100'
             onChange={handleInputChange}
-            required
           /><br />
         </label>
         <input
@@ -67,7 +64,6 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             style={{ width: '50%' }}
             maxLength='20'
             onChange={handleInputChange}
-            required
           /><br />
         </label>
         <label>State: <abbr className="required" aria-label="required">*</abbr><br />
@@ -78,7 +74,6 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             maxLength='3'
             style={{ width: '30%' }}
             onChange={handleInputChange}
-            required
           /><br />
         </label>
         <label>Zip Code: <abbr className="required" aria-label="required">*</abbr><br />
@@ -90,7 +85,6 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             style={{ width: '30%' }}
             maxLength='10'
             onChange={handleInputChange}
-            required
           /><br />
         </label>
         <label>Date of Substantial Completion: <abbr className="required" aria-label="required">*</abbr><br />
@@ -103,7 +97,6 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             style={{ width: '50%' }}
             maxLength='10'
             onChange={handleInputChange}
-            required
           /><br />
         </label>
         <label>Labor Costs Due:<br />
@@ -140,7 +133,6 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             style={{ width: '30%' }}
             placeholder='USD'
             onChange={handleInputChange}
-            required
           /><br />
         </label>
       </div >

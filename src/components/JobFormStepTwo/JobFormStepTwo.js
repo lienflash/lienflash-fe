@@ -21,7 +21,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           maxLength='50'
           style={{ width: '80%' }}
           onChange={handleInputChange}
-          required
         /><br />
       </label>
       <label>Client / Contact Name:<br />
@@ -32,7 +31,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           maxLength='50'
           style={{ width: '80%' }}
           onChange={handleInputChange}
-          required
         /><br />
       </label>
       <label>Business Address:<br />
@@ -43,7 +41,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           autoComplete='street-address'
           maxLength='100'
           onChange={handleInputChange}
-          required
         /><br />
         <input
           type='text'
@@ -62,7 +59,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           maxLength='20'
           style={{ width: '50%' }}
           onChange={handleInputChange}
-          required
         /><br />
       </label>
       <label>State:<br />
@@ -73,7 +69,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           style={{ width: '30%' }}
           maxLength='3'
           onChange={handleInputChange}
-          required
         /><br />
       </label>
       <label>Zip Code: <br />
@@ -85,7 +80,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           style={{ width: '30%' }}
           maxLength='10'
           onChange={handleInputChange}
-          required
         /><br />
       </label>
       <label>Client Email:<br />
@@ -96,7 +90,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           maxLength='50'
           style={{ width: '75%' }}
           onChange={handleInputChange}
-          required
         /><br />
       </label>
       <label>Client Phone number: <br />
@@ -108,7 +101,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           maxLength='10'
           style={{ width: '50%' }}
           onChange={handleInputChange}
-          required
         /><br />
       </label>
     </div>

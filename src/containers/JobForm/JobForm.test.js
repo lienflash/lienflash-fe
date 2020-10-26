@@ -20,7 +20,9 @@ describe('Form component', () => {
     fireEvent.click(nextButton)
 
     const backButton = screen.getByRole('button', { name: 'Back' })
+    const submitButton = screen.getByRole('button', { name: 'Submit' })
     expect(backButton).toBeInTheDocument() 
+    expect(submitButton).toBeInTheDocument() 
     expect(nextButton).not.toBeInTheDocument() 
   })
 })

@@ -21,5 +21,6 @@ describe('Form component', () => {
 
     const backButton = screen.getByRole('button', { name: 'Back' })
     expect(backButton).toBeInTheDocument() 
+    expect(nextButton).not.toBeInTheDocument() 
   })
 })

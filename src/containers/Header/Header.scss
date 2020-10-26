@@ -2,3 +2,28 @@
   width: 60%;
   height: 30%;
 }
+
+.in-process-btn,
+.release-lien-eligible-btn,
+.noi-eligible-btn,
+.lien-eligible-btn {
+  border: none;
+  margin: .5em;
+  padding: .5em;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+}
+
+.selected {
+  transform: scale(1.05);
+  background-color: #49a050;
+  cursor: pointer;
+}
+
+/*
+green: #49a050
+or #00a24a according to website
+black: #000000
+gray: #7b7a7f
+*/

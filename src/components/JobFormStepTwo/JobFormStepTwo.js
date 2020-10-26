@@ -1,6 +1,6 @@
 import React from 'react'
 
-const JobFormStepTwo = () => {
+const JobFormStepTwo = ({ handleInputChange, handleSubmit }) => {
 
   return (
     <div className="form-group">

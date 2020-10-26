@@ -1,7 +1,12 @@
 import React from 'react'
 
-const JobFormStepOne = () => {
+const JobFormStepOne = ({ handleInputChange, currentStep }) => {
   
+  if (currentStep !== 1) {
+    console.log(currentStep)
+    return null
+  }
+
   return (
     <div className="form-group">
       {/* Contractor details */}

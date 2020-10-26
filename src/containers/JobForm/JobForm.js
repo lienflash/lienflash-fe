@@ -6,9 +6,9 @@ import './JobForm.scss'
 const JobForm = () => {
   const [input, setInput] = useState({})
   const [currentStep, updateStep] = useState(1)
+  const [error, updateError] = useState('')
 
   const handleInputChange = (e) => {
-    console.log('value', input)
     setInput({
     ...input,
     [e.currentTarget.name]: e.currentTarget.value
@@ -24,8 +24,9 @@ const JobForm = () => {
       || !input.jobCompletionDate 
       || !input.totalCostDue 
       ) {
-      alert('Please complete all required fields')
+      updateError('Please complete required fields')
     } else {
+      updateError('')
       updateStep(currentStep + 1)
     }    
   }
@@ -41,11 +42,12 @@ const JobForm = () => {
     <form className='form'>
       <h1>Add New Job</h1>
       <p>Step {currentStep} </p>
-      <p>Required fields are followed by <abbr className="required">*</abbr>.</p>
       <JobFormStepOne
         handleInputChange={handleInputChange}
         currentStep={currentStep}
       />
+      { error &&
+        <p className='error-msg'>{error}</p>}
       { (currentStep === 1) &&
         <button
           className='btn btn-secondary'

@@ -26,7 +26,6 @@ const JobForm = () => {
       <JobFormStepOne
         handleInputChange={handleInputChange}
         currentStep={currentStep}
-        updateStep={updateStep}
       />
       { (currentStep === 1) &&
         <button
@@ -38,7 +37,6 @@ const JobForm = () => {
       <JobFormStepTwo
         handleInputChange={handleInputChange}
         currentStep={currentStep}
-        handleSubmit={handleSubmit}
       />
       { (currentStep !== 1) &&
         <div>
@@ -46,7 +44,11 @@ const JobForm = () => {
             className='btn btn-secondary'
             type='button' onClick={e => updateStep(currentStep - 1)}>
             Back
-        </button>
+          </button>
+          <input
+            type='Submit'
+            onClick={handleSubmit}
+          />
         </div>
       }
     </form>

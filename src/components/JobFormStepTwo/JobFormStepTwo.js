@@ -142,10 +142,6 @@ const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
             required
           /><br />
         </label>
-        <input
-          type='Submit'
-          onClick={handleSubmit}
-        />
       </div >
     </div >
   )

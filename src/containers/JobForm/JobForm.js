@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import JobFormStepOne from '../../components/JobFormStepOne.js/JobFormStepOne'
-import JobFormStepTwo from '../../components/JobFormStepTwo.js/JobFormStepTwo'
+import JobFormStepOne from '../../components/JobFormStepOne/JobFormStepOne'
+import JobFormStepTwo from '../../components/JobFormStepTwo/JobFormStepTwo'
 import './JobForm.scss'
 
 const JobForm = () => {
@@ -27,10 +27,26 @@ const JobForm = () => {
         currentStep={currentStep}
         updateStep={updateStep}
       />
+      { (currentStep === 1) &&
+        <button
+          className='btn btn-secondary'
+          type='button' onClick={e => updateStep(currentStep + 1)}>
+          Next
+        </button>
+      }
       <JobFormStepTwo
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
       />
+      { (currentStep !== 1) &&
+      <div>
+        <button
+          className='btn btn-secondary'
+          type='button' onClick={e => updateStep(currentStep - 1)}>
+          Previous
+        </button>
+      </div>
+      }
     </form>
   )
 }

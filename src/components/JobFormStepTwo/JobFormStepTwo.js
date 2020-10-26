@@ -1,7 +1,11 @@
 import React from 'react'
 
-const JobFormStepTwo = ({ handleInputChange, handleSubmit }) => {
-
+const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
+ 
+  if (currentStep !== 2) { 
+    return null
+  }
+  
   return (
     <div className="form-group">
       {/* Site details */}

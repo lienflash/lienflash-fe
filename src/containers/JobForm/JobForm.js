@@ -36,16 +36,17 @@ const JobForm = () => {
       }
       <JobFormStepTwo
         handleInputChange={handleInputChange}
+        currentStep={currentStep}
         handleSubmit={handleSubmit}
       />
       { (currentStep !== 1) &&
-      <div>
-        <button
-          className='btn btn-secondary'
-          type='button' onClick={e => updateStep(currentStep - 1)}>
-          Previous
+        <div>
+          <button
+            className='btn btn-secondary'
+            type='button' onClick={e => updateStep(currentStep - 1)}>
+            Previous
         </button>
-      </div>
+        </div>
       }
     </form>
   )

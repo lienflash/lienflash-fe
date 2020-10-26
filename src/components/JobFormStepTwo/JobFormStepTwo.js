@@ -1,19 +1,18 @@
 import React from 'react'
+import '../../containers/JobForm/JobForm.scss'
 
 const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
  
   if (currentStep !== 2) { 
     return null
   }
-  
+
   return (
-    <div className="form-group">
+    <div className='form-group'>
       {/* Site details */}
       <h2>Job Details</h2>
       <div className='jobType'>
-        Job Type:
-            <br />
-        <label>
+        <label> Job Type:<br />     
           <input
             type='radio'
             name='jobType'
@@ -21,43 +20,40 @@ const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
             className='radioBtns'
             onChange={handleInputChange}
             required
-          />
-            Labor only
-            <br />
+          /> Labor only <br />
           <input
             type='radio'
             name='jobType'
             value='Materials & Labor'
             className='radioBtns'
             onChange={handleInputChange}
-          />
-            Materials & Labor
-          </label>
-        < label > Site Name:<br />
+          /> Materials & Labor
+        </label>
+        <label> Site Name:<br />
           <input
             type='text'
             name='siteName'
-            maxLength="50"
-            style={{ width: '80%' }}
-            onChange={handleInputChange}
-            required
-          /><br />
-        </label >
-        <label>Contact Name:<br />
-          <input
-            type='text'
-            name='siteContactName'
-            maxLength="50"
+            maxLength='50'
             style={{ width: '80%' }}
             onChange={handleInputChange}
             required
           /><br />
         </label>
-        <label>Site Address:
+        <label>Contact Name:<br />
+          <input
+            type='text'
+            name='siteContactName'
+            maxLength='50'
+            style={{ width: '80%' }}
+            onChange={handleInputChange}
+            required
+          /><br />
+        </label>
+        <label>Site Address:<br />
           <input
             type='text'
             name='siteStreetAddress'
-            maxLength="100"
+            maxLength='100'
             onChange={handleInputChange}
             required
           /><br />
@@ -66,16 +62,15 @@ const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
           type='text'
           name='siteAddressLine2'
           placeholder='Apt/Suite'
-          maxLength="100"
+          maxLength='100'
           onChange={handleInputChange}
         /><br />
         <label>City:<br />
           <input
             type='text'
             name='siteCity'
-            // className='medium'
             style={{ width: '50%' }}
-            maxLength="20"
+            maxLength='20'
             onChange={handleInputChange}
             required
           /><br />
@@ -84,8 +79,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
           <input
             type='text'
             name='siteState'
-            // className='medium'
-            maxLength="3"
+            maxLength='3'
             style={{ width: '30%' }}
             onChange={handleInputChange}
             required
@@ -95,10 +89,9 @@ const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
           <input
             type='text'
             name='siteZipCode'
-            inputMode="decimal"
-            // className='medium'
+            inputMode='decimal'
             style={{ width: '30%' }}
-            maxLength="10"
+            maxLength='10'
             onChange={handleInputChange}
             required
           /><br />
@@ -109,32 +102,29 @@ const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
             type='date'
             name='dateCompletion'
             placeholder='mm/dd/yyyy'
-            // className='medium'
             style={{ width: '50%' }}
-            maxLength="10"
+            maxLength='10'
             onChange={handleInputChange}
             required
           /><br />
         </label>
         <label>Labor Costs Outstanding:<br />
           <input
-            type="text"
-            inputMode="decimal"
+            type='text'
+            inputMode='decimal'
             name='laborCost'
-            // className='short'
             style={{ width: '30%' }}
-            maxLength="10"
+            maxLength='10'
             placeholder='USD'
             onChange={handleInputChange}
           /><br />
         </label>
         <label>Material Costs Outstanding:<br />
           <input
-            type="text"
-            inputMode="decimal"
+            type='text'
+            inputMode='decimal'
             name='materialCost'
-            // className='short'
-            maxLength="10"
+            maxLength='10'
             style={{ width: '30%' }}
             placeholder='USD'
             onChange={handleInputChange}
@@ -142,10 +132,10 @@ const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
         </label>
         <label>Total Costs Outstanding:<br />
           <input
-            type="text"
-            inputMode="decimal"
+            type='text'
+            inputMode='decimal'
             name='totalCost'
-            maxLength="10"
+            maxLength='10'
             style={{ width: '30%' }}
             placeholder='USD'
             onChange={handleInputChange}

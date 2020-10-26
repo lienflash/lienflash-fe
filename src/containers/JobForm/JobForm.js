@@ -13,14 +13,15 @@ const JobForm = () => {
   })
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    // invocation of post request will go here
+    // e.preventDefault()
     const newJob = input
     console.log(newJob)
   }
 
   return (
     <form className='form'>
-      <h1>Add Job</h1>
+      <h1>Add New Job</h1>
       <p>Step {currentStep} </p>
       <JobFormStepOne
         handleInputChange={handleInputChange}
@@ -30,7 +31,7 @@ const JobForm = () => {
       { (currentStep === 1) &&
         <button
           className='btn btn-secondary'
-          type='button' onClick={e => updateStep(currentStep + 1)}>
+          type='Submit' onClick={e => updateStep(currentStep + 1)}>
           Next
         </button>
       }
@@ -44,7 +45,7 @@ const JobForm = () => {
           <button
             className='btn btn-secondary'
             type='button' onClick={e => updateStep(currentStep - 1)}>
-            Previous
+            Back
         </button>
         </div>
       }

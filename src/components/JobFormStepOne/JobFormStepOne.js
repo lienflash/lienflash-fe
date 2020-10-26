@@ -1,21 +1,22 @@
 import React from 'react'
+import '../../containers/JobForm/JobForm.scss'
+
 
 const JobFormStepOne = ({ handleInputChange, currentStep }) => {
   
   if (currentStep !== 1) {
-    console.log(currentStep)
     return null
   }
 
   return (
-    <div className="form-group">
+    <div className='form-group'>
       {/* Contractor details */}
       <h2>Company Details</h2>
       <label>Company Name:<br />
         <input
           type='text'
           name='companyName'
-          maxLength="50"
+          maxLength='50'
           style={{ width: '80%' }}
           onChange={handleInputChange}
           required
@@ -25,25 +26,25 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='contactName'
-          maxLength="50"
+          maxLength='50'
           style={{ width: '80%' }}
           onChange={handleInputChange}
           required
         /><br />
       </label>
-      <label>Business Address:
+      <label>Business Address:<br />
           <input
           type='text'
           name='street'
-          autoComplete="street-address"
-          maxLength="100"
+          autoComplete='street-address'
+          maxLength='100'
           onChange={handleInputChange}
           required
         /><br />
         <input
           type='text'
           name='addressLine2'
-          maxLength="100"
+          maxLength='100'
           placeholder='Apt/Suite'
           onChange={handleInputChange}
         /><br />
@@ -52,8 +53,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='siteCity'
-          // className='medium'
-          maxLength="20"
+          maxLength='20'
           style={{ width: '50%' }}
           onChange={handleInputChange}
           required
@@ -63,9 +63,8 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='siteState'
-          // className='medium'
           style={{ width: '30%' }}
-          maxLength="3"
+          maxLength='3'
           onChange={handleInputChange}
           required
         /><br />
@@ -74,10 +73,9 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <input
           type='text'
           name='siteZipCode'
-          inputMode="decimal"
-          // className='medium'
+          inputMode='decimal'
           style={{ width: '30%' }}
-          maxLength="10"
+          maxLength='10'
           onChange={handleInputChange}
           required
         /><br />
@@ -86,7 +84,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <input
           type='email'
           name='email'
-          maxLength="50"
+          maxLength='50'
           style={{ width: '75%' }}
           onChange={handleInputChange}
           required
@@ -96,8 +94,8 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <input
           type='tel'
           name='phone'
-          inputMode="decimal"
-          maxLength="10"
+          inputMode='decimal'
+          maxLength='10'
           style={{ width: '50%' }}
           onChange={handleInputChange}
           required

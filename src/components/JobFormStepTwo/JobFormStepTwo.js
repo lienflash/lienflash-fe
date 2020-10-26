@@ -20,14 +20,14 @@ const JobFormStepTwo = ({ handleInputChange, currentStep, handleSubmit }) => {
             className='radioBtns'
             onChange={handleInputChange}
             required
-          /> Labor only <br />
+          /> Labor only<br />
           <input
             type='radio'
             name='jobType'
             value='Materials & Labor'
-            className='radioBtns'
+            className='btm-btn radioBtns'
             onChange={handleInputChange}
-          /> Materials & Labor
+          /> Materials & Labor<br />
         </label>
         <label> Site Name:<br />
           <input

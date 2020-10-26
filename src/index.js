@@ -1,17 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+// import stylesheet here
 import App from '../src/containers/App/App';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { createStore, compose } from 'redux';
+import rootReducer from './reducers/index';
+
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+const store = createStore(rootReducer, compose(devTools))
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

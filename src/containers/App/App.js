@@ -3,13 +3,14 @@ import './App.scss';
 import Homepage from '../Homepage/Homepage'
 import Header from '../Header/Header'
 import { Route } from 'react-router-dom'
+import JobForm from '../JobForm/JobForm'
 
 function App() {
   return (
     <div className="App">
       <Route exact path="/addjob" render={() => {
         return (
-          <h2>This will be the job form</h2>
+          <JobForm />
         )
       }}/>
       <Route exact path="/eligiblejobs" render={() => {
@@ -32,6 +33,7 @@ function App() {
           <Homepage />
         )
       }}/>
+      
     </div>
   );
 }

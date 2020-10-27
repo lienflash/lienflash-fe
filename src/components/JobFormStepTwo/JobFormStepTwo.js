@@ -104,7 +104,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
         /><br />
       </label>
       <label>Additional information: <br />
-        <textArea 
+        <textarea 
           type='text'
           name='additionalInfo'
           aria-label='additional-information'

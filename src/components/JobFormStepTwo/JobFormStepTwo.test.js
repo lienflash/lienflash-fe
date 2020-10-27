@@ -25,6 +25,7 @@ describe('JobFormStepTwo component', () => {
     const zipCode = screen.getByText('Zip Code:')
     const email = screen.getByText('Client Email:')
     const phone = screen.getByText('Client Phone number:')
+    const additionalInfo = screen.getByText('Additional information:')
 
     expect(heading).toBeInTheDocument()
     expect(companyName).toBeInTheDocument()
@@ -35,6 +36,7 @@ describe('JobFormStepTwo component', () => {
     expect(state).toBeInTheDocument()
     expect(email).toBeInTheDocument()
     expect(phone).toBeInTheDocument()
+    expect(additionalInfo).toBeInTheDocument()
   })
 
   it('should store the form values that are inputted by user', () => {
@@ -48,6 +50,7 @@ describe('JobFormStepTwo component', () => {
     const zipCodeInput = screen.getByLabelText('client-address-zipcode')
     const emailInput = screen.getByLabelText('client-email')
     const phoneInput = screen.getByLabelText('client-phone')
+    const additionalInfoInput = screen.getByLabelText('additional-information')
 
     fireEvent.change(clientNameInput, { target: { value: 'Burts' } })
     fireEvent.change(clientContactNameInput, { target: { value: 'Burt Rumble' } })
@@ -58,7 +61,8 @@ describe('JobFormStepTwo component', () => {
     fireEvent.change(zipCodeInput, { target: { value: '80242' } })
     fireEvent.change(emailInput , { target: { value: 'bm@mail.com' } })
     fireEvent.change(phoneInput, { target: { value: '888 888 7777' } })
-    
+    fireEvent.change(additionalInfoInput, { target: { value: 'Please include Ron Potter on the NOI' } })
+
     expect(clientNameInput.value).toBe('Burts')
     expect(clientContactNameInput.value).toBe('Burt Rumble')
     expect(clientBusinessAddress.value).toBe('100 Myrtle Drive')
@@ -68,5 +72,6 @@ describe('JobFormStepTwo component', () => {
     expect(zipCodeInput.value).toBe('80242')
     expect(emailInput.value).toBe('bm@mail.com')
     expect(phoneInput.value).toBe('888 888 7777')
+    expect(additionalInfoInput.value).toBe('Please include Ron Potter on the NOI')
   })
 })

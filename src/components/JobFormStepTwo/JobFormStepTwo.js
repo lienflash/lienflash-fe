@@ -103,6 +103,18 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
           onChange={handleInputChange}
         /><br />
       </label>
+      <label>Additional information: <br />
+        <textArea 
+          type='text'
+          name='additionalInfo'
+          aria-label='additional-information'
+          rows='4'
+          maxLength='150'
+          style={{ width: '80%' }}
+          onChange={handleInputChange}
+        />
+        <br />
+      </label>
     </div>
   )
 }

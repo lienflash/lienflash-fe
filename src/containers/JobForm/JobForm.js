@@ -15,7 +15,7 @@ const JobForm = () => {
   })
 }
 
-  const checkRequiredFields = (e) => {
+  const checkRequiredFields = () => {
     if (!input.jobType 
       || !input.siteStreetAddress
       || !input.siteCity 
@@ -51,7 +51,7 @@ const JobForm = () => {
       { (currentStep === 1) &&
         <button
           className='btn btn-secondary'
-          type='button' onClick={e => checkRequiredFields()}>
+          type='button' onClick={checkRequiredFields}>
           Next
         </button>
       }

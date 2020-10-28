@@ -1,6 +1,6 @@
 import React from 'react';
 import './Jobs.scss';
-import JobCard from '../JobCard/JobCard';
+import JobCard from '../../components/JobCard/JobCard';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,9 @@ function Jobs() {
 
   const finalList = allJobs.map(job => {
     return (
-      <JobCard data={job.attributes} dateDifference={findDateDifference(job.attributes.date_of_completion)} key={job.attributes.job_id}/>
+      <Link to={`/jobs/${job.attributes.job_id}`}>
+        <JobCard data={job.attributes} dateDifference={findDateDifference(job.attributes.date_of_completion)} key={job.attributes.job_id}/>
+      </Link>
     )
   })
 
@@ -30,14 +32,8 @@ function Jobs() {
   // if lien is filed, then it's in process
   // if lien is processed, it's eligible for releaseOfLien
 
-  function handleClick(event) {
-    // on click of card, call for that job's info and display it
-    // console.log(event.target.parentNode.className)
-    // console.log("Article: ", event.target.className)
-  }
-
   return (
-    <div className='jobs' onClick={handleClick}>
+    <div className='jobs'>
       {finalList}
     </div>
   )

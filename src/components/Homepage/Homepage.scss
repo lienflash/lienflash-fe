@@ -1,0 +1,47 @@
+.homepage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto repeat(2, 1fr);
+  margin: 0.2em;
+}
+
+.home-title {
+  grid-column: 1 / span 2;
+  margin-top: 0;
+}
+
+.home {
+  width: 90%;
+  height: 5em;
+  margin: .4em;
+  margin-left: .2em;
+  border: none;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.add,
+.eligible,
+.filed,
+.profile {
+  color: white;
+  // background-color: #00a24a;
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px 1px black;
+}
+
+.add {
+  background-color:#0da14e
+}
+
+.eligible {
+  background-color: #4d7642;
+}
+
+.filed {
+  background-color: #73ba9b;
+}
+
+.profile {
+  background-color: #3e6563
+}

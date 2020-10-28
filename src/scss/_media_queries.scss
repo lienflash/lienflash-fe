@@ -3,7 +3,7 @@
 
 h2 { font-size: 36px; }
 
-/*  Tablets in landscape mode, older desktop monitors */
+/*  Tablets - landscape mode */
 
 @media only screen and (min-width: 1340px) {
 h2 { font-size: 32px; }
@@ -16,7 +16,7 @@ h2 { font-size: 32px; }
 .form { width: 50% }
 }
 
-/*  Tablets in portrait mode, large display smartphones landscape mode */
+/*  Tablets - portrait mode, large display smartphones landscape mode */
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
 h2 { font-size: 28px; }

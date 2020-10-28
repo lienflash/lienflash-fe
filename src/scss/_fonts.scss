@@ -1,5 +1,7 @@
-h1 {
-  color: #4CAF50;
+
+@mixin headerFont($fontSize) {
+  color:  $green;
+  font-size: $fontSize;
 }
 
 // error message text

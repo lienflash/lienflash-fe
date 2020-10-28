@@ -1,4 +1,8 @@
 
+h1 {
+  @include headerFont(4vh)
+}
+
 .form {
   text-align: left;
   padding: 4%;
@@ -19,11 +23,11 @@ input[type=tel] {
   // no box border:
   outline: 0;
   border-width: 0 0 1px;
-  border-color: darkgrey;
+  border-color: $lightGrey;
 }
 
 input:focus {
-  border-color: green
+  border-color: $green;
 }
 
 .date-help-info {
@@ -42,7 +46,7 @@ input[type=date] {
 }
 
 input[type=submit] {
-  background-color: #4CAF50;
+  background-color: $green;
   color: white;
   padding: 12px 20px;
   border: none;

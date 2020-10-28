@@ -25,22 +25,23 @@
 .filed,
 .profile {
   color: white;
-  background-color: #00a24a;
+  // background-color: #00a24a;
   border-radius: 20px;
   box-shadow: 4px 4px 10px 1px black;
 }
-// .add {
-//   background-color:#0da14e
-// }
 
-// .eligible {
-//   background-color: #4d7642;
-// }
+.add {
+  background-color:#0da14e
+}
 
-// .filed {
-//   background-color: #73ba9b;
-// }
+.eligible {
+  background-color: #4d7642;
+}
 
-// .profile {
-//   background-color: #3e6563
-// }
+.filed {
+  background-color: #73ba9b;
+}
+
+.profile {
+  background-color: #3e6563
+}

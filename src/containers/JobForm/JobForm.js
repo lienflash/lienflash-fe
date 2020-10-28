@@ -17,12 +17,14 @@ const JobForm = () => {
 
   const checkRequiredFields = () => {
     if (!input.jobType 
-      || !input.siteStreetAddress
-      || !input.siteCity 
-      || !input.siteState 
-      || !input.siteZipCode 
-      || !input.jobCompletionDate 
-      || !input.totalCostDue 
+      || !input.jobSiteContactName
+      || !input.jobSiteAddress
+      || !input.jobSiteCity 
+      || !input.jobSiteState 
+      || !input.jobSiteZipCode 
+      || !input.completionDate 
+      || !input.jobDescription
+      || !input.totalCost 
       ) {
       updateError('Please complete required fields')
     } else {

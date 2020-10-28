@@ -2,14 +2,21 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from '../../reducers/index.js';
 import App from './App'
 
 describe('App component', () => {
   it('Should render the homepage when the app loads', () => {
+    const store = createStore(rootReducer);
+    
     render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter> 
+      <Provider store={store}>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter> 
+      </Provider>
     )
   
     const header = screen.getByRole('heading', { name: 'What Do You Want To Do?'})

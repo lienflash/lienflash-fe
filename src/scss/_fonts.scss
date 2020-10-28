@@ -1,0 +1,10 @@
+
+@mixin headerFont($fontSize) {
+  color:  $green;
+  font-size: $fontSize;
+}
+
+// error message text
+.required, .error-msg {
+  color: red;
+}

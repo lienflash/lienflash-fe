@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './App.scss';
+import '../../scss/styles.scss'
 import Homepage from '../Homepage/Homepage'
 import Header from '../Header/Header'
 import Jobs from '../Jobs/Jobs'

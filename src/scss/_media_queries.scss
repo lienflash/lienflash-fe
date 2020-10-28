@@ -1,0 +1,38 @@
+
+ /* Monitors with screen width 1366px or above */
+
+h2 { font-size: 36px; }
+
+/*  Tablets - landscape mode */
+
+@media only screen and (min-width: 1340px) {
+h2 { font-size: 32px; }
+.form { width: 30%; }
+}
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1339px) {
+h2 { font-size: 32px; }
+.form { width: 50% }
+}
+
+/*  Tablets - portrait mode, large display smartphones landscape mode */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+h2 { font-size: 28px; }
+.form { width: 65% }
+}
+
+/*  Smartphones in landscape mode */
+
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+h2 { font-size: 24px; }
+.form { width: 75%  }
+}
+
+/*  Smartphones in portrait mode  */
+
+@media only screen and (max-width: 420px) {
+h2 { font-size: 20px; }
+.form { width: 100% }
+}

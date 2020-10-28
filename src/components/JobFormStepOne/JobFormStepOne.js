@@ -1,6 +1,5 @@
 import React from 'react'
 import 'balloon-css'; // tooltip package
-import '../../containers/JobForm/JobForm.scss'
 
 const JobFormStepOne = ({ handleInputChange, currentStep }) => {
 

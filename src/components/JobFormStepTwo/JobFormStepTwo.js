@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../containers/JobForm/JobForm.scss'
+// import '../../containers/JobForm/JobForm.scss'
 
 
 

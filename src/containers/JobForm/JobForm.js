@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import JobFormStepOne from '../../components/JobFormStepOne/JobFormStepOne'
 import JobFormStepTwo from '../../components/JobFormStepTwo/JobFormStepTwo'
-import './JobForm.scss'
+// import '../../scss/_jobForm.scss'
 
 const JobForm = () => {
   const [input, setInput] = useState({})

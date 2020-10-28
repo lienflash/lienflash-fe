@@ -1,6 +1,4 @@
 import React from 'react'
-// import '../../containers/JobForm/JobForm.scss'
-
 
 
 const JobFormStepTwo = ({ handleInputChange, currentStep }) => {

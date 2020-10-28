@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../scss/_header.scss';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/lienflash-logo.png'
 

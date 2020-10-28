@@ -1,5 +1,4 @@
 import React from 'react';
-import './JobCard.scss';
 
 function JobCard(props) {
 const { company_name, labor_cost, material_cost, date_of_completion, job_id } = props.data

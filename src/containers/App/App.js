@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../scss/styles.scss'
 import Homepage from '../../components/Homepage/Homepage'
 import Header from '../../components/Header/Header'
@@ -13,6 +13,7 @@ import { setJobs, getJobInfo } from '../../actions/actions'
 
 
 function App() {
+  const [jobAdded, updateJobAddedStatus] = useState(false)
   const dispatch = useDispatch();
   const allJobs = useSelector(state => state.allJobs);
 
@@ -20,11 +21,12 @@ function App() {
       getAllJobs()
         .then(data => {
           dispatch(setJobs(data.data))
+          updateJobAddedStatus(false)
         })
         .catch(error => {
           alert('Sorry, we had an issue retrieving your jobs. Please refresh to try again.')
-        })
-  }, [])
+        }) 
+  }, [ jobAdded ])
 
   return (
     <div className="App">
@@ -42,7 +44,7 @@ function App() {
         return (
           <>
             <Header />
-            <JobForm />
+            <JobForm updateJobAddedStatus={updateJobAddedStatus} />
           </>
         )
       }}/>

@@ -5,23 +5,6 @@ import logo from '../../assets/lienflash-logo.png'
 
 function Header(props) {
   const { currentPath } = props;
-  //const [ highlight, setHighlight] = useState("")
-
-  const handleClick = (event) => {
-
-    // first click is changing to selected, but won't change color till second click
-    console.log("sibling ",event.target.nextSibling)
-    console.log("sibling ", event.target.previousElementSibling)
-    if (event.target.nextSibling) {
-      event.target.nextSibling.classList.remove('selected')
-    } else if (event.target.previousElementSibling) {
-      event.target.previousElementSibling.classList.remove('selected')
-   }
-
-    event.target.classList.add('selected')
-  }
-  // need to fix styling of grace period button
-  // need to fix button highlighting, no longer works
 
   return (
     <header>

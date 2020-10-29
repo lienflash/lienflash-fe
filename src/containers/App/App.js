@@ -26,16 +26,14 @@ function App() {
         })
         .catch(error => {
           alert('Sorry, we had an issue retrieving your jobs. Please refresh to try again.')
-        }) 
+        })
   }, [ jobAdded ])
 
   return (
     <div className="App">
       <Route exact path='/jobs/:eligibility/:id' render={({match}) => {
-        console.log(match.params)
         const jobId = match.params.id;
         const eligibility = match.params.eligibility;
-        console.log(eligibility)
         dispatch(getJobInfo(jobId, eligibility, allJobs));
         return (
           <>

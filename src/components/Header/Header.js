@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/lienflash-logo.png'
 
 function Header(props) {
   const { currentPath } = props;
+  //const [ highlight, setHighlight] = useState("")
 
   const handleClick = (event) => {
+
+    // first click is changing to selected, but won't change color till second click
+    console.log("sibling ",event.target.nextSibling)
+    console.log("sibling ", event.target.previousElementSibling)
     if (event.target.nextSibling) {
       event.target.nextSibling.classList.remove('selected')
     } else if (event.target.previousElementSibling) {
       event.target.previousElementSibling.classList.remove('selected')
-    }
+   }
 
     event.target.classList.add('selected')
-
-    // need to also switch view to those cards; set button to be a link
   }
+  // need to fix styling of grace period button
+  // need to fix button highlighting, no longer works
 
   return (
     <header>
@@ -24,15 +29,26 @@ function Header(props) {
         <img src={logo} className='logo' alt='lienflash logo'/>
       </Link>
         {currentPath !== undefined && currentPath === 'filed'&&
-            <div onClick={handleClick}>
-              <button className='in-process-btn'>In Process</button>
-              <button className='release-lien-eligible-btn'>Release Eligible</button>
+            <div>
+              <NavLink to={'/filedjobs/processing'} className='nav-button' activeClassName="selected">
+                In Process
+              </NavLink>
+              <NavLink to={'/filedjobs/release-eligible'} className='nav-button' activeClassName="selected">
+                Release Eligible
+              </NavLink>
             </div>
         }
         {currentPath !== undefined && currentPath === 'eligible'&&
-            <div onClick={handleClick}>
-              <button className='noi-eligible-btn'>NOI Eligible</button>
-              <button className='lien-eligible-btn'>Lien Eligible</button>
+            <div>
+              <NavLink to={'/eligiblejobs/grace-period'} className='nav-button' activeClassName="selected">
+                Grace Period
+              </NavLink>
+              <NavLink to={"/eligiblejobs/noi-eligible"} className='nav-button' activeClassName="selected">
+                NOI Eligible
+              </NavLink>
+              <NavLink to={"/eligiblejobs/lien-eligible"} className='nav-button' activeClassName="selected">
+                Lien Eligible
+              </NavLink>
             </div>
         }
     </header>

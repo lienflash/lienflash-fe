@@ -19,8 +19,8 @@ function Jobs() {
 
   const finalList = allJobs.map(job => {
     return (
-      <Link to={`/jobs/${job.attributes.job_id}`}>
-        <JobCard data={job.attributes} dateDifference={findDateDifference(job.attributes.date_of_completion)} key={job.attributes.job_id}/>
+      <Link to={`/jobs/${job.id}`} key={job.id}>
+        <JobCard data={job.attributes} dateDifference={findDateDifference(job.attributes.completion_date)}/>
       </Link>
     )
   })
@@ -31,6 +31,8 @@ function Jobs() {
   // if NOI is filed, they have 10 days after that to file lien
   // if lien is filed, then it's in process
   // if lien is processed, it's eligible for releaseOfLien
+
+  // sort jobs from oldest to newest
 
   return (
     <div className='jobs'>

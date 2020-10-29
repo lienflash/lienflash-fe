@@ -11,17 +11,21 @@ describe('JobCard', () => {
   it('should display job card on page load', () => {
     const store = createStore(rootReducer);
     const attributes = {
-        job_street: "\"123 Main St.\"",
-        job_city: "\"Denver\"",
-        job_state: "\"CO\"",
-        job_zip: "\"80218\"",
-        date_of_completion: "2020-10-01T04:05:06.000Z",
-        company_name: "\"Construction Co Inc LLC\"",
-        contact_name: "\"Tim\"",
-        material_cost: 100.0,
-        labor_cost: 200.0,
-        job_description: "\"New window\"",
-        job_id: "\"W1234\""
+      job_type: 'labor & materials',
+      job_site_name: 'Home',
+      job_site_contact_name: 'Taryn',
+      job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+      job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
+      material_cost: 200,
+      labor_cost: 200,
+      total_cost: 400,
+      description_of_work: 'blah',
+      client_company_name: 'Amazon',
+      business_address: '12 Tree Ave',
+      business_address_line_2: 'Suite 200',
+      business_city: 'Seattle',
+      business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+      job_id: '12345'
     }
 
     render(
@@ -32,8 +36,8 @@ describe('JobCard', () => {
       </Provider>
     )
 
-    const name = screen.getByText("\"Construction Co Inc LLC\"");
-    const total = screen.getByText("Amount Due: $300");
+    const name = screen.getByText("Amazon");
+    const total = screen.getByText("Amount Due: $400");
     const completion = screen.getByText("Date of Substantial Completion: 10/01/20");
     const daysDifference = screen.getByText("Days Left to Submit: 27")
 

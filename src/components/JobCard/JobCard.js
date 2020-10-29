@@ -4,9 +4,9 @@ import './JobCard.scss';
 function JobCard(props) {
   const { client_company_name, total_cost, completion_date, job_id, dateDifference } = props.data
 
-  const endDate = completion_date;
+  const endDate = new Date(completion_date).getTime();
 
-  const completionDate = `${endDate[5]}${endDate[6]}/${endDate[8]}${endDate[9]}/${endDate[2]}${endDate[3]}`
+   const completionDate = new Date(endDate).toLocaleDateString("en-us")
 
   return (
     <article className={"job-card"}>

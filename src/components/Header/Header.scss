@@ -3,22 +3,20 @@
   height: 30%;
 }
 
-.in-process-btn,
-.release-lien-eligible-btn,
-.noi-eligible-btn,
-.lien-eligible-btn {
-  border: none;
-  margin: .5em;
+.nav-button{
+  border: solid 2px;
   padding: .5em;
   background-color: black;
   color: white;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .selected {
   transform: scale(1.05);
   background-color: #49a050;
   cursor: pointer;
+  text-decoration: none;
 }
 
 /*

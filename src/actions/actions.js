@@ -5,10 +5,11 @@ export const setJobs = (allJobs) => {
   }
 }
 
-export const getJobInfo = (id, jobs) => {
+export const getJobInfo = (id, eligibility, jobs) => {
   return {
     type: 'GET_INFO',
     id,
+    eligibility,
     jobs
   }
 }

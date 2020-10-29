@@ -11,10 +11,9 @@ const jobInfoReducer = (state={}, action) => {
         case 'Lien Filed':
           return action.jobs.releaseEligible.find(job => job.id === action.id);
         default:
-          return 'We can\'t find this job. Please try again'
+          return;
       }
-      // need to iterate over each array to find matching job details
-      // need to add something to find in process
+      // need to add something to find in process; need info from BE
     default:
       return state
   }

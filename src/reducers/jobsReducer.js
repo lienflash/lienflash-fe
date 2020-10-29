@@ -1,7 +1,6 @@
 const jobsReducer = (state={}, action) => {
   switch(action.type) {
     case 'ALL_JOBS':
-      //return action.allJobs;
       //when we add more users, we need to add a user matching conditional
       // also need to add conditionals for early submission of NOI to change timeline for Lien Submission - may need to add dateOfSubmission and filter that way?
       return action.allJobs.reduce((acc, job) => {

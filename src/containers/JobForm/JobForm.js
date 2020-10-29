@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import JobFormStepOne from '../../components/JobFormStepOne/JobFormStepOne'
 import JobFormStepTwo from '../../components/JobFormStepTwo/JobFormStepTwo'
-// import '../../scss/_jobForm.scss'
+import { postNewJob } from '../../helpers/apiCalls'
+import { Redirect } from 'react-router-dom'
+// import { useDispatch } from 'react-redux';
+
 
 const JobForm = () => {
   const [input, setInput] = useState({})
   const [currentStep, updateStep] = useState(1)
   const [error, updateError] = useState('')
+  const [submitSuccessful, updateStatus] = useState(false)
+  // const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     setInput({
@@ -34,10 +39,22 @@ const JobForm = () => {
   }
 
   const handleSubmit = (e) => {
-    // invocation of post request will go here
     e.preventDefault()
+    // invocation of post request will go here
+    // redirecting to homepage should cause a re-render and fetch updated jobs??
+    // or will I need to add an action to add job to store immediately?
+    // or add new fetch to homepage?
     const newJob = input
-    console.log(newJob)
+    postNewJob(newJob)
+    .then(() => {
+      updateStatus(true)
+    })
+    // .catch(error => {
+    //   alert('Sorry, we had an issue adding the new job. Please refresh to try again.')
+    // })
+    // if post request is successful:
+    // updateStatus(true)
+    // pop up message after new is job added?
   }
 
   return (
@@ -74,6 +91,7 @@ const JobForm = () => {
           />
         </div>
       }
+      { submitSuccessful && <Redirect to='/'/>}
     </form>
   )
 }

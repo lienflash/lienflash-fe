@@ -4,3 +4,11 @@ export const setJobs = (allJobs) => {
     allJobs
   }
 }
+
+export const getJobInfo = (id, jobs) => {
+  return {
+    type: 'GET_INFO',
+    id,
+    jobs
+  }
+}

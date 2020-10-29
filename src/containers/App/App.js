@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import '../../scss/styles.scss'
-import './App.scss';
 import Homepage from '../../components/Homepage/Homepage'
 import Header from '../../components/Header/Header'
 
@@ -8,13 +7,14 @@ import Jobs from '../Jobs/Jobs'
 import { Route } from 'react-router-dom'
 import JobForm from '../JobForm/JobForm';
 import JobDetails from '../../components/JobDetails/JobDetails';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getAllJobs } from '../../helpers/apiCalls'
-import { setJobs } from '../../actions/actions'
+import { setJobs, getJobInfo } from '../../actions/actions'
 
 
 function App() {
   const dispatch = useDispatch();
+  const allJobs = useSelector(state => state.allJobs);
 
   useEffect(() => {
       getAllJobs()
@@ -28,11 +28,15 @@ function App() {
 
   return (
     <div className="App">
-      <Route exact path='/jobs/:id' render={() => {
-        <>
-          <Header />
-          <JobDetails />
-        </>
+      <Route exact path='/jobs/:id' render={({match}) => {
+        const jobId = match.params.id;
+        dispatch(getJobInfo(jobId, allJobs));
+        return (
+          <>
+            <Header />
+            <JobDetails />
+          </>
+        )
       }}/>
       <Route exact path="/addjob" render={() => {
         return (

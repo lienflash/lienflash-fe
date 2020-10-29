@@ -14,18 +14,8 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
       <label>Client / Company Name:<br />
         <input
           type='text'
-          name='companyName'
+          name='clientCompanyName'
           aria-label='client-company-name'
-          maxLength='50'
-          style={{ width: '80%' }}
-          onChange={handleInputChange}
-        /><br />
-      </label>
-      <label>Client / Contact Name:<br />
-        <input
-          type='text'
-          name='contactName'
-          aria-label='client-contact-name'
           maxLength='50'
           style={{ width: '80%' }}
           onChange={handleInputChange}
@@ -34,16 +24,16 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
       <label>Business Address:<br />
         <input
           type='text'
-          name='street'
-          aria-label='client-address'
+          name='businessAddress'
+          aria-label='client-business-address'
           autoComplete='street-address'
           maxLength='100'
           onChange={handleInputChange}
         /><br />
         <input
           type='text'
-          name='addressLine2'
-          aria-label='client-address-line-2'
+          name='businessAddressLine2'
+          aria-label='business-address-line-2'
           maxLength='100'
           placeholder='Apt/Suite'
           onChange={handleInputChange}
@@ -52,8 +42,8 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
       <label>City:<br />
         <input
           type='text'
-          name='siteCity'
-          aria-label='client-address-city'
+          name='businessCity'
+          aria-label='business-address-city'
           maxLength='20'
           style={{ width: '50%' }}
           onChange={handleInputChange}
@@ -62,8 +52,8 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
       <label>State:<br />
         <input
           type='text'
-          name='siteState'
-          aria-label='client-address-state'
+          name='businessState'
+          aria-label='business-address-state'
           style={{ width: '30%' }}
           maxLength='3'
           onChange={handleInputChange}
@@ -72,32 +62,11 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
       <label>Zip Code: <br />
         <input
           type='text'
-          name='siteZipCode'
-          aria-label='client-address-zipcode'
+          name='businessZipCode'
+          aria-label='business-address-zipcode'
           inputMode='decimal'
           style={{ width: '30%' }}
           maxLength='10'
-          onChange={handleInputChange}
-        /><br />
-      </label>
-      <label>Client Email:<br />
-        <input
-          type='email'
-          name='email'
-          aria-label='client-email'
-          maxLength='50'
-          style={{ width: '75%' }}
-          onChange={handleInputChange}
-        /><br />
-      </label>
-      <label>Client Phone number: <br />
-        <input
-          type='tel'
-          name='phone'
-          aria-label='client-phone'
-          inputMode='decimal'
-          maxLength='10'
-          style={{ width: '50%' }}
           onChange={handleInputChange}
         /><br />
       </label>

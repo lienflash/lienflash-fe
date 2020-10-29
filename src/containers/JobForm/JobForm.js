@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import JobFormStepOne from '../../components/JobFormStepOne/JobFormStepOne'
 import JobFormStepTwo from '../../components/JobFormStepTwo/JobFormStepTwo'
-// import '../../scss/_jobForm.scss'
+import { postNewJob } from '../../helpers/apiCalls'
+import { Redirect } from 'react-router-dom'
 
-const JobForm = () => {
+const JobForm = ({ updateJobAddedStatus }) => {
   const [input, setInput] = useState({})
   const [currentStep, updateStep] = useState(1)
   const [error, updateError] = useState('')
+  const [submitSuccessful, updateStatus] = useState(false)
 
   const handleInputChange = (e) => {
     setInput({
@@ -17,12 +19,14 @@ const JobForm = () => {
 
   const checkRequiredFields = () => {
     if (!input.jobType 
-      || !input.siteStreetAddress
-      || !input.siteCity 
-      || !input.siteState 
-      || !input.siteZipCode 
-      || !input.jobCompletionDate 
-      || !input.totalCostDue 
+      || !input.jobSiteContactName
+      || !input.jobSiteAddress
+      || !input.jobSiteCity 
+      || !input.jobSiteState 
+      || !input.jobSiteZipCode 
+      || !input.completionDate 
+      || !input.jobDescription
+      || !input.totalCost 
       ) {
       updateError('Please complete required fields')
     } else {
@@ -32,10 +36,17 @@ const JobForm = () => {
   }
 
   const handleSubmit = (e) => {
-    // invocation of post request will go here
     e.preventDefault()
-    const newJob = input
-    console.log(newJob)
+    const newJob = input    
+    postNewJob(newJob)
+    .then(() => {
+      updateJobAddedStatus(true)
+      updateStatus(true)
+    })
+    .catch(error => {
+      alert('Sorry, we had an issue adding the new job. Please refresh to try again.')
+    })
+    // pop up message after new is job added?
   }
 
   return (
@@ -72,6 +83,7 @@ const JobForm = () => {
           />
         </div>
       }
+      { submitSuccessful && <Redirect to='/'/>}
     </form>
   )
 }

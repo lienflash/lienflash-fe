@@ -11,7 +11,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
     <div className='form-group'>
       {/* Site details */}
       <h2>Job Site Details</h2>
-      <p>Required fields are followed by <abbr className='required'>*</abbr>.</p>
+      <p>Required fields are followed by <abbr className='required'>*</abbr></p>
       <div className='jobType'>
         <label>Job Type: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
@@ -30,10 +30,20 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             onChange={handleInputChange}
           /> Materials & Labor<br />
         </label>
+        <label>Job Site Contact Name:<abbr className='required' aria-label='required'>*</abbr><br />
+          <input
+            type='text'
+            name='jobSiteContactName'
+            aria-label='job-site-contact-name'
+            maxLength='50'
+            style={{ width: '80%' }}
+            onChange={handleInputChange}
+          /><br />
+        </label>
         <label>Job Site Name:<br />
           <input
             type='text'
-            name='siteName'
+            name='jobSiteName'
             aria-label='job-site-name'
             maxLength='50'
             style={{ width: '80%' }}
@@ -43,7 +53,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <label>Job Site Address: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
             type='text'
-            name='siteStreetAddress'
+            name='jobSiteAddress'
             aria-label='job-site-address'
             maxLength='100'
             onChange={handleInputChange}
@@ -51,7 +61,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         </label>
         <input
           type='text'
-          name='siteAddressLine2'
+          name='jobSiteAddressLine2'
           aria-label='job-site-address-line-2'
           placeholder='Apt/Suite'
           maxLength='100'
@@ -60,7 +70,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <label>City: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
             type='text'
-            name='siteCity'
+            name='jobSiteCity'
             aria-label='job-site-city'
             style={{ width: '50%' }}
             maxLength='20'
@@ -70,9 +80,9 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <label>State: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
             type='text'
-            name='siteState'
+            name='jobSiteState'
             aria-label='job-site-state'
-            maxLength='3'
+            maxLength='20'
             style={{ width: '30%' }}
             onChange={handleInputChange}
           /><br />
@@ -80,7 +90,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
         <label>Zip Code: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
             type='text'
-            name='siteZipCode'
+            name='jobSiteZipCode'
             aria-label='job-site-zip-code'
             inputMode='decimal'
             style={{ width: '30%' }}
@@ -97,13 +107,25 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             </button><br />
           <input
             type='date'
-            name='jobCompletionDate'
+            name='completionDate'
             aria-label='job-completion-date'
             placeholder='mm/dd/yyyy'
             style={{ width: '50%' }}
             maxLength='10'
             onChange={handleInputChange}
           /><br />
+          <label>Description of work: <abbr className='required' aria-label='required'>*</abbr> <br />
+            <textarea
+              type='text'
+              name='jobDescription'
+              aria-label='job-description'
+              rows='4'
+              maxLength='200'
+              style={{ width: '80%' }}
+              onChange={handleInputChange}
+            />
+            <br />
+          </label>
         </label>
         <label>Labor Costs Due:<br />
           <input
@@ -112,7 +134,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             name='laborCost'
             aria-label='labor-costs-due'
             style={{ width: '30%' }}
-            maxLength='10'
+            maxLength='12'
             placeholder='USD'
             onChange={handleInputChange}
           /><br />
@@ -123,7 +145,7 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
             inputMode='decimal'
             name='materialCost'
             aria-label='material-costs-due'
-            maxLength='10'
+            maxLength='12'
             style={{ width: '30%' }}
             placeholder='USD'
             onChange={handleInputChange}
@@ -133,9 +155,9 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           <input
             type='text'
             inputMode='decimal'
-            name='totalCostDue'
+            name='totalCost'
             aria-label='total-costs-due'
-            maxLength='10'
+            maxLength='12'
             style={{ width: '30%' }}
             placeholder='USD'
             onChange={handleInputChange}

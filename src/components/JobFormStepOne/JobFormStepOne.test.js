@@ -47,6 +47,7 @@ describe('JobFormStepOne component', () => {
   it('should store the form values that are inputted by user', () => {
 
     const jobTypeInput = screen.getByLabelText('job-type')
+    const jobSiteContactName = screen.getByLabelText('job-site-contact-name')
     const jobSiteNameInput = screen.getByLabelText('job-site-name')
     const siteAddressInput = screen.getByLabelText('job-site-address')
     const siteAddress2Input = screen.getByLabelText('job-site-address-line-2')
@@ -54,11 +55,13 @@ describe('JobFormStepOne component', () => {
     const stateInput = screen.getByLabelText('job-site-state')
     const zipCodeInput = screen.getByLabelText('job-site-zip-code')
     // const dateInput = screen.getByLabelText('job-completion-date')
+    const jobDescription = screen.getByLabelText('job-description')
     const laborCostsInput = screen.getByLabelText('labor-costs-due')
     const materialCostsInput = screen.getByLabelText('material-costs-due')
     const totalCostsInput = screen.getByLabelText('total-costs-due')
     
     fireEvent.change(jobTypeInput, { target: { value: 'Labor' } })
+    fireEvent.change(jobSiteContactName, { target: { value: 'Sally May' } })
     fireEvent.change(jobSiteNameInput, { target: { value: 'Burt\'s Warehouse' } })
     fireEvent.change(siteAddressInput, { target: { value: '1777 Myrtle Drive' } })
     fireEvent.change(siteAddress2Input, { target: { value: 'Apt 1209' } })
@@ -67,11 +70,13 @@ describe('JobFormStepOne component', () => {
     fireEvent.change(zipCodeInput , { target: { value: '80240' } })
     // fireEvent.change(dateInput, { target: { value: '10/25/2020' } })
     fireEvent.change(laborCostsInput, { target: { value: '10000' } })
+    fireEvent.change(jobDescription, { target: { value: 'Fixed the toilet'} })
     fireEvent.change(jobSiteNameInput, { target: { value: 'Burt\'s Warehouse' } })
     fireEvent.change(materialCostsInput, { target: { value: '0' } })
     fireEvent.change(totalCostsInput, { target: { value: '10000' } })
 
     expect(jobTypeInput.value).toBe('Labor')
+    expect(jobSiteContactName.value).toBe('Sally May')
     expect(jobSiteNameInput.value).toBe('Burt\'s Warehouse')
     expect(siteAddressInput.value).toBe('1777 Myrtle Drive')
     expect(siteAddress2Input.value).toBe('Apt 1209')
@@ -79,6 +84,7 @@ describe('JobFormStepOne component', () => {
     expect(stateInput.value).toBe('CO')
     expect(zipCodeInput.value).toBe('80240')
     // expect(dateInput.value).toBe('10/25/2020')
+    expect(jobDescription.value).toBe('Fixed the toilet')
     expect(laborCostsInput.value).toBe('10000')
     expect(materialCostsInput.value).toBe('0')
     expect(totalCostsInput.value).toBe('10000')

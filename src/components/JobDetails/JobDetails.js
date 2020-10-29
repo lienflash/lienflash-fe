@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { BrowserHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function JobDetails(props) {
   const jobInfo = useSelector(state => state.jobInfo);
+  const history = useHistory();
 
   const { job_type, job_site_name,
     job_site_contact_name,
@@ -23,8 +23,9 @@ function JobDetails(props) {
 
   return (
     <div className='job-details'>
-      {/* Need to figure this out, not working currently<Link to={BrowserHistory.goBack}>Back</Link>
-        */}
+      <button onClick={() => { history.goBack() }}> 
+        Back
+      </button>
       <h2>Job Details</h2>
       <h3>Job Site Name: {job_site_name}</h3>
       <h3> Job Site Contact Name: {job_site_contact_name}</h3>

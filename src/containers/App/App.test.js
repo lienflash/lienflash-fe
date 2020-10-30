@@ -8,7 +8,7 @@ import rootReducer from '../../reducers/index.js';
 import App from './App'
 
 describe('App component', () => {
-  it('Should render the homepage when the app loads', () => {
+  it.skip('Should render the homepage when the app loads', () => {
     const store = createStore(rootReducer);
     
     render(
@@ -32,7 +32,7 @@ describe('App component', () => {
     expect(profileButton).toBeInTheDocument()
   })
 
-    it.skip('Should render loading page while data is being fetched', () => {
+    it('Should render loading page while data is being fetched', () => {
 
       const store = createStore(rootReducer);
 

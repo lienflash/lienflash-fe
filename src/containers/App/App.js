@@ -7,25 +7,27 @@ import Jobs from '../Jobs/Jobs'
 import { Route, useLocation } from 'react-router-dom'
 import JobForm from '../JobForm/JobForm';
 import JobDetails from '../../components/JobDetails/JobDetails';
+import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllJobs } from '../../helpers/apiCalls'
-import { setJobs, getJobInfo } from '../../actions/actions'
-
+import { setJobs, getJobInfo, setErrorMsg, resetErrorMsg } from '../../actions/actions'
 
 function App() {
   const [jobAdded, updateJobAddedStatus] = useState(false)
   const dispatch = useDispatch();
   const allJobs = useSelector(state => state.allJobs);
+  const errorMsg = useSelector(state => state.errorMessage);
   const location = useLocation();
 
   useEffect(() => {
       getAllJobs()
         .then(data => {
           dispatch(setJobs(data.data))
+          dispatch(resetErrorMsg());
           updateJobAddedStatus(false)
         })
         .catch(error => {
-          alert('Sorry, we had an issue retrieving your jobs. Please refresh to try again.')
+          dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
         })
   }, [ jobAdded ])
 
@@ -107,6 +109,9 @@ function App() {
         return (
           <>
             <Header />
+            {errorMsg !== '' &&
+              <Error message={errorMsg} />
+            }
             <Homepage />
           </>
         )

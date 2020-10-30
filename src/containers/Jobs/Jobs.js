@@ -1,23 +1,37 @@
 import React from 'react';
 import './Jobs.scss';
 import JobCard from '../../components/JobCard/JobCard';
-import { useSelector } from 'react-redux';
+import Error from '../../components/Error/Error.js';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { setErrorMsg, resetErrorMsg } from '../../actions/actions.js';
 
 function Jobs() {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const errorMsg = useSelector(state => state.errorMessage);
   const allJobs = useSelector(state => state.allJobs);
 
   const createJobCards = (jobsList) => {
-    return (
-      jobsList.map(job => {
-        return (
-          <Link to={`/jobs/${job.attributes.status}/${job.id}`} className='job-card-link' key={job.id}>
-            <JobCard data={job.attributes}/>
-          </Link>
-        )
-      }).sort((a,b) => b.dateDifference - a.dateDifference)
-    )
+    if(jobsList === undefined) {
+      dispatch(setErrorMsg(`Sorry, you have no jobs that are currently eligible. Please check again later.`))
+      return;
+    } else {
+      dispatch(resetErrorMsg());
+      return (
+        jobsList.map(job => {
+          return (
+            <Link to={`/jobs/${job.attributes.status}/${job.id}`} className='job-card-link' key={job.id}>
+              <JobCard data={job.attributes}/>
+            </Link>
+          )
+        }).sort((a,b) => b.dateDifference - a.dateDifference)
+      )
+    }
+  }
+
+  const resetErrorMessage =() => {
+    dispatch(resetErrorMsg())
   }
 
   return (
@@ -36,7 +50,10 @@ function Jobs() {
     }
     {location.pathname === "/filed/release-eligible" &&
       createJobCards(allJobs.releaseEligible)
-     }
+    }
+    {errorMsg &&
+      <Error message={errorMsg} />
+    }
     </div>
   )
 

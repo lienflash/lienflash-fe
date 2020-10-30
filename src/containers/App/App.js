@@ -14,7 +14,7 @@ import { setJobs, getJobInfo, setErrorMsg, resetErrorMsg } from '../../actions/a
 
 function App() {
   const [jobAdded, updateJobAddedStatus] = useState(false)
-  const [isLoaded, updateLoadingStatus] = useState(true)
+  const [isLoaded, updateLoadingStatus] = useState(false)
   const dispatch = useDispatch();
   const allJobs = useSelector(state => state.allJobs);
   const errorMsg = useSelector(state => state.errorMessage);

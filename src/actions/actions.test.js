@@ -50,4 +50,95 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
+  it('should have a type of GET_INFO', () => {
+
+    const jobId = "1"
+    const eligibility = 'good standing'
+
+      const jobs = {
+        gracePeriod: [{
+          id: "1",
+          type: "job",
+          attributes: {
+            job_type: 'labor & materials',
+            job_site_name: 'Home',
+            job_site_contact_name: 'Taryn',
+            job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+            job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "10/30/20",
+            material_cost: 200,
+            labor_cost: 200,
+            total_cost: 400,
+            description_of_work: 'blah',
+            client_company_name: 'Amazon',
+            business_address: '12 Tree Ave',
+            business_address_line_2: 'Suite 200',
+            business_city: 'Seattle',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            status: 'good standing',
+            dateDifference: 0
+          }
+        }
+      ]
+    }
+    
+    const expectedAction = {
+      type: 'GET_INFO',
+      id: "1",
+      eligibility: 'good standing',
+      jobs: {
+        gracePeriod: [{
+          id: "1",
+          type: "job",
+          attributes: {
+            job_type: 'labor & materials',
+            job_site_name: 'Home',
+            job_site_contact_name: 'Taryn',
+            job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+            job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "10/30/20",
+            material_cost: 200,
+            labor_cost: 200,
+            total_cost: 400,
+            description_of_work: 'blah',
+            client_company_name: 'Amazon',
+            business_address: '12 Tree Ave',
+            business_address_line_2: 'Suite 200',
+            business_city: 'Seattle',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            status: 'good standing',
+            dateDifference: 0
+          }
+        }]
+      }
+    }
+
+    const result = actions.getJobInfo(jobId, eligibility, jobs);
+
+    expect(result).toEqual(expectedAction);
+  });
+
+  it('should have a type of SET_ERROR', () => {
+
+    const errorMessage = 'Sorry, you have no jobs that are currently eligible.Please check again later.'
+
+    const expectedAction = {
+      type: 'SET_ERROR',
+      errorMessage
+    }
+
+    const result = actions.setErrorMsg(errorMessage);
+
+    expect(result).toEqual(expectedAction);
+  })
+
+  it('should have a type of RESET_ERROR', () => {
+
+    const expectedAction = {
+      type: 'RESET_ERROR'
+    }
+
+    const result = actions.resetErrorMsg();
+
+    expect(result).toEqual(expectedAction);
+  })
 })

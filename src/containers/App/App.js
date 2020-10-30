@@ -14,7 +14,7 @@ import { setJobs, getJobInfo } from '../../actions/actions'
 
 function App() {
   const [jobAdded, updateJobAddedStatus] = useState(false)
-  const [isLoaded, updateLoadingStatus] = useState(false)
+  const [isLoaded, updateLoadingStatus] = useState(true)
   const dispatch = useDispatch();
   const allJobs = useSelector(state => state.allJobs);
   const location = useLocation();

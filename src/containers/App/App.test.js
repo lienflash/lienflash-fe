@@ -31,5 +31,23 @@ describe('App component', () => {
     expect(filedLiensButton).toBeInTheDocument()
     expect(profileButton).toBeInTheDocument()
   })
+
+    it.skip('Should render loading page while data is being fetched', () => {
+
+      const store = createStore(rootReducer);
+
+      render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <App />
+          </MemoryRouter>
+        </Provider>
+      )
+
+      const header = screen.getByRole('heading', { name: 'Please wait while we load your dashboard' })
+
+      expect(header).toBeInTheDocument()
+    })
+
 })
 

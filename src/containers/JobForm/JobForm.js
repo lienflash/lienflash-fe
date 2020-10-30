@@ -79,6 +79,7 @@ const JobForm = ({ updateJobAddedStatus }) => {
           </button>
           <input
             type='Submit'
+            aria-label='submit form'
             onClick={handleSubmit}
           />
         </div>

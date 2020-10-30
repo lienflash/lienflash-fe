@@ -13,3 +13,16 @@ export const getJobInfo = (id, eligibility, jobs) => {
     jobs
   }
 }
+
+export const setErrorMsg = (errorMessage) => {
+  return {
+    type: 'SET_ERROR',
+    errorMessage
+  }
+}
+
+export const resetErrorMsg = () => {
+  return {
+    type: 'RESET_ERROR',
+  }
+}

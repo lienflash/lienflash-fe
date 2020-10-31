@@ -13,10 +13,7 @@ function Jobs() {
   const allJobs = useSelector(state => state.allJobs);
 
   const createJobCards = (jobsList) => {
-    if(jobsList === undefined) {
-      dispatch(setErrorMsg(`Sorry, you have no jobs that are currently eligible. Please check again later.`))
-      return;
-    } else {
+    if(jobsList.length > 0) {
       dispatch(resetErrorMsg());
       return (
         jobsList.map(job => {
@@ -27,11 +24,10 @@ function Jobs() {
           )
         }).sort((a,b) => b.dateDifference - a.dateDifference)
       )
+    } else {
+      dispatch(setErrorMsg(`Sorry, you have no jobs that are currently eligible. Please check again later.`))
+      return;
     }
-  }
-
-  const resetErrorMessage =() => {
-    dispatch(resetErrorMsg())
   }
 
   return (
@@ -42,11 +38,8 @@ function Jobs() {
     {location.pathname === "/eligiblejobs/noi-eligible" &&
       createJobCards(allJobs.noiEligible)
     }
-    {location.pathname === "/eligiblejobs/lien-eligible" &&
+    {location.pathname === "/filed/lien-eligible" &&
       createJobCards(allJobs.lienEligible)
-    }
-    {location.pathname === "/filed/processing" &&
-      createJobCards(allJobs.inProcess)
     }
     {location.pathname === "/filed/release-eligible" &&
       createJobCards(allJobs.releaseEligible)

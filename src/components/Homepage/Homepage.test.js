@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Homepage from './Homepage';
 
 describe('Homepage component', () => {
-  beforeEach(() => { 
+  beforeEach(() => {
     render(
       <MemoryRouter>
         <Homepage />
@@ -14,10 +14,10 @@ describe('Homepage component', () => {
   })
 
   it('Should render the users dashboard when the app loads', () => {
-  
+
     const header = screen.getByRole('heading', { name: 'What Do You Want To Do?' })
     const addJobButton = screen.getByRole('button', { name: 'Add Job' })
-    const elibibleJobsButton = screen.getByRole('button', { name: 'Eligible Jobs' })
+    const elibibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
     const filedLiensButton = screen.getByRole('button', { name: 'Filed Liens' })
     const profileButton = screen.getByRole('button', { name: 'Profile' })
 
@@ -41,4 +41,3 @@ describe('Homepage component', () => {
   //   expect(jobFormHeader).toBeInTheDocument()
   // })
 })
-

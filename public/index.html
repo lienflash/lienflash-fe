@@ -23,19 +23,116 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style type='text/css'>
+      .App {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      .logo {
+        width: 60%;
+        height: 30%;
+      }
+
+      .in-process-btn,
+      .release-lien-eligible-btn,
+      .noi-eligible-btn,
+      .lien-eligible-btn {
+        border: none;
+        margin: .5em;
+        padding: .5em;
+        background-color: black;
+        color: white;
+        font-weight: 600;
+      }
+
+      .selected {
+        transform: scale(1.05);
+        background-color: #49a050;
+        cursor: pointer;
+      }
+
+      .homepage {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto repeat(2, 1fr);
+        margin: 0.2em;
+      }
+
+      .home-title {
+        grid-column: 1 / span 2;
+        margin-top: 0;
+      }
+
+      .home {
+        width: 90%;
+        height: 5em;
+        margin: .4em;
+        margin-left: .2em;
+        border: none;
+        font-size: 2em;
+        font-weight: 600;
+      }
+
+      .add,
+      .eligible,
+      .filed,
+      .profile {
+        color: white;
+        /* // background-color: #00a24a; */
+        border-radius: 20px;
+        box-shadow: 4px 4px 10px 1px black;
+      }
+
+      .add {
+        background-color:#0da14e
+      }
+
+      .eligible {
+        background-color: #4d7642;
+      }
+
+      .filed {
+        background-color: #73ba9b;
+      }
+
+      .profile {
+        background-color: #3e6563
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="root">
+    </div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('worker.js').then(function (registration) {
+            console.log('Worker registration successful', registration.scope);
+          }, function (err) {
+            console.log('Worker registration failed', err);
+          }).catch(function (err) {
+            console.log(err);
+          });
+        });
+      } else {
+        console.log('Service Worker is not supported by browser.');
+      }
+    </script>
   </body>
 </html>
+
+      <!-- <div>
+        <img src=../src/assets/lienflash-logo.png' className='logo' alt='lienflash logo' />
+        <h1>You are currently offline</h1>
+        <div className='homepage'>
+          <h2 className='home-title'>What Do You Want To Do?</h2>
+          <button className='home add'>Add Job</button>
+          <button className='home eligible'>Eligible Jobs</button>
+          <button className='home filed'>Filed Liens</button>
+          <button className='home profile'>Profile</button>
+        </div>
+      </div>
+      <button class="add-button">Add to home screen</button> -->

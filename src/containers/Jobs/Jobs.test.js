@@ -1,14 +1,12 @@
 import React from 'react';
 import Jobs from './Jobs.js';
-import Header from '../../components/Header/Header.js';
+import Header from '../Header/Header.js';
 import Error from '../../components/Error/Error.js';
-import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
-import { createStore } from 'redux';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import rootReducer from '../../reducers/index.js';
 
 // need to test dispatch of resetting error message?
 
@@ -123,7 +121,7 @@ describe('Jobs', () => {
     fireEvent.click(graceButton)
 
     const name = screen.getByText("Amazon");
-    const name3 = screen.getByText("Bean\'s Place")
+    const name3 = screen.getByText("Bean's Place")
 
     expect(name).toBeInTheDocument();
     expect(name3).toBeInTheDocument();
@@ -172,7 +170,7 @@ describe('Jobs', () => {
 
     fireEvent.click(lienButton)
 
-    expect(store.dispatch).toBeCalledTimes(1);
+    expect(store.dispatch).toBeCalledTimes(2);
     expect(store.dispatch).toHaveBeenCalledWith({"type": "SET_ERROR", "errorMessage": `Sorry, you have no jobs that are currently eligible. Please check again later.`})
 
     const error = screen.getByText(`Sorry, you have no jobs that are currently eligible. Please check again later.`);
@@ -196,7 +194,7 @@ describe('Jobs', () => {
 
     fireEvent.click(graceButton)
 
-    expect(store.dispatch).toBeCalledTimes(1);
+    expect(store.dispatch).toBeCalledTimes(2);
     expect(store.dispatch).toHaveBeenCalledWith({"type": "RESET_ERROR"})
   });
 })

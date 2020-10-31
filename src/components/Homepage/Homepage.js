@@ -9,7 +9,7 @@ function Homepage() {
         <button className='home add'>Add Job</button>
       </Link>
       <Link to={'/eligiblejobs/grace-period'}>
-        <button className='home eligible'>Eligible Jobs</button>
+        <button className='home eligible'>NOI Eligible Jobs</button>
       </Link>
       <Link to={'/filedjobs/lien-eligible'}>
         <button className='home filed'>Filed Liens</button>

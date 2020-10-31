@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Lien Flash",
+  "name": "Lien Flash - Get Paid Faster ",
   "icons": [
     {
       "src": "images/manifest-icon-192.png",
@@ -15,8 +15,9 @@
       "purpose": "maskable any"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "start_url": "/",
+  "display": "minimal-ui",
+  "theme_color": "#0da14e",
+  "background_color": "#000000",
+  "scope": "/"
 }

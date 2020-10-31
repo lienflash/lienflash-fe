@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 function JobDetails(props) {
   const jobInfo = useSelector(state => state.jobInfo);
+  //const errorMsg = useSelector(state => state.errorMessage);
   const history = useHistory();
 
   const { job_type, job_site_name,
@@ -18,9 +19,13 @@ function JobDetails(props) {
     business_address, business_address_line_2, business_city, business_state, business_zip_code, additional_info,
     job_id, status } = jobInfo.attributes;
 
-  const endDate = completion_date;
+    let completionDate;
 
-  const completionDate = `${endDate[5]}${endDate[6]}/${endDate[8]}${endDate[9]}/${endDate[2]}${endDate[3]}`
+  if(completion_date !== undefined) {
+    const endDate = completion_date;
+
+    completionDate = `${endDate[5]}${endDate[6]}/${endDate[8]}${endDate[9]}/${endDate[2]}${endDate[3]}`
+  }
 
   return (
     <>
@@ -35,10 +40,10 @@ function JobDetails(props) {
         <h2>Job Details</h2>
         <h3>Job Site Name: {job_site_name}</h3>
         <h3> Job Site Contact Name: {job_site_contact_name}</h3>
-        {job_site_address_line_2 !== null &&
+        {job_site_address_line_2 !== '' &&
           <h3> Job Site Address:<br />{job_site_address},<br />{job_site_address_line_2},<br />{job_site_city}, {job_site_state}, {job_site_zip_code}</h3>
         }
-        {job_site_address_line_2 === null &&
+        {job_site_address_line_2 === '' &&
           <h3> Job Site Address:<br />{job_site_address},<br />{job_site_city}, {job_site_state}, {job_site_zip_code}</h3>
         }
         <h3>Company Name: {client_company_name}</h3>
@@ -59,7 +64,10 @@ function JobDetails(props) {
         {status === 'NOI Eligible' &&
           <button>Submit NOI</button>
         }
-        {status === 'Lien Eligible' &&
+        {status === 'NOI filed' &&
+          <button>Submit Lien</button>
+        }
+        {status === 'Lien Filed' &&
           <button>Submit Release of Lien</button>
         }
         {/* When we have a status for this eligibilty, we will add this <button>Remove Job</button> */}

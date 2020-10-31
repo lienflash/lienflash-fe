@@ -38,10 +38,10 @@ function Jobs() {
     {location.pathname === "/eligiblejobs/noi-eligible" &&
       createJobCards(allJobs.noiEligible)
     }
-    {location.pathname === "/filed/lien-eligible" &&
+    {location.pathname === "/filedjobs/lien-eligible" &&
       createJobCards(allJobs.lienEligible)
     }
-    {location.pathname === "/filed/release-eligible" &&
+    {location.pathname === "/filedjobs/release-eligible" &&
       createJobCards(allJobs.releaseEligible)
     }
     {errorMsg &&

@@ -4,16 +4,13 @@ import { screen, render, fireEvent } from '@testing-library/react'
 import JobFormStepOne from './JobFormStepOne'
 
 describe('JobFormStepOne component', () => {
+  it('If currentStep is 1 it should render step two of the form', () => {
 
-  beforeEach(() => {
     render(
       <JobFormStepOne
         handleInputChange={jest.fn()}
         currentStep={1} />
     )
-  })
-
-  it('Should render step two of the form', () => {
 
     const heading = screen.getByRole( 'heading', { name: 'Job Site Details' })
     const jobType = screen.getByText('Job Type:', { exact: false })
@@ -45,6 +42,12 @@ describe('JobFormStepOne component', () => {
   })
 
   it('should store the form values that are inputted by user', () => {
+   
+    render(
+      <JobFormStepOne
+        handleInputChange={jest.fn()}
+        currentStep={1} />
+    )
 
     const jobTypeInput = screen.getByLabelText('job-type')
     const jobSiteContactName = screen.getByLabelText('job-site-contact-name')
@@ -89,4 +92,42 @@ describe('JobFormStepOne component', () => {
     expect(materialCostsInput.value).toBe('0')
     expect(totalCostsInput.value).toBe('10000')
   })
+
+  it('If currentStep is not 1 it should not render the form', () => {
+
+    render(
+      <JobFormStepOne
+        handleInputChange={jest.fn()}
+        currentStep={2} />
+    )
+
+    const heading = screen.queryByRole('heading', { name: 'Job Site Details' })
+    const jobType = screen.queryByText('Job Type:', { exact: false })
+    const radioBtn1 = screen.queryByText('Labor only', { exact: false })
+    const radioBtn2 = screen.queryByText('Materials & Labor', { exact: false })
+    const siteName = screen.queryByText('Job Site Name:')
+    const siteAddress = screen.queryByText('Job Site Address:')
+    const city = screen.queryByText('City:')
+    const state = screen.queryByText('State:')
+    const zipCode = screen.queryByText('Zip Code:')
+    const date = screen.queryByText('Date of Substantial Completion:')
+    const laborCosts = screen.queryByText('Labor Costs Due:')
+    const materialCosts = screen.queryByText('Material Costs Due:')
+    const totalCosts = screen.queryByText('Total Costs Due:')
+
+    expect(heading).not.toBeInTheDocument()
+    expect(jobType).not.toBeInTheDocument()
+    expect(radioBtn1).not.toBeInTheDocument()
+    expect(radioBtn2).not.toBeInTheDocument()
+    expect(siteName).not.toBeInTheDocument()
+    expect(siteAddress).not.toBeInTheDocument()
+    expect(city).not.toBeInTheDocument()
+    expect(zipCode).not.toBeInTheDocument()
+    expect(state).not.toBeInTheDocument()
+    expect(date).not.toBeInTheDocument()
+    expect(laborCosts).not.toBeInTheDocument()
+    expect(materialCosts).not.toBeInTheDocument()
+    expect(totalCosts).not.toBeInTheDocument()
+  })
+
 })

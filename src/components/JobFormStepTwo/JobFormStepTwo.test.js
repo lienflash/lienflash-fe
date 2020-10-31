@@ -4,7 +4,7 @@ import { screen, render, fireEvent } from '@testing-library/react'
 import JobFormStepTwo from './JobFormStepTwo'
 
 describe('JobFormStepTwo component', () => {
-  beforeEach(() => {
+  it('Should render step two of the form', () => {
 
     render(
       <JobFormStepTwo
@@ -12,9 +12,6 @@ describe('JobFormStepTwo component', () => {
         currentStep={2}
       />
     )
-  })
-
-  it('Should render step one of the form', () => {
 
     const heading = screen.getByRole('heading', { name: 'Client / Company Details' })
     const companyName = screen.getByText('Client / Company Name:')
@@ -34,6 +31,13 @@ describe('JobFormStepTwo component', () => {
   })
 
   it('should store the form values that are inputted by user', () => {
+
+    render(
+      <JobFormStepTwo
+        handleInputChange={jest.fn()}
+        currentStep={2}
+      />
+    )
 
     const clientNameInput = screen.getByLabelText('client-company-name')
     const clientBusinessAddress = screen.getByLabelText('client-business-address')
@@ -58,5 +62,30 @@ describe('JobFormStepTwo component', () => {
     expect(stateInput.value).toBe('CO')
     expect(zipCodeInput.value).toBe('80242')
     expect(additionalInfoInput.value).toBe('Please include Ron Potter on the NOI')
+  })
+
+  it('If currentStep is not 2 it should not render the form', () => {
+
+    render(
+      <JobFormStepTwo
+        handleInputChange={jest.fn()}
+        currentStep={1} />
+    )
+
+    const heading = screen.queryByRole('heading', { name: 'Client / Company Details' })
+    const companyName = screen.queryByText('Client / Company Name:')
+    const BusinessAddress = screen.queryByText('Business Address:')
+    const city = screen.queryByText('City:')
+    const state = screen.queryByText('State:')
+    const zipCode = screen.queryByText('Zip Code:')
+    const additionalInfo = screen.queryByText('Additional information:')
+
+    expect(heading).not.toBeInTheDocument()
+    expect(companyName).not.toBeInTheDocument()
+    expect(BusinessAddress).not.toBeInTheDocument()
+    expect(city).not.toBeInTheDocument()
+    expect(zipCode).not.toBeInTheDocument()
+    expect(state).not.toBeInTheDocument()
+    expect(additionalInfo).not.toBeInTheDocument()
   })
 })

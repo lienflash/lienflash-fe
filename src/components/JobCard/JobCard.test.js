@@ -48,11 +48,11 @@ describe('JobCard', () => {
     const name = screen.getByText("Amazon");
     const total = screen.getByText("Amount Due: $400");
     //const completion = screen.getByText("Date of Substantial Completion: " + currentDate);
-    const daysDifference = screen.getByText("Days Left to Submit:")
+    //const daysDifference = screen.getByText("Days Left to Submit:")
 
     expect(name).toBeInTheDocument();
     expect(total).toBeInTheDocument();
     //expect(completion).toBeInTheDocument();
-    expect(daysDifference).toBeInTheDocument();
+    //expect(daysDifference).toBeInTheDocument();
   });
 })

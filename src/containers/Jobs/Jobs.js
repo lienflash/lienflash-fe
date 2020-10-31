@@ -18,7 +18,7 @@ function Jobs() {
       return (
         jobsList.map(job => {
           return (
-            <Link to={`/jobs/${job.attributes.status}/${job.id}`} className='job-card-link' key={job.id}>
+            <Link to={`/jobs/${job.attributes.status}/${job.attributes.dateDifference}/${job.id}`} className='job-card-link' key={job.id}>
               <JobCard data={job.attributes}/>
             </Link>
           )
@@ -33,7 +33,7 @@ function Jobs() {
   return (
     <div className='jobs'>
     {location.pathname === "/eligiblejobs/grace-period" &&
-        createJobCards(allJobs.gracePeriod)
+      createJobCards(allJobs.gracePeriod)
     }
     {location.pathname === "/eligiblejobs/noi-eligible" &&
       createJobCards(allJobs.noiEligible)

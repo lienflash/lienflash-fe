@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header.js';
-import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
 import { createStore } from 'redux';

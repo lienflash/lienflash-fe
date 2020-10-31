@@ -54,6 +54,7 @@ describe('actions', () => {
   it('should have a type of GET_INFO', () => {
 
     const jobId = "1"
+    const dateDifference = 0
     const eligibility = 'good standing'
 
       const jobs = {
@@ -81,10 +82,11 @@ describe('actions', () => {
         }
       ]
     }
-    
+
     const expectedAction = {
       type: 'GET_INFO',
       id: "1",
+      dateDifference: 0,
       eligibility: 'good standing',
       jobs: {
         gracePeriod: [{
@@ -112,7 +114,7 @@ describe('actions', () => {
       }
     }
 
-    const result = actions.getJobInfo(jobId, eligibility, jobs);
+    const result = actions.getJobInfo(jobId, dateDifference, eligibility, jobs);
 
     expect(result).toEqual(expectedAction);
   });

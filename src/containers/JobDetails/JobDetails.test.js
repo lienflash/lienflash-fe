@@ -1,11 +1,12 @@
 import React from 'react';
 import JobDetails from './JobDetails.js';
-import Error from '../Error/Error';
-import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+
+// 29-back button
 
 const mockStore = configureStore([])
 
@@ -69,7 +70,6 @@ describe('JobDetails', () => {
     const materialsCost = screen.getByText("Materials Cost: $200");
     const total = screen.getByText("Total Cost: $400");
     const removeBtn = screen.getByRole('button', {name: 'Remove Job'})
-    const noiButton = screen.getByRole('button', {name: 'Submit NOI'})
 
     //const daysDifference = screen.getByText("Days Left to Submit: 27")
 
@@ -88,7 +88,6 @@ describe('JobDetails', () => {
     expect(materialsCost).toBeInTheDocument();
     expect(total).toBeInTheDocument();
     expect(removeBtn).toBeInTheDocument();
-    expect(noiButton).toBeInTheDocument();
     //expect(daysDifference).toBeInTheDocument();
   });
   // it('should call a function when back button is clicked', () => {
@@ -273,14 +272,13 @@ describe('JobDetails', () => {
       <Provider store={ store }>
         <MemoryRouter>
           <JobDetails />
-          <Error message={'Sorry'}/>
         </MemoryRouter>
       </Provider>
     )
 
-    const msg = screen.getByText('Sorry');
+    const msg = screen.getByText('Sorry, it looks like we couldn\'t find that job. Please try again later.');
 
     expect(msg).toBeInTheDocument()
 
-  })
+  });
 })

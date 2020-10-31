@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../../scss/styles.scss'
 import Homepage from '../../components/Homepage/Homepage'
-import Header from '../../components/Header/Header'
+import Header from '../Header/Header'
 import Loader from '../../components/Loader/Loader'
 import Jobs from '../Jobs/Jobs'
 import { Route, useLocation } from 'react-router-dom'
 import JobForm from '../JobForm/JobForm';
-import JobDetails from '../../components/JobDetails/JobDetails';
+import JobDetails from '../JobDetails/JobDetails';
 import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllJobs } from '../../helpers/apiCalls'
@@ -40,10 +40,11 @@ function App() {
       }
       { isLoaded &&
         <>
-          <Route exact path='/jobs/:eligibility/:id' render={({match}) => {
+          <Route exact path='/jobs/:eligibility/:dateDifference/:id' render={({match}) => {
             const jobId = match.params.id;
+            const dateDifference = match.params.dateDifference
             const eligibility = match.params.eligibility;
-            dispatch(getJobInfo(jobId, eligibility, allJobs));
+            dispatch(getJobInfo(jobId, dateDifference, eligibility, allJobs));
             return (
               <>
                 <Header />
@@ -107,9 +108,6 @@ function App() {
             return (
               <>
                 <Header />
-                {errorMsg !== '' &&
-                  <Error message={errorMsg} />
-                }
                 <Homepage />
               </>
             )

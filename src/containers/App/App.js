@@ -27,7 +27,6 @@ function App() {
           dispatch(resetErrorMsg());
           updateJobAddedStatus(false)
           updateLoadingStatus(true)
-          console.log(data.data)
         })
         .catch(error => {
           dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))

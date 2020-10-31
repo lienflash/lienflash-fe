@@ -99,10 +99,11 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
           /><br />
         </label>
         <label>Date of Substantial Completion: <abbr className='required' aria-label='required'>*</abbr><br />
-          <button 
+          <button
             data-balloon-length='small'
             aria-label='Job completion date'
             data-balloon-pos='up'
+            onClick={((e) => e.preventDefault())}
             className='date-help-info'>What is this?
             </button><br />
           <input

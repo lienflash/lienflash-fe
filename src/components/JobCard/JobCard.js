@@ -6,7 +6,7 @@ function JobCard(props) {
 
   const endDate = new Date(completion_date).getTime();
 
-   const completionDate = new Date(endDate).toLocaleDateString("en-us")
+  const completionDate = new Date(endDate).toLocaleDateString("en-us")
 
   return (
     <article className={"job-card"}>

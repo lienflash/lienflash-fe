@@ -13,10 +13,10 @@ function Header(props) {
       </Link>
         {currentPath !== undefined && currentPath === 'filed'&&
             <div>
-              <NavLink to={'/filedjobs/processing'} className='nav-button' activeClassName="selected">
-                In Process
+              <NavLink to={"/filed/lien-eligible"} className='nav-button' activeClassName="selected">
+              Lien Eligible
               </NavLink>
-              <NavLink to={'/filedjobs/release-eligible'} className='nav-button' activeClassName="selected">
+              <NavLink to={'/filed/release-eligible'} className='nav-button' activeClassName="selected">
                 Release Eligible
               </NavLink>
             </div>
@@ -28,9 +28,6 @@ function Header(props) {
               </NavLink>
               <NavLink to={"/eligiblejobs/noi-eligible"} className='nav-button' activeClassName="selected">
                 NOI Eligible
-              </NavLink>
-              <NavLink to={"/eligiblejobs/lien-eligible"} className='nav-button' activeClassName="selected">
-                Lien Eligible
               </NavLink>
             </div>
         }

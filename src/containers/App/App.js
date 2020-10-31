@@ -26,7 +26,8 @@ function App() {
           dispatch(setJobs(data.data))
           dispatch(resetErrorMsg());
           updateJobAddedStatus(false)
-          updateLoadingStatus(false)
+          updateLoadingStatus(true)
+          console.log(data.data)
         })
         .catch(error => {
           dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
@@ -77,20 +78,11 @@ function App() {
               </>
             )
           }}/>
-          <Route exact path="/eligiblejobs/lien-eligible" render={() => {
-            return (
-              <>
-                <Header currentPath={'eligible'}/>
-                <h2>Lien Eligible Jobs</h2>
-                <Jobs />
-              </>
-            )
-          }}/>
-          <Route exact path={"/filedjobs/processing"} render={() => {
+          <Route exact path={"/filedjobs/lien-eligible"} render={() => {
             return (
               <>
                 <Header currentPath="filed"/>
-                <h2>Processing Lien</h2>
+                <h2>Lien Eligible</h2>
                 <Jobs />
               </>
             )

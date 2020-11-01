@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 // need to add functionality to buttons and add tests for them
 
@@ -93,3 +94,29 @@ function JobDetails(props) {
 }
 
 export default JobDetails;
+
+JobDetails.propTypes = {
+  jobInfo: PropTypes.object,
+  job_type: PropTypes.string,
+  job_site_name: PropTypes.string,
+  job_site_contact_name: PropTypes.string,
+  job_site_address: PropTypes.string,
+  job_site_address_line_2: PropTypes.string,
+  job_site_city: PropTypes.string,
+  job_site_state: PropTypes.string,
+  job_site_zip_code: PropTypes.string,
+  completion_date: PropTypes.string,
+  material_cost: PropTypes.number,
+  labor_cost: PropTypes.number,
+  total_cost: PropTypes.number,
+  description_of_work: PropTypes.string,
+  client_company_name: PropTypes.string,
+  business_address: PropTypes.string,
+  business_address_line_2: PropTypes.string,
+  business_city: PropTypes.string,
+  business_state: PropTypes.string,
+  business_zip_code: PropTypes.string,
+  additional_info: PropTypes.string,
+  status: PropTypes.string,
+  dateDifference: PropTypes.number
+}

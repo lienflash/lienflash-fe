@@ -1,10 +1,11 @@
 import React from 'react';
 import './Jobs.scss';
-import JobCard from '../../components/JobCard/JobCard';
+import JobCard from '../JobCard/JobCard';
 import Error from '../../components/Error/Error.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { setErrorMsg, resetErrorMsg } from '../../actions/actions.js';
+import PropTypes from 'prop-types';
 
 function Jobs() {
   const location = useLocation();
@@ -53,3 +54,10 @@ function Jobs() {
 }
 
 export default Jobs;
+
+Jobs.propTypes = {
+  setErrorMsg: PropTypes.func,
+  resetErrorMsg: PropTypes.func,
+  errorMsg: PropTypes.string,
+  allJobs: PropTypes.object,
+};

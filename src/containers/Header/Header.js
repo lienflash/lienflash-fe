@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/lienflash-logo.png'
 import { useDispatch } from 'react-redux';
 import { resetErrorMsg } from '../../actions/actions';
+import PropTypes from 'prop-types';
 
 function Header(props) {
   const { currentPath } = props;
@@ -43,3 +44,7 @@ function Header(props) {
 }
 
 export default Header;
+
+Header.propTypes = {
+  currentPath: PropTypes.string
+};

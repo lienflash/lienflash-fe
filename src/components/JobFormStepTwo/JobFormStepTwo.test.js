@@ -13,7 +13,7 @@ describe('JobFormStepTwo component', () => {
       />
     )
 
-    const heading = screen.getByRole('heading', { name: 'Client / Company Details' })
+    const heading = screen.getByRole('heading', { name: 'Client Details' })
     const companyName = screen.getByText('Client / Company Name:')
     const BusinessAddress = screen.getByText('Business Address:')
     const city = screen.getByText('City:')

@@ -14,8 +14,8 @@ describe('Homepage component', () => {
   })
 
   it('Should render the users dashboard when the app loads', () => {
-
-    const header = screen.getByRole('heading', { name: 'What Do You Want To Do?' })
+  
+    const header = screen.getByRole('heading', { name: 'What do you want to do?' })
     const addJobButton = screen.getByRole('button', { name: 'Add Job' })
     const elibibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
     const filedLiensButton = screen.getByRole('button', { name: 'Filed Liens' })

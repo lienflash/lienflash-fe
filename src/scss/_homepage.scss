@@ -25,9 +25,15 @@
 .filed,
 .profile {
   color: white;
-  // background-color: #00a24a;
   border-radius: 20px;
   box-shadow: 4px 4px 10px 1px black;
+}
+
+.add:hover,
+.eligible:hover,
+.filed:hover,
+.profile:hover {
+  background-color: $darkCharcoal;
 }
 
 .add {
@@ -35,13 +41,38 @@
 }
 
 .eligible {
-  background-color: #4d7642;
+  background-color: #0da14e
 }
 
 .filed {
-  background-color: #73ba9b;
+  background-color: #0da14e
 }
 
 .profile {
-  background-color: #3e6563
+  background-color: #0da14e
+}
+
+.installInstuctions {
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.install-info {
+  font-style: bold;
+  font-size: large;
+  border: none;
+  color: $darkCharcoal;
+  margin-top: 80px;
+  background: transparent;
+  left: 50%;
+}
+
+i {
+  margin-top: 6px;
+}
+
+.fa-download {
+  margin-left: 5px;
 }

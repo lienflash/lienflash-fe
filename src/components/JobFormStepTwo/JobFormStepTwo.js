@@ -10,7 +10,7 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
   return (
     <div className='form-group'>
       {/* Contractor details */}
-      <h2>Client / Company Details</h2>
+      <h2>Client Details</h2>
       <label>Client / Company Name:<br />
         <input
           type='text'

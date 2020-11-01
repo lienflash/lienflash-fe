@@ -8,22 +8,27 @@ function Homepage() {
       <h2 className='home-title'>What do you want to do?</h2>
       <Link to={'/addjob'}>
         <button className='home add'>Add Job
-          <br /><i class="fas fa-tools"></i>
+          <br /><i className="fas fa-tools"></i>
           </button>
       </Link>
       <Link to={'/eligiblejobs/grace-period'}>
+<<<<<<< HEAD
         <button className='home eligible'>NOI Eligible Jobs
           <br /><i class="far fa-calendar-check"></i>
+=======
+        <button className='home eligible'>Eligible Jobs
+          <br /><i className="far fa-calendar-check"></i>
+>>>>>>> ea9c2177... Fix syntax error
         </button>
       </Link>
       <Link to={'/filedjobs/lien-eligible'}>
         <button className='home filed'>Filed Liens
-          <br /><i class="far fa-file-alt"></i>
+          <br /><i className="far fa-file-alt"></i>
         </button>
       </Link>
       <Link to={'/profile'}>
         <button className='home profile'>Profile
-          <br /><i class="fas fa-user-alt"></i>
+          <br /><i className="fas fa-user-alt"></i>
         </button>
       </Link>
       <button
@@ -32,7 +37,7 @@ function Homepage() {
         data-balloon-pos='up'
         onClick={((e) => e.preventDefault())}
         className='install-info'>Install App
-        <span><i class="fas fa-download"></i></span>
+        <span><i className="fas fa-download"></i></span>
       </button>
     </div>
   )

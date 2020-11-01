@@ -1,6 +1,6 @@
 import React from 'react';
 import './Jobs.scss';
-import JobCard from '../JobCard/JobCard';
+import JobCard from '../../components/JobCard/JobCard';
 import Error from '../../components/Error/Error.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';

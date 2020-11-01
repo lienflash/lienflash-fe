@@ -18,7 +18,7 @@ function JobCard(props) {
         <h3>Days Left to Submit NOI: {47 - dateDifference}</h3>
       }
       {job_type === 'Materials & Labor' && (status === 'good standing' || status === 'NOI Eligible') &&
-        <h3>Days Left to Submit NOI: {106 - dateDifference}</h3>
+        <h3>Days Left to Submit Lien: {106 - dateDifference}</h3>
       }
       {status === 'NOI filed' &&
         <h3>Days Left to Submit Lien: {47 - dateDifference}</h3>

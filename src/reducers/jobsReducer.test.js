@@ -1,6 +1,5 @@
 import jobsReducer from './jobsReducer'
-// lines 14 and 22
-// how to take away 12 days from current date?
+// lines 17 and 21 - may be removed w/BE updates
 
 describe('jobsReducer - labor', () => {
   it('should return the initial state', () => {

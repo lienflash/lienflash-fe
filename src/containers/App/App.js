@@ -4,13 +4,13 @@ import Homepage from '../../components/Homepage/Homepage'
 import Header from '../Header/Header'
 import Loader from '../../components/Loader/Loader'
 import Jobs from '../Jobs/Jobs'
-import { Route, useLocation } from 'react-router-dom'
-import JobForm from '../JobForm/JobForm';
+import { Route, Redirect, useLocation } from 'react-router-dom'
+import JobForm from '../../components/JobForm/JobForm';
 import JobDetails from '../JobDetails/JobDetails';
-import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllJobs } from '../../helpers/apiCalls'
 import { setJobs, getJobInfo, setErrorMsg, resetErrorMsg } from '../../actions/actions'
+import PropTypes from 'prop-types';
 
 function App() {
   const [jobAdded, updateJobAddedStatus] = useState(false)
@@ -104,6 +104,8 @@ function App() {
               </>
             )
           }}/>
+          <Route render={() =>
+            <Redirect to="/" />} />
           <Route exact path="/" render={() => {
             return (
               <>
@@ -119,3 +121,8 @@ function App() {
 }
 
 export default App;
+
+App.propTypes = {
+  allJobs: PropTypes.object,
+  errorMsg: PropTypes.string
+};

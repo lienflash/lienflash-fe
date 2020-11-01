@@ -1,5 +1,6 @@
 import React from 'react';
 import './JobCard.scss';
+import PropTypes from 'prop-types';
 
 function JobCard(props) {
   const { job_type, status, client_company_name, total_cost, completion_date, dateDifference } = props.data
@@ -28,3 +29,12 @@ function JobCard(props) {
 }
 
 export default JobCard;
+
+JobCard.propTypes = {
+  job_type: PropTypes.string,
+  status: PropTypes.string,
+  client_company_name: PropTypes.string,
+  total_cost: PropTypes.number,
+  completion_date: PropTypes.string,
+  dateDifference: PropTypes.number
+};

@@ -29,6 +29,13 @@
   box-shadow: 4px 4px 10px 1px black;
 }
 
+.add:hover,
+.eligible:hover,
+.filed:hover,
+.profile:hover {
+  background-color: $darkCharcoal;
+}
+
 .add {
   background-color:#0da14e
 }

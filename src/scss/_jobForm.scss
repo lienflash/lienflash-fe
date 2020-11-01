@@ -11,7 +11,8 @@ h1 {
   margin-top: 20px;
   text-align: left;
   padding: 4%;
-  font-size: 20px;
+  font-size: medium;
+  border-radius: 4px;
 }
 
 input[type=text], 
@@ -20,15 +21,16 @@ input[type=date],
 input[type=tel],
 textarea {
   width: 90%; 
-  padding: 12px; 
+  padding: 10px; 
   border: 1px solid #ccc; 
   margin-top: 6px; 
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   resize: vertical;
   outline: 0;
   border-width: 0 0 1px;
   border-color: $lightGrey;
-  font-size: 18px;
+  font-size: medium;
+  font-family: 'PT Sans', sans-serif;
 }
 
 input:focus {
@@ -39,30 +41,24 @@ input:focus {
   font-style: bold;
   font-size: medium;
   border: none;
-  color: $green;
+  color: blue;
   padding: 2px;
   background: transparent;
 }
 
 input[type=date] {
   font-size: medium;
-   font-family: 'PT Sans', sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 input[type=submit]:hover {
   background-color: orange;
 }
 
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
 /* adds spacing around radio buttons and label */
 .jobType {
   margin-top: 2.5em;
-  padding-bottom: 1.2em;
+  padding-bottom: -1.2em;
 }
 
 .radioBtns {
@@ -77,5 +73,4 @@ input[type=submit]:hover {
 .jobDescription {
   margin-bottom: 2em;
 }
-
 

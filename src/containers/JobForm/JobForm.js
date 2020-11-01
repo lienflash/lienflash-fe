@@ -58,10 +58,10 @@ const JobForm = ({ updateJobAddedStatus }) => {
         currentStep={currentStep}
       />
       { error &&
-        <p className='error-msg'>{error}</p>}
+        <article className='error-msg'>{error}</article>}
       { (currentStep === 1) &&
         <button
-          className='btn btn-secondary'
+          className='btn'
           type='button' onClick={checkRequiredFields}>
           Next
         </button>
@@ -73,7 +73,7 @@ const JobForm = ({ updateJobAddedStatus }) => {
       { (currentStep !== 1) &&
         <div>
           <button
-            className='btn btn-secondary'
+            className='btn'
             type='button' onClick={e => updateStep(currentStep - 1)}>
             Back
           </button>

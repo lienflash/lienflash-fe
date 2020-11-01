@@ -17,11 +17,14 @@ input[type=submit] {
 .back-btn,
 .btn-submit {
   border: solid 2px;
-  padding: .5em;
-  background-color: black;
+  padding: .6em;
+  margin-top: 40px;
+  background-color: $darkCharcoal;
+  // background-color: $green;
   color: white;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: none;
+  border-radius: 6px;
 }
 
 .submit-selected {
@@ -31,6 +34,8 @@ input[type=submit] {
   text-decoration: none;
 }
 
-// .btn-secondary:hover {
-//   box-shadow: 5px 5px 20px  0px rgb(146, 143, 143);
-// }
+.back-btn:hover,
+.btn:hover,
+.btn-secondary:hover {
+  box-shadow: 5px 5px 20px  0px rgb(146, 143, 143);
+}

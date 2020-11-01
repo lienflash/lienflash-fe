@@ -120,9 +120,10 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
               type='text'
               name='jobDescription'
               aria-label='job-description'
+              className='jobDescription'
               rows='4'
               maxLength='200'
-              style={{ width: '80%' }}
+              style={{ width: '100%' }}
               onChange={handleInputChange}
             />
             <br />

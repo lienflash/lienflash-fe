@@ -35,7 +35,8 @@ input:focus {
   font-size: medium;
   border: none;
   color: blue;
-  padding: 0;
+  padding: 2px;
+  background: transparent;
 }
 
 input[type=date] {

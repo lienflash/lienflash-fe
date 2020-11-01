@@ -33,7 +33,8 @@ function Homepage() {
       </Link>
       <button
         data-balloon-length='large'
-        aria-label='Install by opening app in your native browser i.e. Safari for IOS. On the bottom toolbar click the square with upward arrow and select "Add to home screen"'
+        aria-label='Install on mobile: Open app in your native browser i.e. Safari for IOS. On the bottom toolbar click "Add to home screen".
+        Install on desktop: Click on the icon at the top right of the URL bar.'
         data-balloon-pos='up'
         onClick={((e) => e.preventDefault())}
         className='install-info'>Install App

@@ -1,5 +1,6 @@
 
-.btn-secondary {
+.btn-secondary,
+input[type=submit] {
   background-color: $green;
   color: white;
   padding: 12px 20px;
@@ -8,6 +9,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .back-btn,

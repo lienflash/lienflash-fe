@@ -3,36 +3,167 @@
 
 h2 { font-size: 36px; }
 
+
 /*  Tablets - landscape mode */
 
 @media only screen and (min-width: 1340px) {
-h2 { font-size: 32px; }
-.form { width: 30%; }
+
+  h2 { 
+    font-size: 32px; 
+  }
+
+  .form { 
+    height: 100%;
+    width: 70%; 
+    display: inline-block;  
+    background-color: whitesmoke;
+  }
+
+  input[type=text], 
+  input[type=email], 
+  input[type=date],
+  input[type=tel],
+  textarea {
+    border-radius: 4px;
+    box-sizing: border-box; 
+    border: 1px, solid, $lightGrey;
+    background: transparent;
+  }
+
+  img.logo { 
+    width: 50%; 
+    height: auto; 
+  }
+
+  .App {
+  margin-left: 400px;
+  margin-right: 400px;
+  }
 }
 
-
 @media only screen and (min-width: 1024px) and (max-width: 1339px) {
-h2 { font-size: 32px; }
-.form { width: 50% }
+  h1 {
+    font-size: 36px; 
+  }
+  
+  h2 { 
+    font-size: 32px; 
+  }
+
+  .form { 
+    width: 75%;
+    display: inline-block;  
+    background-color: whitesmoke;
+  }
+
+  input[type=text], 
+  input[type=email], 
+  input[type=date],
+  input[type=tel],
+  textarea {
+    border-radius: 4px;
+    box-sizing: border-box; 
+    border: 1px, solid, $lightGrey;
+    background: transparent;
+  }
+
+  img.logo { 
+    width: 50%; 
+    height: auto; 
+  }
+
+  .App {
+  margin-left: 250px;
+  margin-right: 250px;
+  }
 }
 
 /*  Tablets - portrait mode, large display smartphones landscape mode */
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-h2 { font-size: 28px; }
-.form { width: 65% }
+  h1 {
+  font-size: 36px; 
+  }
+  
+  h2 { 
+    font-size: 30px; 
+  }
+
+  .form { 
+    width: 75% 
+  }
+
+  img.logo { 
+    width: 50%; 
+    height: auto; 
+  }
+
+  .date-help-info {
+  padding: 14px 0px 14px 0px;
+  }   
 }
 
 /*  Smartphones in landscape mode */
 
 @media only screen and (min-width: 421px) and (max-width: 767px) {
-h2 { font-size: 24px; }
-.form { width: 75%  }
+  h1 {
+  font-size: 34px; 
+  }
+  
+  h2 { 
+    font-size: 28px; 
+  }
+
+  p { 
+    font-size: 22px; 
+  }
+
+  .form { 
+    width: 75%  
+  }
+
+  .date-help-info {
+  padding: 14px 0px 14px 0px;
+  }
+
+  .add,
+  .eligible,
+  .filed,
+  .profile {
+    font-size: 20px;
+  }
 }
 
 /*  Smartphones in portrait mode  */
 
 @media only screen and (max-width: 420px) {
-h2 { font-size: 20px; }
-.form { width: 100% }
+  h1 {
+  font-size: 30px; 
+  }
+  
+  h2 { 
+    font-size: 24px; 
+  }
+
+  p { 
+    font-size: 18px; 
+  }
+
+  .form { 
+    width: 100% 
+  }
+
+  .date-help-info {
+    padding: 16px 0px 16px 0px;
+  }
+
+  .add,
+  .eligible,
+  .filed,
+  .profile {
+    font-size: 16px;
+  }
+ .btn-secondary {
+   width: 25%;
+ }
 }

@@ -12,13 +12,8 @@ function Homepage() {
           </button>
       </Link>
       <Link to={'/eligiblejobs/grace-period'}>
-<<<<<<< HEAD
         <button className='home eligible'>NOI Eligible Jobs
-          <br /><i class="far fa-calendar-check"></i>
-=======
-        <button className='home eligible'>Eligible Jobs
           <br /><i className="far fa-calendar-check"></i>
->>>>>>> ea9c2177... Fix syntax error
         </button>
       </Link>
       <Link to={'/filedjobs/lien-eligible'}>

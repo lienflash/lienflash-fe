@@ -39,16 +39,14 @@ input:focus {
   font-style: bold;
   font-size: medium;
   border: none;
-  color: blue;
+  color: $green;
   padding: 2px;
   background: transparent;
 }
 
 input[type=date] {
   font-size: medium;
-   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+   font-family: 'PT Sans', sans-serif;
 }
 
 input[type=submit]:hover {

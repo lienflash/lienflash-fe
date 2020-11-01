@@ -52,7 +52,7 @@ const JobForm = ({ updateJobAddedStatus }) => {
   return (
     <form className='form'>
       <h1>Add New Job</h1>
-      <p>Step {currentStep} </p>
+      <p className='form-progress'>Step {currentStep} </p>
       <JobFormStepOne
         handleInputChange={handleInputChange}
         currentStep={currentStep}

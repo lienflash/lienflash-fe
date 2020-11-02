@@ -51,26 +51,19 @@ export const postNewJob = async (newJob) => {
 
 export const updateJobStatus = (jobId, newStatus) => {
   console.log(jobId, newStatus)
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/jobs/${jobId}`, {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/jobs/${jobId}?status=${newStatus}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(
-      {
-        status: newStatus
-      }
-    )
+    }
   })
-    .then((response) => {
-      if (!response.ok) {
-        console.log("ERROR", response)
-        throw Error(response.statusText);
-      } else {
-        console.log(response)
-        return response.json();
-      }
-    })
- 
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      console.log(response)
+      return response.json();
+    }
+  })
 }
 

@@ -48,3 +48,25 @@ export const postNewJob = async (newJob) => {
     }
   })
 }
+
+export const updateJobStatus = (id, newStatus) => {
+  return fetch(`https://cors-anywhere.herokuapp.com/https://lienflash-be.herokuapp.com/api/v1/jobs/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        status: newStatus
+      }
+    )
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      } else {
+        return response.json();
+      }
+    })
+  })
+}
+

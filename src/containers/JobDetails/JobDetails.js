@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { updateJobStatus } from '../../helpers/apiCalls'
 import { Redirect } from 'react-router-dom'
-import UserMessage from '../../components/popup/Popup'
+import UserMessage from '../../components/UserMessage/UserMessage'
 // need to add functionality to buttons and add tests for them
 
 function JobDetails(props) {
+  const { updateJobAddedStatus } = props
   const jobInfo = useSelector(state => state.jobInfo.attributes);
   const { id }  = useSelector(state => state.jobInfo);
 
-  // use if we want to redirect user back to homepage/dashboard
   const [updateSuccessful, updateStatus] = useState(false)
  
   const history = useHistory();
@@ -34,10 +34,8 @@ function JobDetails(props) {
     const jobId = id
     updateJobStatus(jobId, status)
       .then(() => {
-        console.log('processing')
-        // take user back to jobs page or dashboard ?
-        history.goBack()
-        // updateStatus(true) for dashboard option
+        updateJobAddedStatus(true)
+        updateStatus(true)
       })
       .catch(error => {
         alert('Sorry, we had an issue processing your request. Please refresh to try again.')
@@ -105,7 +103,6 @@ function JobDetails(props) {
         <div>
           <UserMessage status={status} dateDifference={dateDifference} handleClick={handleClick}/>
         </div>
-        {/* // take user back to dashboard if we like this option best */}
         { updateSuccessful && <Redirect to='/' />}
       </div>
     )
@@ -127,21 +124,3 @@ function JobDetails(props) {
   )
 }
 export default JobDetails;
-
-/* <div>
-  {dateDifference > 10 &&
-    <button className='btn-submit' onClick={() => handleClick(0)}>Submit NOI</button>
-  }
-  {status === 'NOI Eligible' &&
-    <button className='btn-submit' onClick={() => handleClick(1)}>Submit NOI</button>
-  }
-  {status === 'NOI filed' &&
-    <button className='btn-submit' onClick={() => handleClick(2)}>Submit Lien</button>
-  }
-  {status === 'Lien Filed' &&
-    <button className='btn-submit' onClick={() => handleClick(3)}>Submit Release of Lien</button>
-  }
-  {/* When we have a status for this eligibilty, we will add this <button>Remove Job</button> */
-  // <button className='btn-submit' onClick={() => removeJob(4)}>Remove Job</button>
-  // {/*when they click this button, send patch request to change status to inactive; use 4 to pass that on*/}
-// </div> */}

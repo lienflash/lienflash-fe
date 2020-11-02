@@ -7,7 +7,7 @@ const UserMessage = ({ dateDifference, status, handleClick }) => {
   return (
     // {/* buttons depending on where in the process they are */ }
     <div>
-      {dateDifference > 10 &&
+      {(dateDifference > 10 || status === 'NOI Eligible') &&
         <Popup trigger={<button className='btn-submit'>Submit NOI</button>} position="top left">
           {close => (
             <section className="popup-msg">
@@ -22,21 +22,6 @@ const UserMessage = ({ dateDifference, status, handleClick }) => {
         </Popup>
       }
    
-      {status === 'NOI Eligible' &&
-        <Popup trigger={<button className='btn-submit'>Submit NOI</button>} position="top left">
-          {close => (
-            <section className="popup-msg">
-              Please confirm if you would like to purchase ... for $45.00
-              <button className="close" onClick={close}>Close
-              &times;
-              </button>
-              <button className="confirm" onClick={() => handleClick(1)}>Confirm
-              </button>
-            </section>
-          )}
-        </Popup>
-      }
-      
       {status === 'NOI filed' &&
         <Popup trigger={<button className='btn-submit'>Submit Lien</button>} position="top left">
           {close => (

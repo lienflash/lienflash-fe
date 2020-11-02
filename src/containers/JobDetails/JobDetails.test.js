@@ -20,22 +20,22 @@ describe('JobDetails', () => {
         job_site_name: 'Home',
         job_site_contact_name: 'Taryn',
         job_site_address: '200 Washington St.',
-        job_site_address_line_2: '',
+        job_site_address_line_2: null,
         job_site_city: 'Denver',
         job_site_state: 'CO',
         job_site_zip_code: '80201',
         completion_date: "2020-10-01T04:05:06.000Z",
         material_cost: 200,
-        labor_cost: 200,
-        total_cost: 400,
-        description_of_work: 'blah',
+        labor_cost: 300,
+        total_cost: 500,
+        description_of_work: 'Warehouse renovation',
         client_company_name: 'Amazon',
         business_address: '12 Tree Ave',
         business_address_line_2: 'Suite 200',
         business_city: 'Seattle',
         business_state: 'WA',
         business_zip_code: '99900',
-        additional_info: 'Amazon sucks',
+        additional_info: 'Received partial payment',
         job_id: '12345',
         status: 'good standing'
       }
@@ -68,15 +68,23 @@ describe('JobDetails', () => {
     expect(backButton).toBeInTheDocument();
     expect(jobSiteAddress).toBeInTheDocument()
     expect(jobType).toBeInTheDocument();
+    expect(siteNameLabel).toBeInTheDocument();
     expect(siteName).toBeInTheDocument();
+    expect(siteContactLabel).toBeInTheDocument();
     expect(siteContact).toBeInTheDocument();
+    expect(companyNameLabel).toBeInTheDocument();
     expect(companyName).toBeInTheDocument();
     expect(businessAddress).toBeInTheDocument();
     expect(jobDescription).toBeInTheDocument();
+    expect(additionalInfoLabel).toBeInTheDocument();
     expect(additionalInfo).toBeInTheDocument();
+    expect(completionLabel).toBeInTheDocument();
     expect(completion).toBeInTheDocument();
+    expect(laborCostLabel).toBeInTheDocument();
     expect(laborCost).toBeInTheDocument();
+    expect(materialsCostLabel).toBeInTheDocument();
     expect(materialsCost).toBeInTheDocument();
+    expect(totalLabel).toBeInTheDocument();
     expect(total).toBeInTheDocument();
     expect(removeBtn).toBeInTheDocument();
   });

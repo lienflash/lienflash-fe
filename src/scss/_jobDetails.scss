@@ -1,0 +1,25 @@
+.job-details {
+  text-align: left; 
+  width: 75%;
+  display: inline-block;  
+  background-color: $lightestGrey;
+  padding: 0px 20px 30px 20px;
+  border-radius: 4px;
+}
+
+.bold {
+  font-size: 16px;
+}
+
+p { 
+  font-size: 16px;
+}
+
+.bold,
+p {
+    display: inline;
+    vertical-align: top;
+    line-height: 28px;
+}
+
+

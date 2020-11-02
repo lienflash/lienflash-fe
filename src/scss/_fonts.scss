@@ -4,7 +4,12 @@
   font-size: $fontSize;
 }
 
-// error message text
+@mixin subheading($fontweight, $fontsize) {
+  font-weight: $fontweight;
+  font-size: $fontsize;
+  color: $darkCharcoal;
+}
+
 .required, .error-msg {
   color: red;
 }

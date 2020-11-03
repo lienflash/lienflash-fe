@@ -2,16 +2,23 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { screen, render, fireEvent, waitFor } from '@testing-library/react'
 import JobForm from './JobForm'
+import { MemoryRouter } from 'react-router-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from '../../reducers/index.js';
 import { postNewJob } from '../../helpers/apiCalls'
 jest.mock('../../helpers/apiCalls')
 
 describe('Form component', () => {
   beforeEach(() => {
+    const store = createStore(rootReducer)
 
     render(
-      <JobForm 
-        updateJobAddedStatus={jest.fn()}
-      />
+      <Provider store={store}>
+        <MemoryRouter>
+          <JobForm updateJobAddedStatus={jest.fn()}/>
+        </MemoryRouter>
+      </Provider>
     )
   })
 
@@ -32,7 +39,7 @@ describe('Form component', () => {
     fireEvent.click(nextButton)
 
     const errorMsg = screen.getByText('Please complete required fields')
-    expect(errorMsg).toBeInTheDocument() 
+    expect(errorMsg).toBeInTheDocument()
   })
 
   it('User should be able to complete the form and submit it', async () => {
@@ -44,8 +51,8 @@ describe('Form component', () => {
   //     jobSiteName: "Burt's Warehouse",
   //     jobSiteAddressLine2: "Apt 1209",
   //     jobSiteContactName: 'Sally May',
-  //     jobSiteAddress: '1777 Myrtle Drive', 
-  //     jobSiteCity: 'Denver', 
+  //     jobSiteAddress: '1777 Myrtle Drive',
+  //     jobSiteCity: 'Denver',
   //     jobSiteState: 'CO',
   //     jobSiteZipCode: '80240',
   //     completionDate: '2020-10-25',
@@ -101,13 +108,13 @@ describe('Form component', () => {
     expect(totalCostsInput.value).toBe('10000')
 
     fireEvent.click(nextButton)
-  
+
     const step2Heading = screen.getByText('Step 2')
     const submitButton = screen.getByLabelText('submit form')
-  
+
     expect(step2Heading).toBeInTheDocument()
     expect(submitButton).toBeInTheDocument()
- 
+
     // fireEvent.click(submitButton)
 
     // await waitFor(() => expect(mockPostRequest).toHaveBeenCalledWith(newJob))

@@ -35,8 +35,8 @@ describe('JobDetails', () => {
         business_state: 'WA',
         business_zip_code: '99900',
         additional_info: 'Received partial payment',
-        job_id: '12345',
-        status: 'good standing'
+        user_id: '12345',
+        status: 'Good Standing'
         }
       }
     })
@@ -81,7 +81,6 @@ describe('JobDetails', () => {
     const materialsCost = screen.getByText("$200");
     const totalLabel = screen.getByText("Total Cost:");
     const total = screen.getByText("$500");
-    const removeBtn = screen.getByRole('button', {name: 'Remove Job'})
 
     expect(backButton).toBeInTheDocument();
     expect(jobSiteAddressLabel).toBeInTheDocument()
@@ -96,25 +95,16 @@ describe('JobDetails', () => {
     expect(businessAddressZip).toBeInTheDocument()
     expect(jobTypeLabel).toBeInTheDocument();
     expect(jobType).toBeInTheDocument();
-    expect(siteNameLabel).toBeInTheDocument();
     expect(siteName).toBeInTheDocument();
-    expect(siteContactLabel).toBeInTheDocument();
     expect(siteContact).toBeInTheDocument();
-    expect(companyNameLabel).toBeInTheDocument();
     expect(companyName).toBeInTheDocument();
     expect(jobDescriptionLabel).toBeInTheDocument();
     expect(jobDescription).toBeInTheDocument();
-    expect(additionalInfoLabel).toBeInTheDocument();
     expect(additionalInfo).toBeInTheDocument();
-    expect(completionLabel).toBeInTheDocument();
     expect(completion).toBeInTheDocument();
-    expect(laborCostLabel).toBeInTheDocument();
     expect(laborCost).toBeInTheDocument();
-    expect(materialsCostLabel).toBeInTheDocument();
     expect(materialsCost).toBeInTheDocument();
-    expect(totalLabel).toBeInTheDocument();
     expect(total).toBeInTheDocument();
-    expect(removeBtn).toBeInTheDocument();
   });
 
   it('should call a function when back button is clicked', async () => {

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import JobFormStepOne from '../JobFormStepOne/JobFormStepOne'
 import JobFormStepTwo from '../JobFormStepTwo/JobFormStepTwo'
+import { useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { postNewJob } from '../../helpers/apiCalls'
 import { Redirect } from 'react-router-dom'
 
@@ -8,7 +10,9 @@ const JobForm = ({ updateJobAddedStatus }) => {
   const [input, setInput] = useState({})
   const [currentStep, updateStep] = useState(1)
   const [error, updateError] = useState('')
-  const [submitSuccessful, updateStatus] = useState(false)
+  const [submitSuccessful, updateStatus] = useState(false);
+  const user = useSelector(state => state.user)
+  const history = useHistory();
 
   const handleInputChange = (e) => {
     setInput({
@@ -38,10 +42,11 @@ const JobForm = ({ updateJobAddedStatus }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const newJob = input
-    postNewJob(newJob)
+    postNewJob(newJob, user.id)
     .then(() => {
       updateJobAddedStatus(true)
       updateStatus(true)
+      history.push('/homepage')
     })
     .catch(error => {
       alert('Sorry, we had an issue adding the new job. Please refresh to try again.')

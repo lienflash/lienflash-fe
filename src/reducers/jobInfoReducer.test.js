@@ -14,13 +14,13 @@ describe('jobInfoReducer', () => {
     const action = {
       type: 'GET_INFO',
       id: "1",
-      eligibility: 'good standing',
+      eligibility: 'Good Standing',
       jobs: {
         gracePeriod: [{
           id: "1",
           type: "job",
           attributes: {
-            job_type: 'labor & materials',
+            job_type: 'Materials & Labor',
             job_site_name: 'Home',
             job_site_contact_name: 'Taryn',
             job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -34,7 +34,7 @@ describe('jobInfoReducer', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'good standing',
+            status: 'Good Standing',
             dateDifference: 0
           }
         },
@@ -50,7 +50,7 @@ describe('jobInfoReducer', () => {
       id: "1",
       type: "job",
       attributes: {
-        job_type: 'labor & materials',
+        job_type: 'Materials & Labor',
         job_site_name: 'Home',
         job_site_contact_name: 'Taryn',
         job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -64,7 +64,7 @@ describe('jobInfoReducer', () => {
         business_address_line_2: 'Suite 200',
         business_city: 'Seattle',
         business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-        status: 'good standing',
+        status: 'Good Standing',
         dateDifference: 0
       }
     }
@@ -83,14 +83,14 @@ describe('jobInfoReducer', () => {
       type: 'GET_INFO',
       id: "1",
       dateDifference: 11,
-      eligibility: 'good standing',
+      eligibility: 'Good Standing',
       jobs: {
         gracePeriod: [],
         noiEligible: [{
           id: "1",
           type: "job",
           attributes: {
-            job_type: 'labor & materials',
+            job_type: 'Materials & Labor',
             job_site_name: 'Home',
             job_site_contact_name: 'Taryn',
             job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -104,7 +104,7 @@ describe('jobInfoReducer', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'good standing',
+            status: 'Good Standing',
             dateDifference: 11
           }
         },],
@@ -118,7 +118,7 @@ describe('jobInfoReducer', () => {
       id: "1",
       type: "job",
       attributes: {
-        job_type: 'labor & materials',
+        job_type: 'Materials & Labor',
         job_site_name: 'Home',
         job_site_contact_name: 'Taryn',
         job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -132,7 +132,7 @@ describe('jobInfoReducer', () => {
         business_address_line_2: 'Suite 200',
         business_city: 'Seattle',
         business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-        status: 'good standing',
+        status: 'Good Standing',
         dateDifference: 11
       }
     }
@@ -152,7 +152,7 @@ describe('jobInfoReducer', () => {
           id: "1",
           type: "job",
           attributes: {
-            job_type: 'labor & materials',
+            job_type: 'Materials & Labor',
             job_site_name: 'Home',
             job_site_contact_name: 'Taryn',
             job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -182,7 +182,7 @@ describe('jobInfoReducer', () => {
     id: "1",
     type: "job",
     attributes: {
-      job_type: 'labor & materials',
+      job_type: 'Materials & Labor',
       job_site_name: 'Home',
       job_site_contact_name: 'Taryn',
       job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -211,13 +211,13 @@ describe('jobInfoReducer', () => {
     const action = {
       type: 'GET_INFO',
       id: "1",
-      eligibility: 'NOI filed',
+      eligibility: 'NOI Filed',
       jobs: {
         lienEligible: [{
           id: "1",
           type: "job",
           attributes: {
-            job_type: 'labor & materials',
+            job_type: 'Materials & Labor',
             job_site_name: 'Home',
             job_site_contact_name: 'Taryn',
             job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -231,7 +231,7 @@ describe('jobInfoReducer', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'NOI filed',
+            status: 'NOI Filed',
             dateDifference: 0
           }
         },
@@ -247,7 +247,7 @@ describe('jobInfoReducer', () => {
       id: "1",
       type: "job",
       attributes: {
-        job_type: 'labor & materials',
+        job_type: 'Materials & Labor',
         job_site_name: 'Home',
         job_site_contact_name: 'Taryn',
         job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -261,7 +261,7 @@ describe('jobInfoReducer', () => {
         business_address_line_2: 'Suite 200',
         business_city: 'Seattle',
         business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-        status: 'NOI filed',
+        status: 'NOI Filed',
         dateDifference: 0
       }
     }
@@ -282,7 +282,7 @@ describe('jobInfoReducer', () => {
           id: "1",
           type: "job",
           attributes: {
-            job_type: 'labor & materials',
+            job_type: 'Materials & Labor',
             job_site_name: 'Home',
             job_site_contact_name: 'Taryn',
             job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -313,7 +313,7 @@ describe('jobInfoReducer', () => {
       id: "1",
       type: "job",
       attributes: {
-        job_type: 'labor & materials',
+        job_type: 'Materials & Labor',
         job_site_name: 'Home',
         job_site_contact_name: 'Taryn',
         job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',

@@ -50,7 +50,39 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+  it('should have a type of CLEAR_JOBS', () => {
+    const expectedAction = {
+      type: 'CLEAR_JOBS',
+    }
 
+    const result = actions.clearJobs();
+
+    expect(result).toEqual(expectedAction);
+  });
+  it('should have a type of SET_USER', () => {
+    const info = {
+      name: 'Taryn',
+      email: 'taryn@gmail.com'
+    }
+
+    const expectedAction = {
+      type: 'SET_USER',
+      userInfo: info
+    }
+
+    const result = actions.setUser(info);
+
+    expect(result).toEqual(expectedAction);
+  });
+  it('should have a type of LOGOUT_USER', () => {
+    const expectedAction = {
+      type: 'LOGOUT_USER'
+    }
+
+    const result = actions.logoutUser();
+
+    expect(result).toEqual(expectedAction);
+  });
   it('should have a type of GET_INFO', () => {
 
     const jobId = "1"

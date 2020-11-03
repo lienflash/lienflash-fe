@@ -2,23 +2,39 @@ import React from 'react';
 import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/lienflash-logo.png'
-import { useDispatch } from 'react-redux';
-import { resetErrorMsg } from '../../actions/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser, clearJobs, resetErrorMsg } from '../../actions/actions';
 import PropTypes from 'prop-types';
 
 function Header(props) {
   const { currentPath } = props;
   const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
 
   const clearError =() => {
     dispatch(resetErrorMsg())
   }
 
+  const logout = () => {
+    dispatch(logoutUser())
+    dispatch(clearJobs())
+  }
+
   return (
     <header>
-      <Link to={'/'} onClick={clearError}>
-        <img src={logo} className='logo' alt='lienflash logo'/>
-      </Link>
+      {user === undefined &&
+        <Link to={'/'}>
+          <img src={logo} className='logo' alt='lienflash logo'/>
+        </Link>
+      }
+      {user !== undefined &&
+        <>
+          <Link to={'/homepage'} onClick={clearError}>
+            <img src={logo} className='logo' alt='lienflash logo'/>
+          </Link>
+          <button className='btn' onClick={logout}>Log Out</button>
+        </>
+      }
         {currentPath !== undefined && currentPath === 'filed'&&
             <div>
               <NavLink to={"/filedjobs/lien-eligible"} className='nav-button' activeClassName="selected" onClick={clearError}>

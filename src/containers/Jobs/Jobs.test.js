@@ -2,15 +2,13 @@ import React from 'react';
 import Jobs from './Jobs.js';
 import Header from '../Header/Header.js';
 import Error from '../../components/Error/Error.js';
-import { screen, render, fireEvent } from '@testing-library/react';
+import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
-import configureStore from 'redux-mock-store';
+import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-// need to test dispatch of resetting error message?
-
-const mockStore = configureStore([])
+const mockStore = configureMockStore([])
 
 describe('Jobs', () => {
   let store;
@@ -36,7 +34,7 @@ describe('Jobs', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'good standing'
+            status: 'Good Standing'
           }
         }, {
           id: "3",
@@ -56,7 +54,7 @@ describe('Jobs', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'good standing'
+            status: 'Good Standing'
           }
         }],
         noiEligible: [{
@@ -151,7 +149,15 @@ describe('Jobs', () => {
 
     expect(name).toBeInTheDocument();
   });
-  it('should display an error message if jobsList is empty', () => {
+  it('should display an error message if jobsList is empty', async () => {
+    const store = mockStore({
+      allJobs: {
+        gracePeriod: [],
+        noiEligible: [],
+        lienEligible: [],
+        releaseEligible: []
+      }
+    });
     const errorMsg = `Sorry, you have no jobs that are currently eligible. Please check again later.`
     store.dispatch = jest.fn();
     const mockSet = jest.fn()
@@ -170,8 +176,8 @@ describe('Jobs', () => {
 
     fireEvent.click(lienButton)
 
-    expect(store.dispatch).toBeCalledTimes(2);
-    expect(store.dispatch).toHaveBeenCalledWith({"type": "SET_ERROR", "errorMessage": `Sorry, you have no jobs that are currently eligible. Please check again later.`})
+    expect(store.dispatch).toBeCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledWith({"type": "RESET_ERROR"})
 
     const error = screen.getByText(`Sorry, you have no jobs that are currently eligible. Please check again later.`);
 

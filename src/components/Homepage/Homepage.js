@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import 'balloon-css'; 
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllJobs } from '../../helpers/apiCalls'
+import { setJobs, getJobInfo, setErrorMsg, resetErrorMsg } from '../../actions/actions'
 
-function Homepage() {
+import 'balloon-css';
+
+function Homepage({ updateJobAddedStatus, updateLoadingStatus, jobAdded }) {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user)
+
+  useEffect(() => {
+      getAllJobs(user.id)
+        .then(data => {
+          dispatch(setJobs(data.data))
+          dispatch(resetErrorMsg());
+          updateJobAddedStatus(false)
+          updateLoadingStatus(true)
+        })
+        .catch(error => {
+          dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
+        })
+  }, [ jobAdded ])
+
   return (
     <div className='homepage'>
       <h2 className='home-title'>What do you want to do?</h2>

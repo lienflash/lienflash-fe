@@ -49,10 +49,8 @@ const JobForm = ({ updateJobAddedStatus }) => {
       history.push('/homepage')
     })
     .catch(error => {
-      console.log('ERROR')
       alert('Sorry, we had an issue adding the new job. Please refresh to try again.')
     })
-    // pop up message after new is job added?
   }
 
   return (

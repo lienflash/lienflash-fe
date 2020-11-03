@@ -60,7 +60,6 @@ export const updateJobStatus = (id, jobId, newStatus) => {
     if (!response.ok) {
       throw Error(response.statusText);
     } else {
-      console.log(response)
       return response.json();
     }
   })

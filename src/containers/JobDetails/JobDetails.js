@@ -45,7 +45,7 @@ function JobDetails(props) {
 
   const fillJobInfo = () => {
     return (
-      <div className='job-details'>
+      <div className='container'>
         <button className='back-btn' onClick={() => { history.goBack() }}>
           Back
         </button>

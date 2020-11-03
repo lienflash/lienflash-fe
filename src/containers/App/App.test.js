@@ -180,9 +180,10 @@ describe('App component', () => {
     fireEvent.click(eligibleJobsButton);
 
     const name = await waitFor(() => screen.getByText('Amazon'))
-
+   
     expect(name).toBeInTheDocument()
   })
+  
   it('should show the right number of jobs when user clicks on eligible button and goes to noi eligible', async () => {
     const allJobs = {
       gracePeriod: [],
@@ -516,16 +517,14 @@ describe('App component', () => {
       </Provider>
     )
 
-    const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
-    const addJobButton = screen.getByRole('button', { name: 'Add Job'})
-    const eligibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
-    const filedLiensButton = screen.getByRole('button', { name: 'Filed Liens' })
     const profileButton = screen.getByRole('button', { name: 'Profile' })
 
     fireEvent.click(profileButton)
 
-    const message = screen.getByText('This will be the user\'s info')
+    const message = screen.getByText('Profile')
+    const backBtn = await waitFor(() => screen.getByText('Back'))
 
+    expect(backBtn).toBeInTheDocument()
     expect(message).toBeInTheDocument()
   })
   it.skip('should allow a user to return home when the logo is clicked', async () => {

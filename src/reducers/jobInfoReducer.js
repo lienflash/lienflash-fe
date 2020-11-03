@@ -10,6 +10,8 @@ const jobInfoReducer = (state={}, action) => {
           }
         case 'NOI Eligible':
           return action.jobs.noiEligible.find(job => job.id === action.id);
+        case 'NOI Requested':
+          return action.jobs.noiEligible.find(job => job.id === action.id);
         case 'NOI filed':
           return action.jobs.lienEligible.find(job => job.id === action.id);
         case 'Lien Filed':

@@ -1,18 +1,17 @@
 import React from 'react';
 import JobDetails from './JobDetails.js';
-import { screen, render, fireEvent } from '@testing-library/react';
+import thunk from 'redux-thunk';
+import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
-import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares);
 
-// 29-back button
-
-const mockStore = configureStore([])
 
 describe('JobDetails', () => {
-
-  it.skip('should display job details on load', () => {
+  it('should display job details on load', () => {
     let store = mockStore({
       jobInfo: {
         attributes: {
@@ -31,42 +30,71 @@ describe('JobDetails', () => {
         description_of_work: 'Warehouse renovation',
         client_company_name: 'Amazon',
         business_address: '12 Tree Ave',
-        business_address_line_2: 'Suite 200',
+        business_address_line_2: null,
         business_city: 'Seattle',
         business_state: 'WA',
         business_zip_code: '99900',
         additional_info: 'Received partial payment',
         job_id: '12345',
         status: 'good standing'
+        }
       }
-    }
     })
 
     render(
-      <Provider store={ store }>
+      <Provider store={store}>
         <MemoryRouter>
-          <JobDetails />
+          <JobDetails
+            updateJobAddedStatus={jest.fn()}/>
         </MemoryRouter>
       </Provider>
     )
 
     const backButton = screen.getByRole('button', {name: 'Back'});
-    const jobType = screen.getByText('Job Type: Labor & Materials');
-    const siteName = screen.getByText("Job Site Name: Home");
-    const siteContact = screen.getByText('Job Site Contact Name: Taryn');
-    const jobSiteAddress = screen.getByText('Job Site Address:', {exact: false});
-    const companyName = screen.getByText('Company Name: Amazon');
-    const businessAddress = screen.getByText("Business Address:", {exact: false})
-    const jobDescription = screen.getByText("Job Description: blah");
-    const additionalInfo = screen.getByText("Additional Info: Amazon sucks");
-    const completion = screen.getByText("Date of Substantial Completion: 10/01/20");
-    const laborCost = screen.getByText("Labor Cost: $200");
-    const materialsCost = screen.getByText("Materials Cost: $200");
-    const total = screen.getByText("Total Cost: $400");
+    const jobTypeLabel = screen.getByText('Job Type:');
+    const jobType = screen.getByText('Labor & Materials');
+    const siteNameLabel = screen.getByText("Job Site Name:");
+    const siteName = screen.getByText("Home");
+    const siteContactLabel = screen.getByText('Job Site Contact Name:');
+    const siteContact = screen.getByText('Taryn');
+    const jobSiteAddressLabel = screen.getByText('Job Site Address:', {exact: false})
+    const jobSiteAddress = screen.getByText("200 Washington St", { exact: false });
+    const jobSiteAddressCity = screen.getByText("Denver", { exact: false });
+    const jobSiteAddressState = screen.getByText("CO,", { exact: false });
+    const jobSiteAddressZip = screen.getByText("80201", { exact: false });
+    const companyNameLabel = screen.getByText('Company Name:');
+    const companyName = screen.getByText('Amazon');
+    const businessAddressLabel = screen.getByText("Business Address:")
+    const businessAddress = screen.getByText("12 Tree Ave", { exact: false })
+    const businessAddressCity = screen.getByText("Seattle", { exact: false });
+    const businessAddressState = screen.getByText("WA,", { exact: false });
+    const businessAddressZip = screen.getByText("99900", { exact: false });
+    const jobDescriptionLabel = screen.getByText("Job Description:");
+    const jobDescription = screen.getByText("Warehouse renovation");
+    const additionalInfoLabel = screen.getByText("Additional Info:");
+    const additionalInfo = screen.getByText("Received partial payment");
+    const completionLabel = screen.getByText("Date of Substantial Completion:");
+    const completion = screen.getByText("10/01/20");
+    const laborCostLabel = screen.getByText("Labor Cost:");
+    const laborCost = screen.getByText("$300");
+    const materialsCostLabel = screen.getByText("Materials Cost:");
+    const materialsCost = screen.getByText("$200");
+    const totalLabel = screen.getByText("Total Cost:");
+    const total = screen.getByText("$500");
     const removeBtn = screen.getByRole('button', {name: 'Remove Job'})
 
     expect(backButton).toBeInTheDocument();
+    expect(jobSiteAddressLabel).toBeInTheDocument()
     expect(jobSiteAddress).toBeInTheDocument()
+    expect(jobSiteAddressCity).toBeInTheDocument()
+    expect(jobSiteAddressState).toBeInTheDocument()
+    expect(jobSiteAddressZip).toBeInTheDocument()
+    expect(businessAddressLabel).toBeInTheDocument()
+    expect(businessAddress).toBeInTheDocument()
+    expect(businessAddressCity).toBeInTheDocument()
+    expect(businessAddressState).toBeInTheDocument()
+    expect(businessAddressZip).toBeInTheDocument()
+    expect(jobTypeLabel).toBeInTheDocument();
     expect(jobType).toBeInTheDocument();
     expect(siteNameLabel).toBeInTheDocument();
     expect(siteName).toBeInTheDocument();
@@ -74,7 +102,7 @@ describe('JobDetails', () => {
     expect(siteContact).toBeInTheDocument();
     expect(companyNameLabel).toBeInTheDocument();
     expect(companyName).toBeInTheDocument();
-    expect(businessAddress).toBeInTheDocument();
+    expect(jobDescriptionLabel).toBeInTheDocument();
     expect(jobDescription).toBeInTheDocument();
     expect(additionalInfoLabel).toBeInTheDocument();
     expect(additionalInfo).toBeInTheDocument();
@@ -88,54 +116,8 @@ describe('JobDetails', () => {
     expect(total).toBeInTheDocument();
     expect(removeBtn).toBeInTheDocument();
   });
-  // it('should call a function when back button is clicked', () => {
-  //   let store = mockStore({
-  //     jobInfo: {
-  //       attributes: {
-  //       job_type: 'Labor & Materials',
-  //       job_site_name: 'Home',
-  //       job_site_contact_name: 'Taryn',
-  //       job_site_address: '200 Washington St.',
-  //       job_site_address_line_2: '',
-  //       job_site_city: 'Denver',
-  //       job_site_state: 'CO',
-  //       job_site_zip_code: '80201',
-  //       completion_date: "2020-10-01T04:05:06.000Z",
-  //       material_cost: 200,
-  //       labor_cost: 200,
-  //       total_cost: 400,
-  //       description_of_work: 'blah',
-  //       client_company_name: 'Amazon',
-  //       business_address: '12 Tree Ave',
-  //       business_address_line_2: 'Suite 200',
-  //       business_city: 'Seattle',
-  //       business_state: 'WA',
-  //       business_zip_code: '99900',
-  //       additional_info: 'Amazon sucks',
-  //       job_id: '12345'
-  //     }
-  //   }
-  //   })
-  //
-  //   const mockBack = jest.fn()
-  //
-  //   render(
-  //     <Provider store={ store }>
-  //       <MemoryRouter>
-  //         <JobDetails onClick={mockBack}/>
-  //       </MemoryRouter>
-  //     </Provider>
-  //   )
-  //
-  //   const backButton = screen.getByRole('button', {name: 'Back'});
-  //
-  //   expect(backButton).toBeInTheDocument();
-  //
-  //   fireEvent.click(backButton);
-  //
-  //   expect(mockBack).toBeCalledTimes(1);
-  // });
-  it('should display submit noi button when status is NOI Eligible', () => {
+
+  it('should call a function when back button is clicked', async () => {
     let store = mockStore({
       jobInfo: {
         attributes: {
@@ -159,108 +141,77 @@ describe('JobDetails', () => {
         business_state: 'WA',
         business_zip_code: '99900',
         additional_info: 'Amazon sucks',
-        job_id: '12345',
-        status: 'NOI Eligible'
+        job_id: '12345'
       }
     }
     })
 
+    const mockBack = jest.fn()
+
+
     render(
       <Provider store={ store }>
         <MemoryRouter>
-          <JobDetails />
+          <JobDetails data={store.jobInfo}  key={'12345'} onClick={mockBack}/>
         </MemoryRouter>
       </Provider>
     )
 
-    const noiButton = screen.getByRole('button', {name: 'Submit NOI'})
+    const backButton = screen.getByRole('button', {name: 'Back'});
 
-    expect(noiButton).toBeInTheDocument();
+    expect(backButton).toBeInTheDocument();
+
+    fireEvent.click(backButton);
+    // await waitFor(() => expect(mockBack).toHaveBeenCalled())
+
   });
-  it('should display submit lien button when status is NOI filed', () => {
+
+  it('should not display the Submit or Remove buttons if status is NOI Requested', () => {
     let store = mockStore({
       jobInfo: {
         attributes: {
-        job_type: 'Labor & Materials',
-        job_site_name: 'Home',
-        job_site_contact_name: 'Taryn',
-        job_site_address: '200 Washington St.',
-        job_site_address_line_2: '',
-        job_site_city: 'Denver',
-        job_site_state: 'CO',
-        job_site_zip_code: '80201',
-        completion_date: "2020-10-01T04:05:06.000Z",
-        material_cost: 200,
-        labor_cost: 200,
-        total_cost: 400,
-        description_of_work: 'blah',
-        client_company_name: 'Amazon',
-        business_address: '12 Tree Ave',
-        business_address_line_2: 'Suite 200',
-        business_city: 'Seattle',
-        business_state: 'WA',
-        business_zip_code: '99900',
-        additional_info: 'Amazon sucks',
-        job_id: '12345',
-        status: 'NOI filed'
+          job_type: 'Labor & Materials',
+          job_site_name: 'Home',
+          job_site_contact_name: 'Taryn',
+          job_site_address: '200 Washington St.',
+          job_site_address_line_2: '',
+          job_site_city: 'Denver',
+          job_site_state: 'CO',
+          job_site_zip_code: '80201',
+          completion_date: "2020-10-01T04:05:06.000Z",
+          material_cost: 200,
+          labor_cost: 200,
+          total_cost: 400,
+          description_of_work: 'blah',
+          client_company_name: 'Amazon',
+          business_address: '12 Tree Ave',
+          business_address_line_2: 'Suite 200',
+          business_city: 'Seattle',
+          business_state: 'WA',
+          business_zip_code: '99900',
+          additional_info: 'Amazon sucks',
+          job_id: '12345',
+          status: 'NOI Requested'
+        }
       }
-    }
     })
 
     render(
-      <Provider store={ store }>
+      <Provider store={store}>
         <MemoryRouter>
-          <JobDetails />
+          <JobDetails data={store.jobInfo} key={'12345'} />
         </MemoryRouter>
       </Provider>
     )
 
-    const lienButton = screen.getByRole('button', {name: 'Submit Lien'})
+    const noiButton = screen.queryByRole('button', { name: 'Submit NOI' })
+    const removeButton = screen.queryByRole('button', { name: 'Remove' })
 
-    expect(lienButton).toBeInTheDocument();
+    expect(noiButton).not.toBeInTheDocument();
+    expect(removeButton).not.toBeInTheDocument();
+
   });
-  it('should display release lien button when status is lien filed', () => {
-    let store = mockStore({
-      jobInfo: {
-        attributes: {
-        job_type: 'Labor & Materials',
-        job_site_name: 'Home',
-        job_site_contact_name: 'Taryn',
-        job_site_address: '200 Washington St.',
-        job_site_address_line_2: '',
-        job_site_city: 'Denver',
-        job_site_state: 'CO',
-        job_site_zip_code: '80201',
-        completion_date: "2020-10-01T04:05:06.000Z",
-        material_cost: 200,
-        labor_cost: 200,
-        total_cost: 400,
-        description_of_work: 'blah',
-        client_company_name: 'Amazon',
-        business_address: '12 Tree Ave',
-        business_address_line_2: 'Suite 200',
-        business_city: 'Seattle',
-        business_state: 'WA',
-        business_zip_code: '99900',
-        additional_info: 'Amazon sucks',
-        job_id: '12345',
-        status: 'Lien Filed'
-      }
-    }
-    })
 
-    render(
-      <Provider store={ store }>
-        <MemoryRouter>
-          <JobDetails />
-        </MemoryRouter>
-      </Provider>
-    )
-
-    const releaseButton = screen.getByRole('button', {name: 'Submit Release of Lien'})
-
-    expect(releaseButton).toBeInTheDocument();
-  });
   it('should display an error message if there is no job info', () => {
     let store = mockStore({
       jobInfo: {attributes: {}}

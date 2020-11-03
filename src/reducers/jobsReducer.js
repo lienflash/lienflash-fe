@@ -10,7 +10,8 @@ const jobsReducer = (state={}, action) => {
       }
 
       if(job.attributes.job_type === 'Labor'){
-        if (job.attributes.dateDifference > 10 && (job.attributes.status === 'NOI Eligible' || job.attributes.status === 'good standing')) {
+        if (job.attributes.dateDifference > 10 && (job.attributes.status === 'NOI Eligible' || job.attributes.status === 'NOI Requested' || 
+        job.attributes.status === 'good standing')) {
           acc.noiEligible.push(job)
         } else if (job.attributes.status === 'NOI filed') {
           acc.lienEligible.push(job)
@@ -18,7 +19,7 @@ const jobsReducer = (state={}, action) => {
           acc.releaseEligible.push(job)
         }
       } else if (job.attributes.job_type === 'Materials & Labor')
-        if (job.attributes.dateDifference > 10  && (job.attributes.status === 'NOI Eligible' || job.attributes.status === 'good standing')) {
+        if (job.attributes.dateDifference > 10 && (job.attributes.status === 'NOI Eligible' || job.attributes.status === 'NOI Requested' || job.attributes.status === 'good standing')) {
           acc.noiEligible.push(job)
         } else if (job.attributes.status === 'NOI filed') {
           acc.lienEligible.push(job)

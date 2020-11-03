@@ -130,4 +130,21 @@ describe('JobFormStepOne component', () => {
     expect(totalCosts).not.toBeInTheDocument()
   })
 
+  it('should show message when information button is clicked', () => {
+
+    render(
+      <JobFormStepOne
+        handleInputChange={jest.fn()}
+        currentStep={1} />
+    )
+
+    const infoButton = screen.getByText('What is this?');
+
+    fireEvent.click(infoButton);
+
+    const message = screen.getByLabelText('Job completion date', { exact: false })
+
+    expect(message).toBeInTheDocument()
+  })
+  
 })

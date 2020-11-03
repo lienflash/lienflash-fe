@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import { updateJobStatus } from '../../helpers/apiCalls'
+import { Redirect } from 'react-router-dom'
+import UserMessage from '../../components/UserMessage/UserMessage'
 import PropTypes from 'prop-types';
-
 // need to add functionality to buttons and add tests for them
 
 function JobDetails(props) {
+  const { updateJobAddedStatus } = props
   const jobInfo = useSelector(state => state.jobInfo.attributes);
+  const { id }  = useSelector(state => state.jobInfo);
+
+  const [updateSuccessful, updateStatus] = useState(false)
+
   const history = useHistory();
   const { job_type, job_site_name,
     job_site_contact_name,
@@ -23,21 +30,40 @@ function JobDetails(props) {
       <h2>Sorry, it looks like we couldn't find that job. Please try again later.</h2>
     )
   }
+
+  const handleClick = (status) => {
+    const jobId = id
+    updateJobStatus(jobId, status)
+      .then(() => {
+        updateJobAddedStatus(true)
+        updateStatus(true)
+      })
+      .catch(error => {
+        alert('Sorry, we had an issue processing your request. Please refresh to try again.')
+      })
+  }
+
   const fillJobInfo = () => {
     return (
       <div className='job-details'>
         <button className='back-btn' onClick={() => { history.goBack() }}>
           Back
         </button>
+        {(status === "NOI Requested") &&
+          <section className='request-notice'>
+          <h3>Request submitted:</h3>
+          <article>You have requested to submit a NOI for this job & we are processing your request. If you have any questions please contact us at 800-800-8000. Thank you! </article>
+        </section>
+        }
         <h2>Job Details</h2>
-          <h3 className='bold'>Job Site Name:</h3><p> {job_site_name}</p>
+          <h3 className='bold'>Job Site Name: </h3><p> {job_site_name}</p>
           <br />
-          <h3 className='bold'>Job Site Contact Name:</h3>
+          <h3 className='bold'>Job Site Contact Name: </h3>
             <p>{job_site_contact_name}</p><br />
 
           {job_site_address_line_2 !== null &&
             <>
-              <h3 className='bold'> Job Site Address:</h3>
+              <h3 className='bold'> Job Site Address: </h3>
               <br />
               <p>
                 {job_site_address},{job_site_address_line_2}<br />{job_site_city}, {job_site_state}, {job_site_zip_code}
@@ -46,7 +72,7 @@ function JobDetails(props) {
           }
           {job_site_address_line_2 === null &&
             <>
-              <h3 className='bold'> Job Site Address:</h3><br />
+              <h3 className='bold'> Job Site Address: </h3><br />
               <p>
                 {job_site_address},<br />{job_site_city}, {job_site_state}, {job_site_zip_code}
               </p>
@@ -59,7 +85,7 @@ function JobDetails(props) {
           <br />
           {business_address !== null &&
             <>
-              <h3 className='bold'> Business Address:</h3><br />
+              <h3 className='bold'> Business Address: </h3><br />
               <p>
                 {business_address}<br />{business_address_line_2}<br />{business_city}, {business_state}, {business_zip_code}
               </p>
@@ -80,24 +106,13 @@ function JobDetails(props) {
           <p>{material_cost ? `$${material_cost}` : "n/a"}</p><br />
         <h3 className='bold'>Total Cost: </h3>
           <p>${total_cost}</p>
-        {/* buttons depending on where in the process they are */}
+
         <div>
-          {dateDifference > 10 &&
-            <button className='btn-submit'>Submit NOI</button>
+          {status !== 'NOI Requested' &&
+            <UserMessage status={status} dateDifference={dateDifference} handleClick={handleClick}/>
           }
-          {status === 'NOI Eligible' &&
-            <button className='btn-submit'>Submit NOI</button>
-          }
-          {status === 'NOI filed' &&
-            <button className='btn-submit'>Submit Lien</button>
-          }
-          {status === 'Lien Filed' &&
-            <button className='btn-submit'>Submit Release of Lien</button>
-          }
-          {/* When we have a status for this eligibilty, we will add this <button>Remove Job</button> */}
-          <button className='btn-submit'>Remove Job</button>
-          {/*when they click this button, send patch request to change status to inactive; use 4 to pass that on*/}
         </div>
+        { updateSuccessful && <Redirect to='/' />}
       </div>
     )
   }

@@ -23,6 +23,7 @@ function App() {
   useEffect(() => {
       getAllJobs()
         .then(data => {
+          console.log('fetching!')
           dispatch(setJobs(data.data))
           dispatch(resetErrorMsg());
           updateJobAddedStatus(false)
@@ -48,7 +49,7 @@ function App() {
             return (
               <>
                 <Header />
-                <JobDetails />
+                <JobDetails updateJobAddedStatus={updateJobAddedStatus} />
               </>
             )
           }}/>

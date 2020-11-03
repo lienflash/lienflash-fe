@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, render, fireEvent, waitFor, act } from '@testing-library/react';
+import { screen, render, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -100,20 +100,17 @@ describe('App component', () => {
       allJobs: {}
     })
 
-    //passing, issue w/updating state not being tested? not sure
-    act(() => {
-      render(
-        <Provider store={store}>
-          <MemoryRouter>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      )
-    })
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    )
 
     const header = screen.getByRole('heading', { name: 'Please wait while we load your dashboard' })
 
-    expect(header).toBeInTheDocument()
+    await waitForElementToBeRemoved(() => screen.getByText('Please wait', {exact: false}))
   })
 
   it('should show the right number of jobs when user clicks on eligible button and goes to grace period', async () => {

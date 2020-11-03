@@ -49,9 +49,8 @@ export const postNewJob = async (newJob, id) => {
   })
 }
 
-export const updateJobStatus = (jobId, newStatus) => {
-  console.log(jobId, newStatus)
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/jobs/${jobId}?status=${newStatus}`, {
+export const updateJobStatus = (id, jobId, newStatus) => {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs/${jobId}?status=${newStatus}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

@@ -51,6 +51,7 @@ function Login() {
         <input
           type='text'
           name='email'
+          placeholder='joe@gmail.com'
           aria-label='email'
           onChange={handleChange}
         />
@@ -59,11 +60,12 @@ function Login() {
         <input
           type='password'
           name='password'
+          placeholder='Password'
           aria-label='password'
           onChange={handleChange}
         />
       </label>
-      <button onClick={handleSubmit}>Submit Login</button>
+      <button className='btn-secondary' type='button' onClick={handleSubmit}>Submit Login</button>
       { error &&
         <article className='error-msg'>{error}</article>
       }

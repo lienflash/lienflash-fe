@@ -23,5 +23,4 @@ describe('Header', () => {
 
     expect(logo).toBeInTheDocument();
   });
-  // need to create tests based on different paths - are the buttons shown?
 })

@@ -99,11 +99,7 @@ describe('JobDetails', () => {
     expect(siteName).toBeInTheDocument();
     expect(siteContact).toBeInTheDocument();
     expect(companyName).toBeInTheDocument();
-<<<<<<< HEAD
-    expect(businessAddress).toBeInTheDocument();
-=======
     expect(jobDescriptionLabel).toBeInTheDocument();
->>>>>>> 55c48b37c2ac84f9bf4ca984e7c21b000166f095
     expect(jobDescription).toBeInTheDocument();
     expect(additionalInfo).toBeInTheDocument();
     expect(completion).toBeInTheDocument();
@@ -148,11 +144,7 @@ describe('JobDetails', () => {
     render(
       <Provider store={ store }>
         <MemoryRouter>
-<<<<<<< HEAD
-          <JobDetails />
-=======
           <JobDetails data={store.jobInfo}  key={'12345'} onClick={mockBack}/>
->>>>>>> 55c48b37c2ac84f9bf4ca984e7c21b000166f095
         </MemoryRouter>
       </Provider>
     )

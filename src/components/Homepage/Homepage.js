@@ -8,9 +8,10 @@ import 'balloon-css';
 
 function Homepage({ updateJobAddedStatus, updateLoadingStatus, jobAdded }) {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user)
 
   useEffect(() => {
-      getAllJobs()
+      getAllJobs(user.id)
         .then(data => {
           dispatch(setJobs(data.data))
           dispatch(resetErrorMsg());

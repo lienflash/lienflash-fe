@@ -1,5 +1,5 @@
-export const getAllJobs = () => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/jobs`)
+export const getAllJobs = (id) => {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`)
     .then((response) => {
       if (!response.ok) {
         throw Error(response.statusText);
@@ -48,6 +48,25 @@ export const postNewJob = async (newJob) => {
     }
   })
 }
+
+export const updateJobStatus = (jobId, newStatus) => {
+  console.log(jobId, newStatus)
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/jobs/${jobId}?status=${newStatus}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      console.log(response)
+      return response.json();
+    }
+  })
+}
+
 
 export const postLogin = (info) => {
   return fetch('https://lienflash-be.herokuapp.com/api/v1/login', {

@@ -32,7 +32,7 @@ function Header(props) {
           <Link to={'/homepage'} onClick={clearError}>
             <img src={logo} className='logo' alt='lienflash logo'/>
           </Link>
-          <button onClick={logout}>Log Out</button>
+          <button className='btn' onClick={logout}>Log Out</button>
         </>
       }
         {currentPath !== undefined && currentPath === 'filed'&&

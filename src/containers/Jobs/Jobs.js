@@ -14,7 +14,10 @@ function Jobs() {
   const allJobs = useSelector(state => state.allJobs);
 
   const createJobCards = (jobsList) => {
-    if(jobsList.length > 0) {
+    if(jobsList === undefined) {
+      dispatch(setErrorMsg(`Sorry, you have no jobs that are currently eligible. Please check again later.`))
+      return;
+    } else if(jobsList.length > 0) {
       dispatch(resetErrorMsg());
       return (
         jobsList.map(job => {
@@ -25,9 +28,6 @@ function Jobs() {
           )
         }).sort((a,b) => b.dateDifference - a.dateDifference)
       )
-    } else {
-      dispatch(setErrorMsg(`Sorry, you have no jobs that are currently eligible. Please check again later.`))
-      return;
     }
   }
 

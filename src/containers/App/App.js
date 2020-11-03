@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../scss/styles.scss'
 import Homepage from '../../components/Homepage/Homepage'
+import LandingPage from '../../components/LandingPage/LandingPage'
 import Header from '../Header/Header'
 import Loader from '../../components/Loader/Loader'
 import Jobs from '../Jobs/Jobs'
@@ -104,14 +105,28 @@ function App() {
               </>
             )
           }}/>
+          // should only be accessible if logged in; otherwise redirect to login page
           <Route render={() =>
             <Redirect to="/" />} />
-          <Route exact path="/" render={() => {
+          <Route exact path="/homepage" render={() => {
             return (
               <>
                 <Header />
                 <Homepage />
               </>
+            )
+          }}/>
+          <Route exact path="/login" render={() => {
+            return (
+              <>
+                <Header />
+                <Login />
+              </>
+            )
+          }}/>
+          <Route exact path="/" render={() => {
+            return (
+              <LandingPage />
             )
           }}/>
         </>

@@ -68,23 +68,15 @@ describe('JobDetails', () => {
     expect(backButton).toBeInTheDocument();
     expect(jobSiteAddress).toBeInTheDocument()
     expect(jobType).toBeInTheDocument();
-    expect(siteNameLabel).toBeInTheDocument();
     expect(siteName).toBeInTheDocument();
-    expect(siteContactLabel).toBeInTheDocument();
     expect(siteContact).toBeInTheDocument();
-    expect(companyNameLabel).toBeInTheDocument();
     expect(companyName).toBeInTheDocument();
     expect(businessAddress).toBeInTheDocument();
     expect(jobDescription).toBeInTheDocument();
-    expect(additionalInfoLabel).toBeInTheDocument();
     expect(additionalInfo).toBeInTheDocument();
-    expect(completionLabel).toBeInTheDocument();
     expect(completion).toBeInTheDocument();
-    expect(laborCostLabel).toBeInTheDocument();
     expect(laborCost).toBeInTheDocument();
-    expect(materialsCostLabel).toBeInTheDocument();
     expect(materialsCost).toBeInTheDocument();
-    expect(totalLabel).toBeInTheDocument();
     expect(total).toBeInTheDocument();
     expect(removeBtn).toBeInTheDocument();
   });

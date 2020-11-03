@@ -16,7 +16,7 @@ function Header(props) {
 
   return (
     <header>
-      <Link to={'/'} onClick={clearError}>
+      <Link to={'/homepage'} onClick={clearError}>
         <img src={logo} className='logo' alt='lienflash logo'/>
       </Link>
         {currentPath !== undefined && currentPath === 'filed'&&

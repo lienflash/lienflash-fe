@@ -1,7 +1,7 @@
 const jobsReducer = (state={}, action) => {
   switch(action.type) {
     case 'ALL_JOBS':
-      //when we add more users, we need to add a user matching conditional, unless we just pull all jobs for that user 
+      //when we add more users, we need to add a user matching conditional, unless we just pull all jobs for that user
       return action.allJobs.reduce((acc, job) => {
         job.attributes.dateDifference = findDateDifference(job.attributes.completion_date)
 
@@ -27,6 +27,8 @@ const jobsReducer = (state={}, action) => {
         }
         return acc;
       }, {gracePeriod: [], noiEligible: [], lienEligible: [], releaseEligible: []})
+    case 'CLEAR_JOBS':
+      return {};
     default:
       return state
   }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import JobFormStepOne from '../JobFormStepOne/JobFormStepOne'
 import JobFormStepTwo from '../JobFormStepTwo/JobFormStepTwo'
+import { useHistory } from 'react-router-dom';
 import { postNewJob } from '../../helpers/apiCalls'
 import { Redirect } from 'react-router-dom'
 
@@ -9,6 +10,7 @@ const JobForm = ({ updateJobAddedStatus }) => {
   const [currentStep, updateStep] = useState(1)
   const [error, updateError] = useState('')
   const [submitSuccessful, updateStatus] = useState(false)
+  const history = useHistory();
 
   const handleInputChange = (e) => {
     setInput({
@@ -42,6 +44,7 @@ const JobForm = ({ updateJobAddedStatus }) => {
     .then(() => {
       updateJobAddedStatus(true)
       updateStatus(true)
+      history.push('/homepage')
     })
     .catch(error => {
       alert('Sorry, we had an issue adding the new job. Please refresh to try again.')

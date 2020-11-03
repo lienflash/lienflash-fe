@@ -15,10 +15,22 @@ export const getJobInfo = (id, dateDifference, eligibility, jobs) => {
   }
 }
 
+export const clearJobs = () => {
+  return {
+    type: 'CLEAR_JOBS'  
+  }
+}
+
 export const setUser = (userInfo) => {
   return {
     type: 'SET_USER',
     userInfo
+  }
+}
+
+export const logoutUser = () => {
+  return {
+    type: 'LOGOUT_USER'
   }
 }
 

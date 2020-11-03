@@ -9,6 +9,7 @@ import Jobs from '../Jobs/Jobs'
 import { Route, Redirect, useLocation } from 'react-router-dom'
 import JobForm from '../../components/JobForm/JobForm';
 import JobDetails from '../JobDetails/JobDetails';
+import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllJobs } from '../../helpers/apiCalls'
 import { setJobs, getJobInfo, setErrorMsg, resetErrorMsg } from '../../actions/actions'
@@ -16,32 +17,25 @@ import PropTypes from 'prop-types';
 
 function App() {
   const [jobAdded, updateJobAddedStatus] = useState(false)
-  const [isLoaded, updateLoadingStatus] = useState(false)
+  const [isLoaded, updateLoadingStatus] = useState(true)
   const dispatch = useDispatch();
   const allJobs = useSelector(state => state.allJobs);
   const errorMsg = useSelector(state => state.errorMessage);
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user.attributes)
   const location = useLocation();
-
-  useEffect(() => {
-      getAllJobs()
-        .then(data => {
-          dispatch(setJobs(data.data))
-          dispatch(resetErrorMsg());
-          updateJobAddedStatus(false)
-          updateLoadingStatus(true)
-        })
-        .catch(error => {
-          dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
-        })
-  }, [ jobAdded ])
 
   return (
     <div className="App">
       { !isLoaded &&
         <Loader />
       }
-      { isLoaded && user.email !== undefined ?
+      {!isLoaded && errorMsg &&
+        <>
+          <Loader />
+          <Error />
+        </>
+      }
+      { isLoaded && user !== undefined &&
           <>
             <Route exact path='/jobs/:eligibility/:dateDifference/:id' render={({match}) => {
               const jobId = match.params.id;
@@ -107,36 +101,40 @@ function App() {
                 </>
               )
             }}/>
-            <Route render={() =>
-              <Redirect to="/homepage" />} />
             <Route exact path="/homepage" render={() => {
               return (
                 <>
                   <Header />
-                  <Homepage />
+                  <Homepage updateJobAddedStatus={updateJobAddedStatus} updateLoadingStatus={updateLoadingStatus} jobAdded={jobAdded}/>
                 </>
               )
             }}/>
+            <Route render={() =>
+              <Redirect to="/homepage" />} />
           </>
-        :
-        <>
-          <Route exact path="/login" render={() => {
-            return (
-              <>
-                <Header />
-                <Login />
-              </>
-            )
-          }}/>
-          <Route render={() =>
-            <Redirect to="/" />} />
-          <Route exact path='/' render={() => {
-            return(
-              <LandingPage />
-            )
-          }} />
-        </>
-      }
+        }
+        {isLoaded && user === undefined &&
+          <>
+            <Route exact path="/login" render={() => {
+              return (
+                <>
+                  <Header />
+                  <Login />
+                </>
+              )
+            }}/>
+            <Route render={() =>
+              <Redirect to="/" />} />
+            <Route exact path='/' render={() => {
+              return(
+                <LandingPage />
+              )
+            }} />
+          </>
+        }
+        {errorMsg &&
+          <Error />
+        }
     </div>
   );
 }

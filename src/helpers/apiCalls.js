@@ -1,5 +1,5 @@
 export const getAllJobs = () => {
-  return fetch(`https://cors-anywhere.herokuapp.com/https://lienflash-be.herokuapp.com/api/v1/jobs`)
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/jobs`)
     .then((response) => {
       if (!response.ok) {
         throw Error(response.statusText);
@@ -10,7 +10,7 @@ export const getAllJobs = () => {
 }
 
 export const postNewJob = async (newJob) => {
-  return fetch(`https://cors-anywhere.herokuapp.com/https://lienflash-be.herokuapp.com/api/v1/jobs`, {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/jobs`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ export const postNewJob = async (newJob) => {
 }
 
 export const postLogin = (info) => {
-  return fetch('https://cors-anywhere.herokuapp.com/https://lienflash-be.herokuapp.com/api/v1/login', {
+  return fetch('https://lienflash-be.herokuapp.com/api/v1/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

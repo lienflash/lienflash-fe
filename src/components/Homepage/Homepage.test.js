@@ -87,24 +87,22 @@ describe('Homepage component', () => {
     const elibibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
     const filedLiensButton = screen.getByRole('button', { name: 'Filed Liens' })
     const profileButton = screen.getByRole('button', { name: 'Profile' })
+    const installButton = screen.getByText('Install App');
 
     expect(header).toBeInTheDocument()
     expect(addJobButton).toBeInTheDocument()
     expect(elibibleJobsButton).toBeInTheDocument()
     expect(filedLiensButton).toBeInTheDocument()
     expect(profileButton).toBeInTheDocument()
+    expect(installButton).toBeInTheDocument()
   })
+  it('should show message when install button clicked', () => {
+    const installButton = screen.getByText('Install App');
 
+    fireEvent.click(installButton);
 
-  /* This one isn't setup correctly yet */
-  // it('Should redirect user to a new page based on which button they click on the dashboard', async () => {
+    const message = screen.getByLabelText('Install on mobile:', {exact: false});
 
-  //   const addJobButton = screen.getByRole('button', { name: 'Add Job' })
-
-  //   fireEvent.click(addJobButton)
-
-  //   const jobFormHeader = await waitFor(() => screen.getByText('This will be the job form'))
-
-  //   expect(jobFormHeader).toBeInTheDocument()
-  // })
+    expect(message).toBeInTheDocument()
+  })
 })

@@ -1,65 +1,204 @@
 import React from 'react';
-import { screen, render } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { MemoryRouter } from 'react-router-dom';
 import UserMessage from './UserMessage';
+
+import thunk from 'redux-thunk';
+import { screen, render, fireEvent  } from '@testing-library/react';
+import '@testing-library/jest-dom'
+import { MemoryRouter } from 'react-router-dom';
+// import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
+import { updateJobStatus } from '../../helpers/apiCalls'
+jest.mock('../../helpers/apiCalls')
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares);
+
 
 describe('UserMessage component', () => {
 
-  it("should only render the 'Remove Job' button when the job when job is in 'good standing'", () => {
-    render (
+  it('should display Submit NOI button when status is NOI Eligible', () => {
+  const diff = 11
+  const status = 'NOI Eligible'
+
+    render(
       <MemoryRouter>
-        <UserMessage
-          status={0} 
-          dateDifference={8} 
+        <UserMessage 
+          dateDifference={diff}
+          status={status} 
           handleClick={jest.fn()} 
         />
       </MemoryRouter>
     )
 
-    const removeJobBtn = screen.getByRole('button', { name: 'Remove Job'})
-    const submitNOIbtn = screen.queryByRole('button', { name: 'Submit NOI' })
+    const noiButton = screen.getByRole('button', { name: 'Submit NOI' })
 
-    expect(removeJobBtn).toBeInTheDocument()
-    expect(submitNOIbtn).not.toBeInTheDocument()
-  })
+    expect(noiButton).toBeInTheDocument();
+  });
 
-  it("should only render the 'Submit NOI' button when the job is eligible", () => {
+  it('should display Submit Lien button when status is NOI filed', () => {
+    const diff = 30
+    const status = 'NOI filed'
+
     render(
       <MemoryRouter>
         <UserMessage
-          status={1}
-          dateDifference={12}
+          dateDifference={diff}
+          status={status}
           handleClick={jest.fn()}
         />
       </MemoryRouter>
     )
 
-    const submitNOIbtn = screen.getByRole('button', { name: 'Submit NOI' })
-    const removeJobBtn = screen.getByRole('button', { name: 'Remove Job' })
+    const lienButton = screen.getByRole('button', { name: 'Submit Lien' })
 
-    expect(submitNOIbtn).toBeInTheDocument()
-    expect(removeJobBtn).toBeInTheDocument()
+    expect(lienButton).toBeInTheDocument();
+  });
+
+  it('should display Release Lien button when status is lien filed', () => {
+    const diff = 30
+    const status = 'Lien Filed'
+
+    render(
+      <MemoryRouter>
+        <UserMessage
+          dateDifference={diff}
+          status={status}
+          handleClick={jest.fn()}
+        />
+      </MemoryRouter>
+    )
+
+    const releaseButton = screen.getByRole('button', { name: 'Submit Release of Lien' })
+
+    expect(releaseButton).toBeInTheDocument();
+  });
+
+  it('Should trigger patch request if user hits confirm on Submit NOI button', () => {
+    const diff = 11
+    const status = 'NOI Eligible'
+
+    const mockHandleClick = jest.fn()
+
+    render(
+      <MemoryRouter>
+        <UserMessage
+          dateDifference={diff}
+          status={status}
+          handleClick={mockHandleClick}
+        />
+      </MemoryRouter>
+    )
+
+    const noiButton = screen.getByRole('button', { name: 'Submit NOI' })
+    
+    fireEvent.click(noiButton)
+
+    const confirmButton = screen.getByRole('button', { name: 'Confirm' })
+    const message = screen.getByText("Please confirm if you would like to submit a NOI for this job.", { exact: false })
+    
+    expect(message).toBeInTheDocument();
+    expect(confirmButton).toBeInTheDocument();
+
+    fireEvent.click(confirmButton)
+
+    expect(mockHandleClick).toHaveBeenCalled()
+    expect(mockHandleClick).toHaveBeenCalledWith(2)
   })
 
-/* How to mock the Lien Eligible status? */
+  it('Should trigger patch request if user hits confirm on Remove button', () => {
+    const diff = 11
+    const status = 'NOI Eligible'
 
-  // it("should only render the 'Submit Lien' button when the job is eligible", () => {
-  //   render(
-  //     <MemoryRouter>
-  //       <UserMessage
-  //         status={2}
-  //         dateDifference={51}
-  //         handleClick={jest.fn()}
-  //       />
-  //     </MemoryRouter>
-  //   )
+    const mockHandleClick = jest.fn()
 
-  //   const submitLien = screen.queryByRole('button', { name: 'Submit Lien' })
-  //   const removeJobBtn = screen.getByRole('button', { name: 'Remove Job' })
+    render(
+      <MemoryRouter>
+        <UserMessage
+          dateDifference={diff}
+          status={status}
+          handleClick={mockHandleClick}
+        />
+      </MemoryRouter>
+    )
 
-  //   expect(submitLien).toBeInTheDocument()
-  //   expect(removeJobBtn).toBeInTheDocument()
-  // })
+    const removeButton = screen.getByRole('button', { name: 'Remove Job' })
 
+    fireEvent.click(removeButton)
+
+    const confirmButton = screen.getByRole('button', { name: 'Confirm' })
+    const message = screen.getByText("Are you sure you want to remove this job?", { exact: false })
+
+    expect(message).toBeInTheDocument();
+    expect(confirmButton).toBeInTheDocument();
+
+    fireEvent.click(confirmButton)
+
+    expect(mockHandleClick).toHaveBeenCalled()
+    expect(mockHandleClick).toHaveBeenCalledWith(5)
+  })
+
+  it('Should trigger patch request if user hits confirm on Submit Lien button', () => {
+    const diff = 30
+    const status = 'NOI filed'
+
+    const mockHandleClick = jest.fn()
+
+    render(
+      <MemoryRouter>
+        <UserMessage
+          dateDifference={diff}
+          status={status}
+          handleClick={mockHandleClick}
+        />
+      </MemoryRouter>
+    )
+
+    const submitLienBtn = screen.getByRole('button', { name: 'Submit Lien' })
+
+    fireEvent.click(submitLienBtn)
+
+    const confirmButton = screen.getByRole('button', { name: 'Confirm' })
+    const message = screen.getByText("Please confirm if you would like to submit a NOI for this job.", { exact: false })
+
+    expect(message).toBeInTheDocument();
+    expect(confirmButton).toBeInTheDocument();
+
+    fireEvent.click(confirmButton)
+
+    expect(mockHandleClick).toHaveBeenCalled()
+    expect(mockHandleClick).toHaveBeenCalledWith(3)
+  })
+
+  it('Should trigger patch request if user hits confirm on Submit Release of Lien button', () => {
+    const diff = 30
+    const status = 'Lien Filed'
+
+    const mockHandleClick = jest.fn()
+
+    render(
+      <MemoryRouter>
+        <UserMessage
+          dateDifference={diff}
+          status={status}
+          handleClick={mockHandleClick}
+        />
+      </MemoryRouter>
+    )
+
+    const submitReleaseBtn = screen.getByRole('button', { name: 'Submit Release of Lien' })
+
+    fireEvent.click(submitReleaseBtn)
+
+    const confirmButton = screen.getByRole('button', { name: 'Confirm' })
+    const message = screen.getByText("Please confirm if you would like to release the lien for this job.", { exact: false })
+
+    expect(message).toBeInTheDocument();
+    expect(confirmButton).toBeInTheDocument();
+
+    fireEvent.click(confirmButton)
+
+    expect(mockHandleClick).toHaveBeenCalled()
+    expect(mockHandleClick).toHaveBeenCalledWith(5)
+  })
 })
+

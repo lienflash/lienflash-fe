@@ -9,8 +9,8 @@ export const getAllJobs = (id) => {
     })
 }
 
-export const postNewJob = async (newJob) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/jobs`, {
+export const postNewJob = async (newJob, id) => {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

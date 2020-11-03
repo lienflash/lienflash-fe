@@ -14,7 +14,7 @@ function Jobs() {
   const allJobs = useSelector(state => state.allJobs);
 
   const createJobCards = (jobsList) => {
-    if(jobsList === undefined) {
+    if(jobsList === []) {
       dispatch(setErrorMsg(`Sorry, you have no jobs that are currently eligible. Please check again later.`))
       return;
     } else if(jobsList.length > 0) {
@@ -33,6 +33,9 @@ function Jobs() {
 
   return (
     <div className='jobs'>
+    {errorMsg &&
+      <Error message={errorMsg} />
+    }
     {location.pathname === "/eligiblejobs/grace-period" &&
       createJobCards(allJobs.gracePeriod)
     }
@@ -44,9 +47,6 @@ function Jobs() {
     }
     {location.pathname === "/filedjobs/release-eligible" &&
       createJobCards(allJobs.releaseEligible)
-    }
-    {errorMsg &&
-      <Error message={errorMsg} />
     }
     </div>
   )

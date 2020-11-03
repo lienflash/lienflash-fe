@@ -35,8 +35,8 @@ describe('JobDetails', () => {
         business_state: 'WA',
         business_zip_code: '99900',
         additional_info: 'Received partial payment',
-        job_id: '12345',
-        status: 'good standing'
+        user_id: '12345',
+        status: 'Good Standing'
         }
       }
     })
@@ -81,7 +81,6 @@ describe('JobDetails', () => {
     const materialsCost = screen.getByText("$200");
     const totalLabel = screen.getByText("Total Cost:");
     const total = screen.getByText("$500");
-    const removeBtn = screen.getByRole('button', {name: 'Remove Job'})
 
     expect(backButton).toBeInTheDocument();
     expect(jobSiteAddressLabel).toBeInTheDocument()
@@ -106,7 +105,6 @@ describe('JobDetails', () => {
     expect(laborCost).toBeInTheDocument();
     expect(materialsCost).toBeInTheDocument();
     expect(total).toBeInTheDocument();
-    expect(removeBtn).toBeInTheDocument();
   });
 
   it('should call a function when back button is clicked', async () => {

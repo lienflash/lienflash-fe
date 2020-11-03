@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 function Header(props) {
   const { currentPath } = props;
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user.attributes)
+  const user = useSelector(state => state.user)
 
   const clearError =() => {
     dispatch(resetErrorMsg())

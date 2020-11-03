@@ -39,7 +39,7 @@ describe('jobsReducer - labor', () => {
               business_address_line_2: 'Suite 200',
               business_city: 'Seattle',
               business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-              status: 'good standing',
+              status: 'Good Standing',
             }
         }, {
             id: "2",
@@ -81,7 +81,7 @@ describe('jobsReducer - labor', () => {
               business_address_line_2: 'Suite 200',
               business_city: 'Seattle',
               business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-              status: 'NOI filed',
+              status: 'NOI Filed',
             }
         },  {
             id: "4",
@@ -128,7 +128,7 @@ describe('jobsReducer - labor', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'good standing',
+            status: 'Good Standing',
             dateDifference: 0
           }
       }],
@@ -174,7 +174,7 @@ describe('jobsReducer - labor', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'NOI filed',
+            status: 'NOI Filed',
             dateDifference: NaN
           }
       }],
@@ -231,7 +231,7 @@ describe('jobsReducer - labor & materials', () => {
             id: "1",
             type: "job",
             attributes: {
-              job_type: 'labor & materials',
+              job_type: 'Materials & Labor',
               job_site_name: 'Home',
               job_site_contact_name: 'Taryn',
               job_site_address: '200 Washington St.',
@@ -246,7 +246,7 @@ describe('jobsReducer - labor & materials', () => {
               business_address_line_2: 'Suite 200',
               business_city: 'Seattle',
               business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-              status: 'good standing',
+              status: 'Good Standing',
             }
         }, {
             id: "2",
@@ -288,7 +288,7 @@ describe('jobsReducer - labor & materials', () => {
               business_address_line_2: 'Suite 200',
               business_city: 'Seattle',
               business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-              status: 'NOI filed',
+              status: 'NOI Filed',
             }
         },  {
             id: "4",
@@ -321,7 +321,7 @@ describe('jobsReducer - labor & materials', () => {
           id: "1",
           type: "job",
           attributes: {
-            job_type: 'labor & materials',
+            job_type: 'Materials & Labor',
             job_site_name: 'Home',
             job_site_contact_name: 'Taryn',
             job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
@@ -335,7 +335,7 @@ describe('jobsReducer - labor & materials', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'good standing',
+            status: 'Good Standing',
             dateDifference: 0
           }
       }],
@@ -381,7 +381,7 @@ describe('jobsReducer - labor & materials', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'NOI filed',
+            status: 'NOI Filed',
             dateDifference: NaN
           }
       }],
@@ -439,7 +439,7 @@ describe('jobsReducer - labor & materials', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'good standing',
+            status: 'Good Standing',
             dateDifference: 0
           }
       }],
@@ -485,7 +485,7 @@ describe('jobsReducer - labor & materials', () => {
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
             business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
-            status: 'NOI filed',
+            status: 'NOI Filed',
             dateDifference: NaN
           }
       }],

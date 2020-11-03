@@ -14,7 +14,7 @@ const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
 describe('Homepage component', () => {
-  let allJobs;
+  let allJobs, user;
 
   beforeEach(() => {
     allJobs = {
@@ -65,10 +65,19 @@ describe('Homepage component', () => {
       releaseEligible: []
     }
 
+    user = {
+      id: 1,
+      attributes: {
+        name: 'Taryn',
+        email: 'taryn@gmail.com'
+      }
+    }
+
     getAllJobs.mockResolvedValueOnce(allJobs)
 
     const store = mockStore({
-      allJobs: allJobs
+      allJobs: allJobs,
+      user: user
       })
 
     render(

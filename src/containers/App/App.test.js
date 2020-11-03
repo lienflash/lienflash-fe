@@ -551,8 +551,6 @@ describe('App component', () => {
       </Provider>
     )
 
-    screen.debug;
-
     const firstProfileButton = await waitFor(() => screen.getByRole('button', { name: 'Profile' }))
 
     fireEvent.click(firstProfileButton)

@@ -11,8 +11,9 @@ const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares);
 
 describe('Profile component', () => {
-  let store = mockStore({
-    user: {
+    const user = {
+      id: 1,
+      attributes: {
       name: 'Timmy',
       business_name: "Timmy's plumbling",
       email: "email1234@gmail.com",
@@ -24,6 +25,11 @@ describe('Profile component', () => {
       business_state: 'CO',
       business_zip_code: "80218"
     }
+  }
+  
+  const store = mockStore({
+    allJobs: {},
+    user: user
   })
 
   it('should display user profile on load', () => {

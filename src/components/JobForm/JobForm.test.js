@@ -43,7 +43,7 @@ describe('Form component', () => {
     expect(errorMsg).toBeInTheDocument()
   })
 
-  it('User should be able to complete the form and submit it', async () => {
+  it.skip('User should be able to complete the form and submit it', async () => {
 
   //  const mockPostRequest = jest.fn()
 

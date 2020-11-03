@@ -9,7 +9,7 @@ const Profile = () => {
       name: 'Timmy',
       business_name: "Timmy's plumbling",
       email: "email1234@gmail.com",
-      business_work_number: "555-123-4567",
+      business_work_number: "550-123-4567",
       business_cell_number: "555-123-4567",
       business_address: "123 Main St.",
       business_address_line2: "apt 23",
@@ -39,7 +39,7 @@ return (
       <br />
       <h3 className='bold'>Cell number: </h3> <p>{user.business_cell_number}</p>
       <br />
-      <h3 className='bold'> Business Address: </h3><br />
+      <h3 className='bold'>Business Address: </h3><br />
       { user.business_address_line2 !== null &&
         <>
           <p>

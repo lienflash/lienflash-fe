@@ -48,6 +48,12 @@ function JobDetails(props) {
         <button className='back-btn' onClick={() => { history.goBack() }}>
           Back
         </button>
+        {(status === "NOI Requested") &&
+          <section className='request-notice'>
+          <h3>Request submitted:</h3>
+          <article>You have requested to submit a NOI for this job & we are processing your request. If you have any questions please contact us at 800-800-8000. Thank you! </article> 
+        </section>
+        }
         <h2>Job Details</h2>
           <h3 className='bold'>Job Site Name: </h3><p> {job_site_name}</p>
           <br />
@@ -101,7 +107,9 @@ function JobDetails(props) {
           <p>${total_cost}</p>
 
         <div>
-          <UserMessage status={status} dateDifference={dateDifference} handleClick={handleClick}/>
+          {status !== 'NOI Requested' &&
+            <UserMessage status={status} dateDifference={dateDifference} handleClick={handleClick}/>
+          }
         </div>
         { updateSuccessful && <Redirect to='/' />}
       </div>

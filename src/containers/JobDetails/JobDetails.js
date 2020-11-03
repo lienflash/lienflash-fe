@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { updateJobStatus } from '../../helpers/apiCalls'
 import { Redirect } from 'react-router-dom'
 import UserMessage from '../../components/UserMessage/UserMessage'
+import PropTypes from 'prop-types';
 // need to add functionality to buttons and add tests for them
 
 function JobDetails(props) {
@@ -12,7 +13,7 @@ function JobDetails(props) {
   const { id }  = useSelector(state => state.jobInfo);
 
   const [updateSuccessful, updateStatus] = useState(false)
- 
+
   const history = useHistory();
   const { job_type, job_site_name,
     job_site_contact_name,
@@ -23,7 +24,7 @@ function JobDetails(props) {
     description_of_work,
     client_company_name,
     business_address, business_address_line_2, business_city, business_state, business_zip_code, additional_info, status, dateDifference } = jobInfo;
-  
+
     const fillErrorMsg = () => {
     return (
       <h2>Sorry, it looks like we couldn't find that job. Please try again later.</h2>
@@ -51,13 +52,13 @@ function JobDetails(props) {
         {(status === "NOI Requested") &&
           <section className='request-notice'>
           <h3>Request submitted:</h3>
-          <article>You have requested to submit a NOI for this job & we are processing your request. If you have any questions please contact us at 800-800-8000. Thank you! </article> 
+          <article>You have requested to submit a NOI for this job & we are processing your request. If you have any questions please contact us at 800-800-8000. Thank you! </article>
         </section>
         }
         <h2>Job Details</h2>
           <h3 className='bold'>Job Site Name: </h3><p> {job_site_name}</p>
           <br />
-          <h3 className='bold'>Job Site Contact Name: </h3> 
+          <h3 className='bold'>Job Site Contact Name: </h3>
             <p>{job_site_contact_name}</p><br />
 
           {job_site_address_line_2 !== null &&
@@ -90,7 +91,7 @@ function JobDetails(props) {
               </p>
             </>
           }
-          
+
         <h3 className='bold'>Job Type: </h3>
           <p>{job_type}</p><br />
         <h3 className='bold'>Job Description: </h3>
@@ -131,4 +132,31 @@ function JobDetails(props) {
     </>
   )
 }
+
 export default JobDetails;
+
+JobDetails.propTypes = {
+  jobInfo: PropTypes.object,
+  job_type: PropTypes.string,
+  job_site_name: PropTypes.string,
+  job_site_contact_name: PropTypes.string,
+  job_site_address: PropTypes.string,
+  job_site_address_line_2: PropTypes.string,
+  job_site_city: PropTypes.string,
+  job_site_state: PropTypes.string,
+  job_site_zip_code: PropTypes.string,
+  completion_date: PropTypes.string,
+  material_cost: PropTypes.number,
+  labor_cost: PropTypes.number,
+  total_cost: PropTypes.number,
+  description_of_work: PropTypes.string,
+  client_company_name: PropTypes.string,
+  business_address: PropTypes.string,
+  business_address_line_2: PropTypes.string,
+  business_city: PropTypes.string,
+  business_state: PropTypes.string,
+  business_zip_code: PropTypes.string,
+  additional_info: PropTypes.string,
+  status: PropTypes.string,
+  dateDifference: PropTypes.number
+}

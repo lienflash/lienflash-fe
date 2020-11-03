@@ -44,7 +44,7 @@ describe('JobDetails', () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <JobDetails 
+          <JobDetails
             updateJobAddedStatus={jest.fn()}/>
         </MemoryRouter>
       </Provider>
@@ -64,8 +64,8 @@ describe('JobDetails', () => {
     const jobSiteAddressZip = screen.getByText("80201", { exact: false });
     const companyNameLabel = screen.getByText('Company Name:');
     const companyName = screen.getByText('Amazon');
-    const businessAddressLabel = screen.getByText("Business Address:") 
-    const businessAddress = screen.getByText("12 Tree Ave", { exact: false }) 
+    const businessAddressLabel = screen.getByText("Business Address:")
+    const businessAddress = screen.getByText("12 Tree Ave", { exact: false })
     const businessAddressCity = screen.getByText("Seattle", { exact: false });
     const businessAddressState = screen.getByText("WA,", { exact: false });
     const businessAddressZip = screen.getByText("99900", { exact: false });
@@ -145,10 +145,10 @@ describe('JobDetails', () => {
       }
     }
     })
-  
+
     const mockBack = jest.fn()
-  
-  
+
+
     render(
       <Provider store={ store }>
         <MemoryRouter>
@@ -156,11 +156,11 @@ describe('JobDetails', () => {
         </MemoryRouter>
       </Provider>
     )
-  
+
     const backButton = screen.getByRole('button', {name: 'Back'});
-  
+
     expect(backButton).toBeInTheDocument();
-  
+
     fireEvent.click(backButton);
     // await waitFor(() => expect(mockBack).toHaveBeenCalled())
 
@@ -203,7 +203,7 @@ describe('JobDetails', () => {
         </MemoryRouter>
       </Provider>
     )
- 
+
     const noiButton = screen.queryByRole('button', { name: 'Submit NOI' })
     const removeButton = screen.queryByRole('button', { name: 'Remove' })
 

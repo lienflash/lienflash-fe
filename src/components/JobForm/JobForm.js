@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import JobFormStepOne from '../../components/JobFormStepOne/JobFormStepOne'
-import JobFormStepTwo from '../../components/JobFormStepTwo/JobFormStepTwo'
+import JobFormStepOne from '../JobFormStepOne/JobFormStepOne'
+import JobFormStepTwo from '../JobFormStepTwo/JobFormStepTwo'
 import { postNewJob } from '../../helpers/apiCalls'
 import { Redirect } from 'react-router-dom'
 
@@ -18,26 +18,26 @@ const JobForm = ({ updateJobAddedStatus }) => {
 }
 
   const checkRequiredFields = () => {
-    if (!input.jobType 
+    if (!input.jobType
       || !input.jobSiteContactName
       || !input.jobSiteAddress
-      || !input.jobSiteCity 
-      || !input.jobSiteState 
-      || !input.jobSiteZipCode 
-      || !input.completionDate 
+      || !input.jobSiteCity
+      || !input.jobSiteState
+      || !input.jobSiteZipCode
+      || !input.completionDate
       || !input.jobDescription
-      || !input.totalCost 
+      || !input.totalCost
       ) {
       updateError('Please complete required fields')
     } else {
       updateError('')
       updateStep(currentStep + 1)
-    }    
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newJob = input    
+    const newJob = input
     postNewJob(newJob)
     .then(() => {
       updateJobAddedStatus(true)

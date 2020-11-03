@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../scss/styles.scss'
 import Homepage from '../../components/Homepage/Homepage'
 import LandingPage from '../../components/LandingPage/LandingPage'
+import Login from '../Login/Login';
 import Header from '../Header/Header'
 import Loader from '../../components/Loader/Loader'
 import Jobs from '../Jobs/Jobs'
@@ -19,6 +20,7 @@ function App() {
   const dispatch = useDispatch();
   const allJobs = useSelector(state => state.allJobs);
   const errorMsg = useSelector(state => state.errorMessage);
+  const user = useSelector(state => state.user)
   const location = useLocation();
 
   useEffect(() => {
@@ -39,83 +41,85 @@ function App() {
       { !isLoaded &&
         <Loader />
       }
-      { isLoaded &&
+      { isLoaded && user.email !== undefined ?
+          <>
+            <Route exact path='/jobs/:eligibility/:dateDifference/:id' render={({match}) => {
+              const jobId = match.params.id;
+              const dateDifference = match.params.dateDifference
+              const eligibility = match.params.eligibility;
+              dispatch(getJobInfo(jobId, dateDifference, eligibility, allJobs));
+              return (
+                <>
+                  <Header />
+                  <JobDetails />
+                </>
+              )
+            }}/>
+            <Route exact path="/addjob" render={() => {
+              return (
+                <>
+                  <Header />
+                  <JobForm updateJobAddedStatus={updateJobAddedStatus} />
+                </>
+              )
+            }}/>
+            <Route exact path="/eligiblejobs/grace-period" render={() => {
+              return (
+                <>
+                  <Header currentPath={'eligible'}/>
+                  <h2>Jobs in Grace Period</h2>
+                  <Jobs />
+                </>
+              )
+            }}/>
+            <Route exact path="/eligiblejobs/noi-eligible" render={() => {
+              return (
+                <>
+                  <Header currentPath={'eligible'}/>
+                  <h2>NOI Eligible Jobs</h2>
+                  <Jobs />
+                </>
+              )
+            }}/>
+            <Route exact path={"/filedjobs/lien-eligible"} render={() => {
+              return (
+                <>
+                  <Header currentPath="filed"/>
+                  <h2>Lien Eligible</h2>
+                  <Jobs />
+                </>
+              )
+            }}/>
+            <Route exact path={"/filedjobs/release-eligible"} render={() => {
+              return (
+                <>
+                  <Header currentPath="filed"/>
+                  <h2>Jobs Eligible for Lien Release</h2>
+                  <Jobs />
+                </>
+              )
+            }}/>
+            <Route exact path="/profile" render={() => {
+              return (
+                <>
+                  <Header />
+                  <h2>This will be the user's info</h2>
+                </>
+              )
+            }}/>
+            <Route render={() =>
+              <Redirect to="/homepage" />} />
+            <Route exact path="/homepage" render={() => {
+              return (
+                <>
+                  <Header />
+                  <Homepage />
+                </>
+              )
+            }}/>
+          </>
+        :
         <>
-          <Route exact path='/jobs/:eligibility/:dateDifference/:id' render={({match}) => {
-            const jobId = match.params.id;
-            const dateDifference = match.params.dateDifference
-            const eligibility = match.params.eligibility;
-            dispatch(getJobInfo(jobId, dateDifference, eligibility, allJobs));
-            return (
-              <>
-                <Header />
-                <JobDetails />
-              </>
-            )
-          }}/>
-          <Route exact path="/addjob" render={() => {
-            return (
-              <>
-                <Header />
-                <JobForm updateJobAddedStatus={updateJobAddedStatus} />
-              </>
-            )
-          }}/>
-          <Route exact path="/eligiblejobs/grace-period" render={() => {
-            return (
-              <>
-                <Header currentPath={'eligible'}/>
-                <h2>Jobs in Grace Period</h2>
-                <Jobs />
-              </>
-            )
-          }}/>
-          <Route exact path="/eligiblejobs/noi-eligible" render={() => {
-            return (
-              <>
-                <Header currentPath={'eligible'}/>
-                <h2>NOI Eligible Jobs</h2>
-                <Jobs />
-              </>
-            )
-          }}/>
-          <Route exact path={"/filedjobs/lien-eligible"} render={() => {
-            return (
-              <>
-                <Header currentPath="filed"/>
-                <h2>Lien Eligible</h2>
-                <Jobs />
-              </>
-            )
-          }}/>
-          <Route exact path={"/filedjobs/release-eligible"} render={() => {
-            return (
-              <>
-                <Header currentPath="filed"/>
-                <h2>Jobs Eligible for Lien Release</h2>
-                <Jobs />
-              </>
-            )
-          }}/>
-          <Route exact path="/profile" render={() => {
-            return (
-              <>
-                <Header />
-                <h2>This will be the user's info</h2>
-              </>
-            )
-          }}/>
-          // should only be accessible if logged in; otherwise redirect to login page
-          <Route render={() =>
-            <Redirect to="/" />} />
-          <Route exact path="/homepage" render={() => {
-            return (
-              <>
-                <Header />
-                <Homepage />
-              </>
-            )
-          }}/>
           <Route exact path="/login" render={() => {
             return (
               <>
@@ -124,11 +128,13 @@ function App() {
               </>
             )
           }}/>
-          <Route exact path="/" render={() => {
-            return (
+          <Route render={() =>
+            <Redirect to="/" />} />
+          <Route exact path='/' render={() => {
+            return(
               <LandingPage />
             )
-          }}/>
+          }} />
         </>
       }
     </div>

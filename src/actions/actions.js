@@ -15,6 +15,13 @@ export const getJobInfo = (id, dateDifference, eligibility, jobs) => {
   }
 }
 
+export const setUser = (userInfo) => {
+  return {
+    type: 'SET_USER',
+    userInfo
+  }
+}
+
 export const setErrorMsg = (errorMessage) => {
   return {
     type: 'SET_ERROR',

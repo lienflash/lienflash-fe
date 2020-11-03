@@ -48,3 +48,20 @@ export const postNewJob = async (newJob) => {
     }
   })
 }
+
+export const postLogin = (info) => {
+  return fetch('https://cors-anywhere.herokuapp.com/https://lienflash-be.herokuapp.com/api/v1/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(info)
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      return response.json();
+    }
+  })
+}

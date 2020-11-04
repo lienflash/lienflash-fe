@@ -85,6 +85,6 @@ export default Homepage;
 Homepage.propTypes = {
   user: PropTypes.object,
   errorMsg: PropTypes.string,
-  statusUpdated: PropTypes.object,
+  statusUpdated: PropTypes.bool,
   updateStatus: PropTypes.func
 };

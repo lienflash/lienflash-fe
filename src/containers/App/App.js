@@ -4,6 +4,7 @@ import Homepage from '../../components/Homepage/Homepage'
 import LandingPage from '../../components/LandingPage/LandingPage'
 import Login from '../Login/Login';
 import Header from '../Header/Header'
+import Profile from '../Profile/Profile'
 import Loader from '../../components/Loader/Loader'
 import Jobs from '../Jobs/Jobs'
 import { Route, Redirect, useLocation } from 'react-router-dom'
@@ -97,7 +98,7 @@ function App() {
               return (
                 <>
                   <Header />
-                  <h2>This will be the user's info</h2>
+                  <Profile />
                 </>
               )
             }}/>

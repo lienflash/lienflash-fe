@@ -51,7 +51,6 @@ const JobForm = ({ updateJobAddedStatus }) => {
     .catch(error => {
       alert('Sorry, we had an issue adding the new job. Please refresh to try again.')
     })
-    // pop up message after new is job added?
   }
 
   return (

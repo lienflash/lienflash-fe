@@ -3,7 +3,8 @@ import JobDetails from './JobDetails.js';
 import thunk from 'redux-thunk';
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history'
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 const middlewares = [thunk]
@@ -107,53 +108,48 @@ describe('JobDetails', () => {
     expect(total).toBeInTheDocument();
   });
 
-  it('should call a function when back button is clicked', async () => {
+  it('should take user to previous page when back button is clicked', async () => {
     let store = mockStore({
       jobInfo: {
         attributes: {
-        job_type: 'Labor & Materials',
-        job_site_name: 'Home',
-        job_site_contact_name: 'Taryn',
-        job_site_address: '200 Washington St.',
-        job_site_address_line_2: '',
-        job_site_city: 'Denver',
-        job_site_state: 'CO',
-        job_site_zip_code: '80201',
-        completion_date: "2020-10-01T04:05:06.000Z",
-        material_cost: 200,
-        labor_cost: 200,
-        total_cost: 400,
-        description_of_work: 'blah',
-        client_company_name: 'Amazon',
-        business_address: '12 Tree Ave',
-        business_address_line_2: 'Suite 200',
-        business_city: 'Seattle',
-        business_state: 'WA',
-        business_zip_code: '99900',
-        additional_info: 'Amazon sucks',
-        job_id: '12345'
+          job_type: 'Labor & Materials',
+          job_site_name: 'Home',
+          job_site_contact_name: 'Taryn',
+          job_site_address: '200 Washington St.',
+          job_site_address_line_2: '',
+          job_site_city: 'Denver',
+          job_site_state: 'CO',
+          job_site_zip_code: '80201',
+          completion_date: "2020-10-01T04:05:06.000Z",
+          material_cost: 200,
+          labor_cost: 200,
+          total_cost: 400,
+          description_of_work: 'blah',
+          client_company_name: 'Amazon',
+          business_address: '12 Tree Ave',
+          business_address_line_2: 'Suite 200',
+          business_city: 'Seattle',
+          business_state: 'WA',
+          business_zip_code: '99900',
+          additional_info: 'Amazon sucks',
+          job_id: '12345'
+        }
       }
-    }
     })
 
-    const mockBack = jest.fn()
-
+    const history = createMemoryHistory()
+    const pushSpy = jest.spyOn(history, 'goBack')
 
     render(
-      <Provider store={ store }>
-        <MemoryRouter>
-          <JobDetails data={store.jobInfo}  key={'12345'} onClick={mockBack}/>
-        </MemoryRouter>
+      <Provider store={store}>
+        <Router history={history}>
+          <JobDetails />
+        </Router>
       </Provider>
     )
 
-    const backButton = screen.getByRole('button', {name: 'Back'});
-
-    expect(backButton).toBeInTheDocument();
-
-    fireEvent.click(backButton);
-    // await waitFor(() => expect(mockBack).toHaveBeenCalled())
-
+    fireEvent.click(screen.getByRole('button'))
+    expect(pushSpy).toHaveBeenCalled()
   });
 
   it('should not display the Submit or Remove buttons if status is NOI Requested', () => {

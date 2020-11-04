@@ -4,7 +4,6 @@ import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-import { createMemoryHistory } from 'history'
 import thunk from 'redux-thunk';
 import App from './App'
 import { getAllJobs, postNewJob, postLogin } from '../../helpers/apiCalls';
@@ -133,10 +132,6 @@ describe('App component', () => {
       inProcess: [],
       releaseEligible: []
     }
-    const info = {
-      email: 'taryn@gmail.com',
-      password: 'name'
-    }
 
     const loginResponse = {
       id: 1,
@@ -180,33 +175,33 @@ describe('App component', () => {
   })
 
   it('should render the login page when the user clicks on the login button & submit a user', async () => {
-    const allJobs = {
-      gracePeriod: [{
-        id: "1",
-        type: "job",
-        attributes: {
-          job_type: 'labor & materials',
-          job_site_name: 'Home',
-          job_site_contact_name: 'Taryn',
-          job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
-          job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
-          material_cost: 200,
-          labor_cost: 200,
-          total_cost: 400,
-          description_of_work: 'blah',
-          client_company_name: 'Amazon',
-          business_address: '12 Tree Ave',
-          business_address_line_2: 'Suite 200',
-          business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
-          status: 'Good Standing',
-          user_id: 1
-        }
-      }],
-      noiEligible: [],
-      lienEligible: [],
-      releaseEligible: []
-    }
+    // const allJobs = {
+    //   gracePeriod: [{
+    //     id: "1",
+    //     type: "job",
+    //     attributes: {
+    //       job_type: 'labor & materials',
+    //       job_site_name: 'Home',
+    //       job_site_contact_name: 'Taryn',
+    //       job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+    //       job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
+    //       material_cost: 200,
+    //       labor_cost: 200,
+    //       total_cost: 400,
+    //       description_of_work: 'blah',
+    //       client_company_name: 'Amazon',
+    //       business_address: '12 Tree Ave',
+    //       business_address_line_2: 'Suite 200',
+    //       business_city: 'Seattle',
+    //       business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
+    //       status: 'Good Standing',
+    //       user_id: 1
+    //     }
+    //   }],
+    //   noiEligible: [],
+    //   lienEligible: [],
+    //   releaseEligible: []
+    // }
 
     const info = {
       email: 'taryn@gmail.com',
@@ -221,7 +216,7 @@ describe('App component', () => {
     })
 
     store.dispatch = jest.fn()
-    const mockSetUser = jest.fn()
+    // const mockSetUser = jest.fn()
 
     render(
       <Provider store={store}>
@@ -231,16 +226,16 @@ describe('App component', () => {
       </Provider>
     )
 
-    const title = await waitFor(() =>screen.getByText('Welcome to LienFlash!'))
-    const title2 = screen.getByText('Please login to continue')
-    const createBtn = screen.getByRole('button', {name: 'Create Account'});
+    // const title = await waitFor(() =>screen.getByText('Welcome to LienFlash!'))
+    // const title2 = screen.getByText('Please login to continue')
+    // const createBtn = screen.getByRole('button', {name: 'Create Account'});
     const loginBtn = screen.getByRole('button', {name: 'Login'})
 
     fireEvent.click(loginBtn)
 
     const emailBox = screen.getByPlaceholderText('joe@gmail.com');
     const passwordBox = screen.getByPlaceholderText('Password')
-    const button = screen.getByRole('button', {name: 'Submit Login'})
+    const button = screen.getByRole('button', {name: 'Submit'})
 
     fireEvent.change(emailBox, {target: {value:'taryn@gmail.com'}})
     fireEvent.change(passwordBox, {target: {value: 'name'}})
@@ -303,7 +298,7 @@ describe('App component', () => {
       </Provider>
     )
 
-    const homepage = await waitFor(() => screen.getByText('What do you want to do?'))
+    // const homepage = await waitFor(() => screen.getByText('What do you want to do?'))
     const logoutBtn = screen.getByRole('button', {name: 'Log Out'});
 
     fireEvent.click(logoutBtn);
@@ -688,8 +683,8 @@ describe('App component', () => {
       user: user
     })
 
-    const history = createMemoryHistory()
-    const pushSpy = jest.spyOn(history, 'push')
+    // const history = createMemoryHistory()
+    // const pushSpy = jest.spyOn(history, 'push')
 
     render(
       <Provider store={store}>
@@ -760,9 +755,7 @@ describe('App component', () => {
     }
 
     expect(postNewJob).toHaveBeenCalledWith(newJob, user.id)
-
     // await waitFor(() => expect(pushSpy).toHaveBeenCalledWith('/homepage'))
-  // })
   })
 
   it.skip('should go to the profile page on click', async () => {
@@ -939,7 +932,7 @@ describe('App component', () => {
       </Provider>
     )
 
-    const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
+    // const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
     const eligibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
 
     fireEvent.click(eligibleJobsButton);
@@ -1057,7 +1050,7 @@ describe('App component', () => {
       </Provider>
     )
 
-    const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
+    // const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
     const eligibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
 
     fireEvent.click(eligibleJobsButton);
@@ -1071,6 +1064,5 @@ describe('App component', () => {
     const info = await waitFor(() => screen.getByText('Amazon is cool'));
 
     expect(info).toBeInTheDocument()
-
   })
 })

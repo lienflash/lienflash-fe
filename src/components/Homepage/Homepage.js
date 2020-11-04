@@ -29,7 +29,8 @@ function Homepage({ statusUpdated, updateStatus }) {
         .catch(error => {
           dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
         })
-  }, statusUpdated)
+     // fixes all warnings but need to test app to make sure it won't cause issues
+  }, [statusUpdated, updateStatus, dispatch, user])
 
   return (
     <div className='homepage'>

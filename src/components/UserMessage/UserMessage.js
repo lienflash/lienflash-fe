@@ -24,7 +24,7 @@ const UserMessage = ({ dateDifference, status, handleClick }) => {
         </Popup>
       }
       
-      {(status === 'good standing' || status === 'NOI Eligible') &&
+      {(status === 'Good Standing' || status === 'NOI Eligible') &&
         <Popup trigger={<button className='btn-submit'>Remove Job</button>} position="top left">
           {close => (
             <section className="popup-msg">
@@ -39,7 +39,7 @@ const UserMessage = ({ dateDifference, status, handleClick }) => {
         </Popup>
         }
       
-      {status === 'NOI filed' &&
+      {status === 'NOI Filed' &&
         <Popup trigger={<button className='btn-submit'>Submit Lien</button>} position="top left">
           {close => (
             <section className="popup-msg">

@@ -1,29 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../../scss/styles.scss'
 import Homepage from '../../components/Homepage/Homepage'
 import LandingPage from '../../components/LandingPage/LandingPage'
 import Login from '../Login/Login';
 import Header from '../Header/Header'
 import Profile from '../Profile/Profile'
-import Loader from '../../components/Loader/Loader'
 import Jobs from '../Jobs/Jobs'
-import { Route, Redirect, useLocation } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import JobForm from '../../components/JobForm/JobForm';
 import JobDetails from '../JobDetails/JobDetails';
 import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllJobs } from '../../helpers/apiCalls'
-import { setJobs, getJobInfo, setErrorMsg, resetErrorMsg } from '../../actions/actions'
+import {  getJobInfo } from '../../actions/actions'
 import PropTypes from 'prop-types';
 
 function App() {
-  const [jobAdded, updateJobAddedStatus] = useState(false)
-  // const [isLoaded, updateLoadingStatus] = useState(false)
+  const [statusUpdated, updateStatus] = useState(false)
   const dispatch = useDispatch();
   const allJobs = useSelector(state => state.allJobs);
   const errorMsg = useSelector(state => state.errorMessage);
   const user = useSelector(state => state.user.attributes)
-  const location = useLocation();
 
   return (
     <div className="App">
@@ -37,7 +33,7 @@ function App() {
               return (
                 <>
                   <Header />
-                  <JobDetails />
+                  <JobDetails updateStatus={updateStatus}/>
                 </>
               )
             }}/>
@@ -45,7 +41,7 @@ function App() {
               return (
                 <>
                   <Header />
-                  <JobForm updateJobAddedStatus={updateJobAddedStatus} />
+                  <JobForm updateStatus={updateStatus} />
                 </>
               )
             }}/>
@@ -97,7 +93,10 @@ function App() {
               return (
                 <>
                   <Header />
-                  <Homepage updateJobAddedStatus={updateJobAddedStatus} jobAdded={jobAdded}/>
+                  <Homepage 
+                    updateStatus={updateStatus} 
+                    statusUpdated={statusUpdated}
+                  />
                 </>
               )
             }}/>
@@ -135,5 +134,6 @@ export default App;
 
 App.propTypes = {
   allJobs: PropTypes.object,
+  user: PropTypes.object,
   errorMsg: PropTypes.string
 };

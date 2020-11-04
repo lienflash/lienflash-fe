@@ -30,14 +30,15 @@ function Login() {
         history.push('/homepage')
       })
       .catch(error => {
-        alert('Sorry, it looks like either your email or password were incorrect. Please try again.')
+        updateError('Sorry, it looks like either your email or password were incorrect. Please try again.')
       })
+    } else {
+      updateError('Please make sure you have input the correct email and password')
     }
   }
 
   const checkRequiredFields = () => {
     if (!input.email || !input.password) {
-      updateError('Please complete required fields')
       return false;
     } else {
       updateError('')

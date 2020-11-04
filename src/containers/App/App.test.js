@@ -103,7 +103,7 @@ describe('App component', () => {
     // })
   })
 
-  it.skip('Should render loading page while data is being fetched', async () => {
+  it('Should render loading page while data is being fetched', async () => {
     const allJobs = {
       gracePeriod: [{
         id: "1",
@@ -172,10 +172,10 @@ describe('App component', () => {
     // fireEvent.change(emailBox, {target: {value:'taryn@gmail.com'}})
     // fireEvent.change(passwordBox, {target: {value: 'name'}})
     // fireEvent.click(button)
-
-    const header = screen.getByText('Please wait while we load your dashboard')
-
-    await waitForElementToBeRemoved(() => screen.getByText('Please wait', {exact: false}))
+    //
+    // const header = await waitFor(() => screen.getByText('What do you want to do?'))
+    //
+    // expect(header).toBeInTheDocument();
   })
   it('should render the login page when the user clicks on the login button & submit a user', async () => {
     const allJobs = {
@@ -367,10 +367,10 @@ describe('App component', () => {
     fireEvent.click(eligibleJobsButton);
 
     const name = await waitFor(() => screen.getByText('Amazon'))
-   
+
     expect(name).toBeInTheDocument()
   })
-  
+
   it('should show the right number of jobs when user clicks on eligible button and goes to noi eligible', async () => {
     const allJobs = {
       gracePeriod: [],

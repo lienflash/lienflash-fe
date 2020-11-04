@@ -11,9 +11,10 @@ const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares);
 
 describe('Login', () => {
+  let store;
 
   beforeEach(() => {
-    const store = mockStore({})
+    store = mockStore({})
 
     render(
       <Provider store={store}>
@@ -45,5 +46,33 @@ describe('Login', () => {
 
     expect(emailBox.value).toBe('taryn@gmail.com');
     expect(passwordBox.value).toBe('name')
+  })
+  it('should return an error message if input is wrong', async () => {
+    const emailBox = screen.getByPlaceholderText('joe@gmail.com');
+    const passwordBox = screen.getByPlaceholderText('Password')
+    const button = screen.getByRole('button', {name: 'Submit Login'})
+
+    fireEvent.change(emailBox, {target: {value:''}})
+    fireEvent.change(passwordBox, {target: {value: 'name'}})
+    fireEvent.click(button)
+
+    const message = await waitFor(() => screen.getByText('Please make sure you have input the correct email and password'))
+    await waitFor(() => {
+        expect(message).toBeInTheDocument()
+    })
+  })
+  it('should return an error message if there is an error in post request', async () => {
+    const emailBox = screen.getByPlaceholderText('joe@gmail.com');
+    const passwordBox = screen.getByPlaceholderText('Password')
+    const button = screen.getByRole('button', {name: 'Submit Login'})
+
+    fireEvent.change(emailBox, {target: {value:'taryn'}})
+    fireEvent.change(passwordBox, {target: {value: 'name'}})
+    fireEvent.click(button)
+
+    const message = await waitFor(() => screen.getByText('Sorry, it looks like either your email or password were incorrect. Please try again.'))
+    await waitFor(() => {
+        expect(message).toBeInTheDocument()
+    })
   })
 })

@@ -61,7 +61,6 @@ describe('Homepage component', () => {
         }
       }],
       lienEligible: [],
-      inProcess: [],
       releaseEligible: []
     }
 
@@ -73,6 +72,9 @@ describe('Homepage component', () => {
       }
     }
 
+  })
+
+  it('Should render the users dashboard when the app loads', () => {
     getAllJobs.mockResolvedValueOnce(allJobs)
 
     const store = mockStore({
@@ -83,13 +85,10 @@ describe('Homepage component', () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <Homepage />
+          <Homepage isLoaded={true}/>
         </ MemoryRouter>
       </Provider>
     )
-  })
-
-  it('Should render the users dashboard when the app loads', () => {
 
     const header = screen.getByRole('heading', { name: 'What do you want to do?' })
     const addJobButton = screen.getByRole('button', { name: 'Add Job' })
@@ -106,6 +105,21 @@ describe('Homepage component', () => {
     expect(installButton).toBeInTheDocument()
   })
   it('should show message when install button clicked', () => {
+    getAllJobs.mockResolvedValueOnce(allJobs)
+
+    const store = mockStore({
+      allJobs: allJobs,
+      user: user
+      })
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Homepage />
+        </ MemoryRouter>
+      </Provider>
+    )
+
     const installButton = screen.getByText('Install App');
 
     fireEvent.click(installButton);

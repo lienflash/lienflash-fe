@@ -38,7 +38,7 @@ describe('Form component', () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <JobForm updateJobAddedStatus={jest.fn()}/>
+          <JobForm updateStatus={jest.fn()}/>
         </MemoryRouter>
       </Provider>
     )

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader'
 import Error from '../../components/Error/Error';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllJobs } from '../../helpers/apiCalls'
-import { setJobs, getJobInfo, setErrorMsg, resetErrorMsg } from '../../actions/actions'
-
+import { setJobs,  setErrorMsg, resetErrorMsg } from '../../actions/actions'
+import PropTypes from 'prop-types';
 import 'balloon-css';
 
-function Homepage({ updateJobAddedStatus, jobAdded }) {
+function Homepage({ statusUpdated, updateStatus }) {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user)
   const errorMsg = useSelector(state => state.errorMessage);
@@ -24,13 +23,13 @@ function Homepage({ updateJobAddedStatus, jobAdded }) {
         .then(data => {
           dispatch(setJobs(data.data))
           dispatch(resetErrorMsg());
-          updateJobAddedStatus(false)
+          updateStatus(false)
           updateLoadingStatus(true)
         })
         .catch(error => {
           dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
         })
-  }, [ jobAdded ])
+  }, statusUpdated)
 
   return (
     <div className='homepage'>
@@ -82,3 +81,10 @@ function Homepage({ updateJobAddedStatus, jobAdded }) {
 }
 
 export default Homepage;
+
+Homepage.propTypes = {
+  user: PropTypes.object,
+  errorMsg: PropTypes.string,
+  statusUpdated: PropTypes.bool,
+  updateStatus: PropTypes.func
+};

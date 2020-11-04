@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Profile = () => {
   const user = useSelector(state => state.user.attributes);
@@ -42,3 +43,7 @@ const Profile = () => {
 }
 
 export default Profile;
+
+Profile.propTypes = {
+  user: PropTypes.object
+}

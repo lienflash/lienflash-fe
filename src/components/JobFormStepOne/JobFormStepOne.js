@@ -1,5 +1,6 @@
 import React from 'react'
-import 'balloon-css'; // tooltip package
+import 'balloon-css'; 
+import PropTypes from 'prop-types';
 
 const JobFormStepOne = ({ handleInputChange, currentStep }) => {
 
@@ -171,3 +172,9 @@ const JobFormStepOne = ({ handleInputChange, currentStep }) => {
 }
 
 export default JobFormStepOne
+
+JobFormStepOne.propTypes = {
+  handleInputChange: PropTypes.func,
+  currentStep: PropTypes.number
+}
+

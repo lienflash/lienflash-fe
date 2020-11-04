@@ -1,6 +1,7 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import PropTypes from 'prop-types';
 
 const UserMessage = ({ dateDifference, status, handleClick }) => {
 
@@ -24,7 +25,7 @@ const UserMessage = ({ dateDifference, status, handleClick }) => {
         </Popup>
       }
       
-      {(status === 'good standing' || status === 'NOI Eligible') &&
+      {(status === 'Good Standing' || status === 'NOI Eligible') &&
         <Popup trigger={<button className='btn-submit'>Remove Job</button>} position="top left">
           {close => (
             <section className="popup-msg">
@@ -39,7 +40,7 @@ const UserMessage = ({ dateDifference, status, handleClick }) => {
         </Popup>
         }
       
-      {status === 'NOI filed' &&
+      {status === 'NOI Filed' &&
         <Popup trigger={<button className='btn-submit'>Submit Lien</button>} position="top left">
           {close => (
             <section className="popup-msg">
@@ -77,3 +78,9 @@ const UserMessage = ({ dateDifference, status, handleClick }) => {
 };
 
 export default UserMessage;
+
+UserMessage.propTypes = {
+  dateDifference: PropTypes.number, 
+  status: PropTypes.string, 
+  handleClick: PropTypes.func,
+}

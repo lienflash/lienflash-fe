@@ -1,11 +1,8 @@
 import React from 'react';
-//import './LandingPage.scss';
 import logo from '../../assets/lienflash-logo.png'
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 function LandingPage() {
-
   return(
     <div>
       <h1>Welcome to LienFlash!</h1>
@@ -17,7 +14,6 @@ function LandingPage() {
       </Link>
     </div>
   )
-
 }
 
 export default LandingPage;

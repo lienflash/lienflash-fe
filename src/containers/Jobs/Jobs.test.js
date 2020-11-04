@@ -2,7 +2,7 @@ import React from 'react';
 import Jobs from './Jobs.js';
 import Header from '../Header/Header.js';
 import Error from '../../components/Error/Error.js';
-import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';

@@ -14,7 +14,7 @@ describe('Loader component', () => {
     )
 
     const loadingSection = screen.getByLabelText('loading the page')
-    const heading = screen.getByRole('heading', { name: 'Please wait while we load your dashboard' })
+    const heading = screen.getByRole('heading', { name: 'Loading... Please wait' })
 
     expect(loadingSection).toBeInTheDocument()
     expect(heading).toBeInTheDocument()

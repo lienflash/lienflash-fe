@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -80,16 +80,20 @@ describe('Homepage component', () => {
     const store = mockStore({
       allJobs: allJobs,
       user: user
-      })
-
+    })
+  
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <Homepage isLoaded={true}/>
+          <Homepage 
+            isLoaded={true} 
+            statusUpdated={true}
+            updateStatus={jest.fn()} 
+          />
         </ MemoryRouter>
       </Provider>
     )
-
+ 
     const header = screen.getByRole('heading', { name: 'What do you want to do?' })
     const addJobButton = screen.getByRole('button', { name: 'Add Job' })
     const elibibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
@@ -104,27 +108,32 @@ describe('Homepage component', () => {
     expect(profileButton).toBeInTheDocument()
     expect(installButton).toBeInTheDocument()
   })
+
   it('should show message when install button clicked', () => {
     getAllJobs.mockResolvedValueOnce(allJobs)
 
     const store = mockStore({
       allJobs: allJobs,
       user: user
-      })
+    })
 
     render(
       <Provider store={store}>
         <MemoryRouter>
-          <Homepage />
+          <Homepage
+            isLoaded={true}
+            statusUpdated={true}
+            updateStatus={jest.fn()}
+          />
         </ MemoryRouter>
       </Provider>
     )
-
+    
     const installButton = screen.getByText('Install App');
 
     fireEvent.click(installButton);
 
-    const message = screen.getByLabelText('Install on mobile:', {exact: false});
+    const message = screen.getByLabelText('Install on mobile:', { exact: false });
 
     expect(message).toBeInTheDocument()
   })

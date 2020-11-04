@@ -107,7 +107,7 @@ describe('actions', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'good standing',
             dateDifference: 0
           }
@@ -138,7 +138,7 @@ describe('actions', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'good standing',
             dateDifference: 0
           }

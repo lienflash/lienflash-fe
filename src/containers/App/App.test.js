@@ -1,9 +1,10 @@
 import React from 'react';
-import { screen, render, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
+import { createMemoryHistory } from 'history'
 import thunk from 'redux-thunk';
 import App from './App'
 import { getAllJobs, postNewJob, postLogin } from '../../helpers/apiCalls';
@@ -32,7 +33,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'good standing'
         }
       }],
@@ -53,7 +54,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'NOI Eligible'
         }
       }],
@@ -122,7 +123,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'Good Standing',
           user_id: 1
         }
@@ -177,6 +178,7 @@ describe('App component', () => {
     //
     // expect(header).toBeInTheDocument();
   })
+
   it('should render the login page when the user clicks on the login button & submit a user', async () => {
     const allJobs = {
       gracePeriod: [{
@@ -196,7 +198,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'Good Standing',
           user_id: 1
         }
@@ -246,7 +248,8 @@ describe('App component', () => {
 
     expect(postLogin).toHaveBeenCalledWith(info)
   })
-  it.skip('should log a user out when they click on the logut button and take them to the landing page', async () => {
+
+  it.skip('should log a user out when they click on the logout button and take them to the landing page', async () => {
     const allJobs = {
       gracePeriod: [{
         id: "1",
@@ -265,7 +268,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'Good Standing',
           user_id: 1
         }
@@ -330,7 +333,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'good standing'
         }
       }],
@@ -366,7 +369,7 @@ describe('App component', () => {
 
     fireEvent.click(eligibleJobsButton);
 
-    const name = await waitFor(() => screen.getByText('Amazon'))
+    const name = await waitFor(() => screen.getByText('Job site contact: Taryn'))
 
     expect(name).toBeInTheDocument()
   })
@@ -391,7 +394,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'good standing'
         }
       }],
@@ -431,7 +434,7 @@ describe('App component', () => {
 
     fireEvent.click(noiButton)
 
-    const name = await waitFor(() => screen.getByText('Amazon'))
+    const name = await waitFor(() => screen.getByText('Job site contact: Taryn'))
 
     expect(name).toBeInTheDocument()
   })
@@ -456,7 +459,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'NOI filed'
         }
       }],
@@ -491,7 +494,7 @@ describe('App component', () => {
 
     fireEvent.click(filedJobsButton);
 
-    const name = await waitFor(() => screen.getByText('Amazon'))
+    const name = await waitFor(() => screen.getByText('Job site contact: Taryn'))
 
     expect(name).toBeInTheDocument()
   })
@@ -517,7 +520,7 @@ describe('App component', () => {
           business_address: '12 Tree Ave',
           business_address_line_2: 'Suite 200',
           business_city: 'Seattle',
-          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
           status: 'Lien Filed'
         }
       }]
@@ -554,10 +557,11 @@ describe('App component', () => {
 
     fireEvent.click(releaseButton)
 
-    const name = await waitFor(() => screen.getByText('Amazon'))
+    const name = await waitFor(() => screen.getByText('Job site contact: Taryn'))
 
     expect(name).toBeInTheDocument()
   })
+
   it('should show the job form when a user clicks on add job', async () => {
     getAllJobs.mockResolvedValueOnce({
       allJobs: {}
@@ -594,10 +598,55 @@ describe('App component', () => {
 
     expect(heading).toBeInTheDocument();
   })
+
   it.skip('should allow a user to submit a new job on click', async () => {
-    getAllJobs.mockResolvedValueOnce({
-      allJobs: {}
-    })
+    const allJobs = {
+      gracePeriod: [{
+        id: "1",
+        type: "job",
+        attributes: {
+          job_type: 'labor & materials',
+          job_site_name: 'Home',
+          job_site_contact_name: 'Taryn',
+          job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+          job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
+          material_cost: 200,
+          labor_cost: 200,
+          total_cost: 400,
+          description_of_work: 'blah',
+          client_company_name: 'Amazon',
+          business_address: '12 Tree Ave',
+          business_address_line_2: 'Suite 200',
+          business_city: 'Seattle',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon is cool',
+          status: 'good standing'
+        }
+      }],
+      noiEligible: [{
+        id: "2",
+        type: "job",
+        attributes: {
+          job_type: 'labor & materials',
+          job_site_name: 'Home',
+          job_site_contact_name: 'Taryn',
+          job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+          job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
+          material_cost: 200,
+          labor_cost: 200,
+          total_cost: 400,
+          description_of_work: 'blah',
+          client_company_name: 'Microsoft',
+          business_address: '12 Tree Ave',
+          business_address_line_2: 'Suite 200',
+          business_city: 'Seattle',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon is cool',
+          status: 'NOI Eligible'
+        }
+      }],
+      lienEligible: [],
+      inProcess: [],
+      releaseEligible: []
+    }
 
     const user = {
       id: 1,
@@ -606,15 +655,41 @@ describe('App component', () => {
         email: 'taryn@gmail.com'
       }
     }
+    
+    getAllJobs.mockResolvedValueOnce(allJobs)
 
     postNewJob.mockResolvedValueOnce({
-      response: 'It passed'
+      job_type: 'Labor',
+      job_site_contact_name: 'Sally May',
+      job_site_name: 'Burt\'s Warehouse',
+      job_site_address: '1777 Myrtle Drive',
+      job_site_address_line_2: 'Apt 1209',
+      job_site_city: 'Denver',
+      job_site_state: 'CO',
+      job_site_zip_code: '80240',
+      completion_date: '2020-10-25',
+      description_of_work: 'Fixed the toilet',
+      labor_cost: '10000',
+      material_cost: null,
+      total_cost: '10000',
+      client_company_name: null,
+      business_address: null,
+      business_address_line_2: null,
+      business_city: null,
+      business_state: null,
+      business_zip_code: null,
+      additional_info: null,
+      user_id: 1,
+      status: 'Good Standing'
     })
 
     const store = mockStore({
-      allJobs: {},
+      allJobs: allJobs,
       user: user
     })
+
+    const history = createMemoryHistory()
+    const pushSpy = jest.spyOn(history, 'push')
 
     render(
       <Provider store={store}>
@@ -645,7 +720,6 @@ describe('App component', () => {
     const dateInput = screen.getByLabelText('job-completion-date')
     const jobDescription = screen.getByLabelText('job-description')
     const laborCostsInput = screen.getByLabelText('labor-costs-due')
-    const materialCostsInput = screen.getByLabelText('material-costs-due')
     const totalCostsInput = screen.getByLabelText('total-costs-due')
     const nextButton = screen.getByRole('button', { name: 'Next' })
 
@@ -658,28 +732,39 @@ describe('App component', () => {
     fireEvent.change(stateInput, { target: { value: 'CO' } })
     fireEvent.change(zipCodeInput, { target: { value: '80240' } })
     fireEvent.change(dateInput, { target: { value: '2020-10-25' } })
+
     fireEvent.change(laborCostsInput, { target: { value: '10000' } })
     fireEvent.change(jobDescription, { target: { value: 'Fixed the toilet' } })
     fireEvent.change(jobSiteNameInput, { target: { value: 'Burt\'s Warehouse' } })
-    fireEvent.change(materialCostsInput, { target: { value: '0' } })
     fireEvent.change(totalCostsInput, { target: { value: '10000' } })
 
     fireEvent.click(nextButton)
 
-    const step1Heading = screen.getByText('Step 2')
     const submitButton = screen.getByLabelText('submit form')
-
-    expect(step1Heading).toBeInTheDocument()
-    expect(submitButton).toBeInTheDocument()
 
     fireEvent.click(submitButton)
 
-    const homepage = await waitFor(() => screen.getByText('Add Job'))
+    const newJob = {
+      jobType: 'Labor',
+      jobSiteContactName: 'Sally May',
+      jobSiteName: 'Burt\'s Warehouse',
+      jobSiteAddress: '1777 Myrtle Drive',
+      jobSiteAddressLine2: 'Apt 1209',
+      jobSiteCity: 'Denver',
+      jobSiteState: 'CO',
+      jobSiteZipCode: '80240',
+      completionDate: '2020-10-25',
+      laborCost: '10000',
+      jobDescription: 'Fixed the toilet',
+      totalCost: '10000',
+    }
 
-    await waitFor(() => {
-      expect(homepage).toBeInTheDocument()
-    })
+    expect(postNewJob).toHaveBeenCalledWith(newJob, user.id)
+
+    // await waitFor(() => expect(pushSpy).toHaveBeenCalledWith('/homepage'))
+  // })
   })
+
   it.skip('should go to the profile page on click', async () => {
     getAllJobs.mockResolvedValueOnce({allJobs: {}})
 
@@ -760,6 +845,7 @@ describe('App component', () => {
       expect(profileButton2).toBeInTheDocument();
     })
   })
+
   it('should return to the previous page on back click from job details page', async () => {
     const allJobs = {
       gracePeriod: [{
@@ -858,7 +944,7 @@ describe('App component', () => {
 
     fireEvent.click(eligibleJobsButton);
 
-    const card = await waitFor(() => screen.getByText('Amazon'));
+    const card = screen.getByText('Job site contact: Taryn');
 
     expect(card).toBeInTheDocument()
 
@@ -872,10 +958,11 @@ describe('App component', () => {
 
     fireEvent.click(backBtn);
 
-    const newCard = await waitFor(() => screen.getByText('Amazon'));
+    const newCard = screen.getByText('Job site contact: Taryn');
 
     expect(newCard).toBeInTheDocument()
   })
+
   it('should allow a user to open a window with job details', async () => {
     const currentDate = new Date()
 
@@ -975,7 +1062,7 @@ describe('App component', () => {
 
     fireEvent.click(eligibleJobsButton);
 
-    const card = await waitFor(() => screen.getByText('Amazon'));
+    const card = screen.getByText('Job site contact: Taryn')
 
     expect(card).toBeInTheDocument()
 

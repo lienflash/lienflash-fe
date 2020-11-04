@@ -31,7 +31,7 @@ describe('jobInfoReducer', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'Good Standing',
             dateDifference: 0
           }
@@ -61,7 +61,7 @@ describe('jobInfoReducer', () => {
         business_address: '12 Tree Ave',
         business_address_line_2: 'Suite 200',
         business_city: 'Seattle',
-        business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+        business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
         status: 'Good Standing',
         dateDifference: 0
       }
@@ -101,7 +101,7 @@ describe('jobInfoReducer', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'Good Standing',
             dateDifference: 11
           }
@@ -129,7 +129,7 @@ describe('jobInfoReducer', () => {
         business_address: '12 Tree Ave',
         business_address_line_2: 'Suite 200',
         business_city: 'Seattle',
-        business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+        business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
         status: 'Good Standing',
         dateDifference: 11
       }
@@ -163,7 +163,7 @@ describe('jobInfoReducer', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'NOI Eligible',
             dateDifference: 0
           }
@@ -193,7 +193,7 @@ describe('jobInfoReducer', () => {
       business_address: '12 Tree Ave',
       business_address_line_2: 'Suite 200',
       business_city: 'Seattle',
-      business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+      business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
       status: 'NOI Eligible',
       dateDifference: 0
     }
@@ -227,7 +227,7 @@ describe('jobInfoReducer', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'NOI Requested',
             dateDifference: 0
           }
@@ -257,7 +257,7 @@ describe('jobInfoReducer', () => {
       business_address: '12 Tree Ave',
       business_address_line_2: 'Suite 200',
       business_city: 'Seattle',
-      business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+      business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
       status: 'NOI Requested',
       dateDifference: 0
     }
@@ -291,7 +291,7 @@ describe('jobInfoReducer', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'NOI Filed',
             dateDifference: 0
           }
@@ -321,7 +321,7 @@ describe('jobInfoReducer', () => {
         business_address: '12 Tree Ave',
         business_address_line_2: 'Suite 200',
         business_city: 'Seattle',
-        business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+        business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
         status: 'NOI Filed',
         dateDifference: 0
       }
@@ -356,7 +356,7 @@ describe('jobInfoReducer', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'Lien Filed',
             dateDifference: 0
           }
@@ -387,7 +387,7 @@ describe('jobInfoReducer', () => {
         business_address: '12 Tree Ave',
         business_address_line_2: 'Suite 200',
         business_city: 'Seattle',
-        business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+        business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
         status: 'Lien Filed',
         dateDifference: 0
       }

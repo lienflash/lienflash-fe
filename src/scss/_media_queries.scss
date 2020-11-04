@@ -51,6 +51,15 @@ h2 {
   margin-left: 400px;
   margin-right: 400px;
   }
+
+  .logout {  
+  max-width: 120px;
+  height: auto;
+  font-size: 14px;
+   position: absolute;
+    top: 0;
+    right: 10%;
+  }
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1339px) {
@@ -121,7 +130,7 @@ h2 {
   font-size: 14px;
   position: absolute;
     top: 0;
-    right: 2%;
+    right: 5%;
   }
 }
 
@@ -153,12 +162,13 @@ h2 {
 
    .logout {  
   max-width: 100px;
+  padding: 5px;
   width: auto;
   line-height: 14px;
   font-size: 12px;
   position: absolute;
     top: 0;
-    right: 0;
+    right: 5%;
   }
 
   .login {
@@ -170,6 +180,13 @@ h2 {
 /*  Smartphones in portrait mode  */
 
 @media only screen and (max-width: 420px) {
+
+ .logo { 
+  width: 50%; 
+  height: auto; 
+  align-self: flex-start;
+  }
+
   h1 {
   font-size: 30px; 
   }
@@ -205,11 +222,12 @@ h2 {
   .logout {  
   max-width: 55px;
   width: auto;
+  padding: 5px;
   line-height: 14px;
   font-size: 12px;
   position: absolute;
     top: 0;
-    right: 0px;
+    right: 5%;
   }
 
   .login {

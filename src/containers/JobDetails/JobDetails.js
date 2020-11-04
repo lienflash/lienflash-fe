@@ -53,7 +53,7 @@ function JobDetails(props) {
         </section>
         }
         <h2>Job Details</h2>
-          <h3 className='bold'>Job Site Name: </h3><p> {job_site_name}</p>
+        <h3 className='bold'>Job Site Name: </h3><p> {job_site_name ? job_site_name : "n/a"}</p>
           <br />
           <h3 className='bold'>Job Site Contact Name: </h3>
             <p>{job_site_contact_name}</p><br />

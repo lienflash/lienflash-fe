@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.scss';
+// import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/lienflash-logo.png'
 import { useSelector, useDispatch } from 'react-redux';
@@ -35,7 +35,7 @@ function Header(props) {
           <Link to={'/homepage'} onClick={clearError}>
             <img src={logo} className='logo' alt='lienflash logo'/>
           </Link>
-          <button className='btn' onClick={logout}>Log Out</button>
+          <button className='btn logout' onClick={logout}>Log Out</button>
         </>
       }
         {currentPath !== undefined && currentPath === 'filed'&&

@@ -16,6 +16,10 @@ function Homepage({ updateJobAddedStatus, jobAdded }) {
   const [isLoaded, updateLoadingStatus] = useState(false)
 
   useEffect(() => {
+    setTimeout(updateLoadingStatus(true), 200)
+  }, [])
+
+  useEffect(() => {
       getAllJobs(user.id)
         .then(data => {
           dispatch(setJobs(data.data))

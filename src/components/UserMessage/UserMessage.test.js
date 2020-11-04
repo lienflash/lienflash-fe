@@ -1,21 +1,10 @@
 import React from 'react';
 import UserMessage from './UserMessage';
-
-import thunk from 'redux-thunk';
 import { screen, render, fireEvent  } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
-// import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import configureMockStore from 'redux-mock-store';
-import { updateJobStatus } from '../../helpers/apiCalls'
-jest.mock('../../helpers/apiCalls')
-const middlewares = [thunk]
-const mockStore = configureMockStore(middlewares);
-
 
 describe('UserMessage component', () => {
-
   it('should display Submit NOI button when status is NOI Eligible', () => {
   const diff = 11
   const status = 'NOI Eligible'

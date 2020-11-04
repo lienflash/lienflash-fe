@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader'
 import Error from '../../components/Error/Error';
@@ -29,7 +29,7 @@ function Homepage({ statusUpdated, updateStatus }) {
         .catch(error => {
           dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
         })
-  }, [statusUpdated])
+  }, statusUpdated)
 
   return (
     <div className='homepage'>

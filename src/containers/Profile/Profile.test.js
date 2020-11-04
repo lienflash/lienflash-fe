@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './Profile.js';
 import thunk from 'redux-thunk';
-import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { createMemoryHistory } from 'history'
 import { MemoryRouter, Router } from 'react-router-dom';

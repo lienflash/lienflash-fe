@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <section className='loader' aria-label='loading the page'>
       <i className='fa fa-5x fa-cog fa-spin' />
-      <h2>Please wait while we load your dashboard</h2>
+      <h2>Loading... Please wait</h2>
     </section>
   )
 }

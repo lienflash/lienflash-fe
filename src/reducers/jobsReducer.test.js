@@ -7,6 +7,7 @@ describe('jobsReducer - labor', () => {
 
     expect(result).toEqual(expected)
   });
+
   it('should return the correct state if action is ALL_JOBS', () => {
     const currentDate = new Date();
 
@@ -105,7 +106,6 @@ describe('jobsReducer - labor', () => {
         }
       ]
     }
-
 
     const newState = {
       gracePeriod: [{

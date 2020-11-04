@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types';
 
 const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
 
@@ -87,3 +87,8 @@ const JobFormStepTwo = ({ handleInputChange, currentStep }) => {
 }
 
 export default JobFormStepTwo
+
+JobFormStepTwo.propTypes = {
+  handleInputChange: PropTypes.func,
+  currentStep: PropTypes.number
+}

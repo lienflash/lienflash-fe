@@ -4,6 +4,7 @@ import JobFormStepTwo from '../JobFormStepTwo/JobFormStepTwo'
 import { useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { postNewJob } from '../../helpers/apiCalls'
+import PropTypes from 'prop-types';
 
 const JobForm = ({ updateStatus }) => {
   const [input, setInput] = useState({})
@@ -90,3 +91,8 @@ const JobForm = ({ updateStatus }) => {
 }
 
 export default JobForm
+
+JobForm.propTypes = {
+  updateStatus: PropTypes.func,
+  user: PropTypes.object
+}

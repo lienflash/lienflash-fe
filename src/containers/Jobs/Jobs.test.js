@@ -33,7 +33,7 @@ describe('Jobs', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'Good Standing'
           }
         }, {
@@ -42,7 +42,7 @@ describe('Jobs', () => {
           attributes:{
             job_type: 'Materials & Labor',
             job_site_name: 'Home',
-            job_site_contact_name: 'Taryn',
+            job_site_contact_name: 'Bean',
             job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
             job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
             material_cost: 200,
@@ -53,7 +53,7 @@ describe('Jobs', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'Good Standing'
           }
         }],
@@ -63,7 +63,7 @@ describe('Jobs', () => {
           attributes: {
             job_type: 'Materials & Labor',
             job_site_name: 'Home',
-            job_site_contact_name: 'Taryn',
+            job_site_contact_name: 'Mike Ross',
             job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
             job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
             material_cost: 200,
@@ -74,7 +74,7 @@ describe('Jobs', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'NOI Eligible'
             }
           }],
@@ -96,7 +96,7 @@ describe('Jobs', () => {
             business_address: '12 Tree Ave',
             business_address_line_2: 'Suite 200',
             business_city: 'Seattle',
-            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+            business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon warehouse reno',
             status: 'Lien Filed'
             }
           }]
@@ -118,8 +118,8 @@ describe('Jobs', () => {
     const graceButton = screen.getByText('Grace Period');
     fireEvent.click(graceButton)
 
-    const name = screen.getByText("Amazon");
-    const name3 = screen.getByText("Bean's Place")
+    const name = screen.getByText("Job site contact: Taryn");
+    const name3 = screen.getByText("Job site contact: Bean")
 
     expect(name).toBeInTheDocument();
     expect(name3).toBeInTheDocument();
@@ -127,10 +127,11 @@ describe('Jobs', () => {
     const noiButton = screen.getByText('NOI Eligible')
     fireEvent.click(noiButton)
 
-    const name2 = screen.getByText("Microsoft");
+    const name2 = screen.getByText('Job site contact: Mike Ross');
 
     expect(name2).toBeInTheDocument();
   });
+
   it('should display the right number of jobs on click for filed', () => {
 
     render(
@@ -145,7 +146,7 @@ describe('Jobs', () => {
     const releaseButton = screen.getByText('Release Eligible');
     fireEvent.click(releaseButton)
 
-    const name = screen.getByText("Microsoft");
+    const name = screen.getByText('Taryn', { exact: false });
 
     expect(name).toBeInTheDocument();
   });

@@ -30,7 +30,7 @@ describe('JobCard', () => {
       business_address: '12 Tree Ave',
       business_address_line_2: 'Suite 200',
       business_city: 'Seattle',
-      business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+      business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon',
       job_id: '12345',
       status: 'good standing'
     }
@@ -45,7 +45,7 @@ describe('JobCard', () => {
     )
 
     // not testing date: currently using it transforms what's expected into the wrong format, and not sure how to fix
-    const name = screen.getByText("Amazon");
+    const name = screen.getByText('Job site contact: Taryn');
     const total = screen.getByText("Amount Due: $400");
     //const completion = screen.getByText("Date of Substantial Completion: " + currentDate);
     //const daysDifference = screen.getByText("Days Left to Submit:")

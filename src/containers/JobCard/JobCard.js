@@ -3,7 +3,7 @@ import './JobCard.scss';
 import PropTypes from 'prop-types';
 
 function JobCard(props) {
-  const { job_type, status, client_company_name, total_cost, completion_date, dateDifference } = props.data
+  const { job_type, status, job_site_contact_name, total_cost, completion_date, dateDifference } = props.data
 
   const endDate = new Date(completion_date).getTime();
 
@@ -11,7 +11,10 @@ function JobCard(props) {
 
   return (
     <article className={"job-card"}>
-      <h2>{client_company_name}</h2>
+      <h2 className='cardHeader'>Job site contact: {job_site_contact_name}</h2>
+      {(status === 'NOI Requested') &&
+      <h3 className='flag'>Request for NOI submitted</h3>
+      }
       <h3>Amount Due: ${total_cost}</h3>
       <h3>Date of Substantial Completion: {completionDate}</h3>
       {job_type === 'Labor' && (status === 'good standing' || status === 'NOI Eligible') &&
@@ -33,7 +36,7 @@ export default JobCard;
 JobCard.propTypes = {
   job_type: PropTypes.string,
   status: PropTypes.string,
-  client_company_name: PropTypes.string,
+  job_site_contact_name: PropTypes.string,
   total_cost: PropTypes.number,
   completion_date: PropTypes.string,
   dateDifference: PropTypes.number

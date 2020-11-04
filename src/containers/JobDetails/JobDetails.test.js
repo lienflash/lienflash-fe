@@ -143,7 +143,7 @@ describe('JobDetails', () => {
           business_city: 'Seattle',
           business_state: 'WA',
           business_zip_code: '99900',
-          additional_info: 'Amazon sucks',
+          additional_info: 'Amazon warehouse reno',
           job_id: '12345'
         }
       }
@@ -191,7 +191,7 @@ describe('JobDetails', () => {
           business_city: 'Seattle',
           business_state: 'WA',
           business_zip_code: '99900',
-          additional_info: 'Amazon sucks',
+          additional_info: 'Amazon warehouse reno',
           job_id: '12345',
           status: 'NOI Requested'
         }

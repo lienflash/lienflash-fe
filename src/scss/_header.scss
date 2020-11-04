@@ -1,29 +1,41 @@
 .logo {
   width: 60%;
   height: 30%;
+  padding: 20px;
+  text-align: center;
 }
 
-.in-process-btn,
-.release-lien-eligible-btn,
-.noi-eligible-btn,
-.lien-eligible-btn {
-  border: none;
-  margin: .5em;
-  padding: .5em;
+.header {
+  max-width: 1170px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.logout {
+  max-width: 120px;
+  width: auto;
+  padding: 5px;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  right: 10%;
+}
+
+.nav-button {
+  margin: 0.25em;
+  padding: 0.5em;
   background-color: black;
   color: white;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .selected {
   transform: scale(1.05);
   background-color: #49a050;
   cursor: pointer;
+  text-decoration: none;
 }
-
-/*
-green: #49a050
-or #00a24a according to website
-black: #000000
-gray: #7b7a7f
-*/

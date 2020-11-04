@@ -47,7 +47,7 @@ function Login() {
   }
 
   return(
-    <div>
+    <div className='container login'>
       <label>Email<abbr className='required' aria-label='required'>*</abbr>
         <input
           type='text'

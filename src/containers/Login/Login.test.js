@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './Login.js';
 import thunk from 'redux-thunk';
-import { screen, render, fireEvent } from '@testing-library/react';
+import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';

@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 
 function App() {
   const [jobAdded, updateJobAddedStatus] = useState(false)
-  const [isLoaded, updateLoadingStatus] = useState(true)
+  // const [isLoaded, updateLoadingStatus] = useState(false)
   const dispatch = useDispatch();
   const allJobs = useSelector(state => state.allJobs);
   const errorMsg = useSelector(state => state.errorMessage);
@@ -27,16 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      { !isLoaded &&
-        <Loader />
-      }
-      {!isLoaded && errorMsg &&
-        <>
-          <Loader />
-          <Error />
-        </>
-      }
-      { isLoaded && user !== undefined &&
+      { user !== undefined &&
           <>
             <Route exact path='/jobs/:eligibility/:dateDifference/:id' render={({match}) => {
               const jobId = match.params.id;
@@ -106,7 +97,7 @@ function App() {
               return (
                 <>
                   <Header />
-                  <Homepage updateJobAddedStatus={updateJobAddedStatus} updateLoadingStatus={updateLoadingStatus} jobAdded={jobAdded}/>
+                  <Homepage updateJobAddedStatus={updateJobAddedStatus} jobAdded={jobAdded}/>
                 </>
               )
             }}/>
@@ -114,7 +105,7 @@ function App() {
               <Redirect to="/homepage" />} />
           </>
         }
-        {isLoaded && user === undefined &&
+        {user === undefined &&
           <>
             <Route exact path="/login" render={() => {
               return (

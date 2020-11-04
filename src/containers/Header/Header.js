@@ -3,10 +3,12 @@ import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/lienflash-logo.png'
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { logoutUser, clearJobs, resetErrorMsg } from '../../actions/actions';
 import PropTypes from 'prop-types';
 
 function Header(props) {
+  const history = useHistory();
   const { currentPath } = props;
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
@@ -18,6 +20,7 @@ function Header(props) {
   const logout = () => {
     dispatch(logoutUser())
     dispatch(clearJobs())
+    // history.push('/login')
   }
 
   return (

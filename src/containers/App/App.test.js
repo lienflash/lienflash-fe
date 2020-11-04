@@ -6,14 +6,14 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import App from './App'
-import { getAllJobs, postNewJob } from '../../helpers/apiCalls';
+import { getAllJobs, postNewJob, postLogin } from '../../helpers/apiCalls';
 jest.mock('../../helpers/apiCalls');
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares);
 
 describe('App component', () => {
-  it('Should render the homepage when the app loads', async () => {
+  it('Should render the landing page when the app loads', async () => {
     const allJobs = {
       gracePeriod: [{
         id: "1",
@@ -62,18 +62,12 @@ describe('App component', () => {
       releaseEligible: []
     }
 
-    const user = {
-      id: 1,
-      attributes: {
-        name: 'Taryn',
-        email: 'taryn@gmail.com'
-      }
-    }
+    const user = {}
 
     getAllJobs.mockResolvedValueOnce(allJobs)
 
     const store = mockStore({
-      allJobs: allJobs,
+      allJobs: {},
       user: user
     })
 
@@ -85,28 +79,77 @@ describe('App component', () => {
       </Provider>
     )
 
-    const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
-    const addJobButton = screen.getByRole('button', { name: 'Add Job'})
-    const eligibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
-    const filedLiensButton = screen.getByRole('button', { name: 'Filed Liens' })
-    const profileButton = screen.getByRole('button', { name: 'Profile' })
+    const title = screen.getByText('Welcome to LienFlash!')
+    const title2 = screen.getByText('Please login to continue')
+    const createBtn = screen.getByRole('button', {name: 'Create Account'});
+    const loginBtn = screen.getByRole('button', {name: 'Login'})
 
-    await waitFor(() => {
-      expect(header).toBeInTheDocument()
-      expect(addJobButton ).toBeInTheDocument()
-      expect(eligibleJobsButton).toBeInTheDocument()
-      expect(filedLiensButton).toBeInTheDocument()
-      expect(profileButton).toBeInTheDocument()
-    })
+    expect(title).toBeInTheDocument();
+    expect(title2).toBeInTheDocument();
+    expect(createBtn).toBeInTheDocument();
+    expect(loginBtn).toBeInTheDocument()
+    // const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
+    // const addJobButton = screen.getByRole('button', { name: 'Add Job'})
+    // const eligibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
+    // const filedLiensButton = screen.getByRole('button', { name: 'Filed Liens' })
+    // const profileButton = screen.getByRole('button', { name: 'Profile' })
+    //
+    // await waitFor(() => {
+    //   expect(header).toBeInTheDocument()
+    //   expect(addJobButton ).toBeInTheDocument()
+    //   expect(eligibleJobsButton).toBeInTheDocument()
+    //   expect(filedLiensButton).toBeInTheDocument()
+    //   expect(profileButton).toBeInTheDocument()
+    // })
   })
 
   it.skip('Should render loading page while data is being fetched', async () => {
-    getAllJobs.mockResolvedValueOnce({
-      allJobs: {}
-    })
+    const allJobs = {
+      gracePeriod: [{
+        id: "1",
+        type: "job",
+        attributes: {
+          job_type: 'labor & materials',
+          job_site_name: 'Home',
+          job_site_contact_name: 'Taryn',
+          job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+          job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
+          material_cost: 200,
+          labor_cost: 200,
+          total_cost: 400,
+          description_of_work: 'blah',
+          client_company_name: 'Amazon',
+          business_address: '12 Tree Ave',
+          business_address_line_2: 'Suite 200',
+          business_city: 'Seattle',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          status: 'Good Standing',
+          user_id: 1
+        }
+      }],
+      noiEligible: [],
+      lienEligible: [],
+      inProcess: [],
+      releaseEligible: []
+    }
+    const info = {
+      email: 'taryn@gmail.com',
+      password: 'name'
+    }
+
+    const loginResponse = {
+      id: 1,
+      attributes: {
+        name: 'Taryn',
+        email: 'taryn@gmail.com'
+      }
+    }
+
+    getAllJobs.mockResolvedValueOnce(allJobs)
+    postLogin.mockResolvedValueOnce(loginResponse)
 
     const store = mockStore({
-      allJobs: {},
+      allJobs: allJobs,
       user: {}
     })
 
@@ -118,11 +161,156 @@ describe('App component', () => {
       </Provider>
     )
 
-    const header = screen.getByRole('heading', { name: 'Please wait while we load your dashboard' })
+    // const login = screen.getByRole('button', {name: 'Login'})
+    //
+    // fireEvent.click(login)
+    //
+    // const emailBox = screen.getByPlaceholderText('joe@gmail.com');
+    // const passwordBox = screen.getByPlaceholderText('Password')
+    // const button = screen.getByRole('button', {name: 'Submit Login'})
+    //
+    // fireEvent.change(emailBox, {target: {value:'taryn@gmail.com'}})
+    // fireEvent.change(passwordBox, {target: {value: 'name'}})
+    // fireEvent.click(button)
+
+    const header = screen.getByText('Please wait while we load your dashboard')
 
     await waitForElementToBeRemoved(() => screen.getByText('Please wait', {exact: false}))
   })
+  it('should render the login page when the user clicks on the login button & submit a user', async () => {
+    const allJobs = {
+      gracePeriod: [{
+        id: "1",
+        type: "job",
+        attributes: {
+          job_type: 'labor & materials',
+          job_site_name: 'Home',
+          job_site_contact_name: 'Taryn',
+          job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+          job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
+          material_cost: 200,
+          labor_cost: 200,
+          total_cost: 400,
+          description_of_work: 'blah',
+          client_company_name: 'Amazon',
+          business_address: '12 Tree Ave',
+          business_address_line_2: 'Suite 200',
+          business_city: 'Seattle',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          status: 'Good Standing',
+          user_id: 1
+        }
+      }],
+      noiEligible: [],
+      lienEligible: [],
+      releaseEligible: []
+    }
 
+    const info = {
+      email: 'taryn@gmail.com',
+      password: 'name'
+    }
+
+    postLogin.mockResolvedValue(info)
+
+    const store = mockStore({
+      allJobs: {},
+      user: {}
+    })
+
+    store.dispatch = jest.fn()
+    const mockSetUser = jest.fn()
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    const title = await waitFor(() =>screen.getByText('Welcome to LienFlash!'))
+    const title2 = screen.getByText('Please login to continue')
+    const createBtn = screen.getByRole('button', {name: 'Create Account'});
+    const loginBtn = screen.getByRole('button', {name: 'Login'})
+
+    fireEvent.click(loginBtn)
+
+    const emailBox = screen.getByPlaceholderText('joe@gmail.com');
+    const passwordBox = screen.getByPlaceholderText('Password')
+    const button = screen.getByRole('button', {name: 'Submit Login'})
+
+    fireEvent.change(emailBox, {target: {value:'taryn@gmail.com'}})
+    fireEvent.change(passwordBox, {target: {value: 'name'}})
+    fireEvent.click(button)
+
+    expect(postLogin).toHaveBeenCalledWith(info)
+  })
+  it.skip('should log a user out when they click on the logut button and take them to the landing page', async () => {
+    const allJobs = {
+      gracePeriod: [{
+        id: "1",
+        type: "job",
+        attributes: {
+          job_type: 'labor & materials',
+          job_site_name: 'Home',
+          job_site_contact_name: 'Taryn',
+          job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+          job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
+          material_cost: 200,
+          labor_cost: 200,
+          total_cost: 400,
+          description_of_work: 'blah',
+          client_company_name: 'Amazon',
+          business_address: '12 Tree Ave',
+          business_address_line_2: 'Suite 200',
+          business_city: 'Seattle',
+          business_state: 'WA', business_zip_code: '99900', additional_info: 'Amazon sucks',
+          status: 'Good Standing',
+          user_id: 1
+        }
+      }],
+      noiEligible: [],
+      lienEligible: [],
+      inProcess: [],
+      releaseEligible: []
+    }
+
+    const loginResponse = {
+      id: 1,
+      attributes: {
+        name: 'Taryn',
+        email: 'taryn@gmail.com'
+      }
+    }
+
+    getAllJobs.mockResolvedValueOnce(allJobs)
+    postLogin.mockResolvedValueOnce(loginResponse)
+
+    const store = mockStore({
+      allJobs: allJobs,
+      user: loginResponse
+    })
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    const homepage = await waitFor(() => screen.getByText('What do you want to do?'))
+    const logoutBtn = screen.getByRole('button', {name: 'Log Out'});
+
+    fireEvent.click(logoutBtn);
+
+    const message = await waitFor(() => screen.getByText('Welcome to LienFlash!'))
+
+    await waitFor(() => {
+        expect(message).toBeInTheDocument()
+    })
+  })
   it('should show the right number of jobs when user clicks on eligible button and goes to grace period', async () => {
     const allJobs = {
       gracePeriod: [{
@@ -148,7 +336,6 @@ describe('App component', () => {
       }],
       noiEligible: [],
       lienEligible: [],
-      inProcess: [],
       releaseEligible: []
     }
 
@@ -493,7 +680,7 @@ describe('App component', () => {
       expect(homepage).toBeInTheDocument()
     })
   })
-  it('should go to the profile page on click', async () => {
+  it.skip('should go to the profile page on click', async () => {
     getAllJobs.mockResolvedValueOnce({allJobs: {}})
 
     const user = {
@@ -799,19 +986,4 @@ describe('App component', () => {
     expect(info).toBeInTheDocument()
 
   })
-  //maybe do these in job details since these are specific to that container?
-  // it('should allow a user to remove a job on click in job details', () => {
-  //   // post request
-  //   // redirects to homepage
-  //
-  // })
-  // it('should allow a user to submit an noi on click', () => {
-  //
-  // })
-  // it('should allow a user to submit a lien on click', () => {
-  //
-  // })
-  // it('should allow a user to release a lien on click', () => {
-  //
-  // })
 })

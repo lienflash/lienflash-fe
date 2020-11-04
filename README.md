@@ -61,16 +61,18 @@ In terminal, go to the project directory and run 'npm start' to open the project
 ## Functionality
 
 ### Opening Page & Logging In
-![logging in functionality]()
+![logging in functionality](./src/assets/login.gif)
 
 ### Add A Job
-![add a job functionality]()
+![add a job functionality step 1](./src/assets/add-job1.gif)
+
+![add a job functionality step 2](./src/assets/add-job2.gif)
 
 ### Checking Eligible Jobs
-![opening eligible jobs]()
+![opening eligible jobs](/src/assets/eligible-jobs-details.gif)
 
 ### Viewing Profile Info & Logging Out
-![going to profile and logging out]()
+![going to profile and logging out](/src/assets/profile-log-out.gif)
 
 ## Next Steps
 - Add token authorization on a user logging in

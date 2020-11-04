@@ -1,8 +1,18 @@
 
  /* Monitors with screen width 1366px or above */
 
-h2 { font-size: 36px; }
+h2 { 
+  font-size: 36px; 
+}
 
+.logout {  
+  max-width: 120px;
+  height: auto;
+  font-size: 14px;
+   position: absolute;
+    top: 0;
+    right: 10%;
+}
 
 /*  Tablets - landscape mode */
 
@@ -11,6 +21,8 @@ h2 { font-size: 36px; }
   h2 { 
     font-size: 32px; 
   }
+
+
 
   .form { 
     height: 100%;
@@ -101,6 +113,16 @@ h2 { font-size: 36px; }
   .date-help-info {
   padding: 14px 0px 14px 0px;
   }   
+
+   .logout {  
+  max-width: 160px;
+  width: auto;
+  line-height: 16px;
+  font-size: 14px;
+  position: absolute;
+    top: 0;
+    right: 2%;
+  }
 }
 
 /*  Smartphones in landscape mode */
@@ -127,6 +149,21 @@ h2 { font-size: 36px; }
   .filed,
   .profile {
     font-size: 20px;
+  }
+
+   .logout {  
+  max-width: 100px;
+  width: auto;
+  line-height: 14px;
+  font-size: 12px;
+  position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .login {
+  margin: 1em;
+  width: 70%;
   }
 }
 
@@ -163,5 +200,20 @@ h2 { font-size: 36px; }
    width: auto;
    margin-top: 20px; 
    font-size: 14px;
- }
+  }
+
+  .logout {  
+  max-width: 55px;
+  width: auto;
+  line-height: 14px;
+  font-size: 12px;
+  position: absolute;
+    top: 0;
+    right: 0px;
+  }
+
+  .login {
+  margin: 1em;
+  width: 80%;
+  }
 }

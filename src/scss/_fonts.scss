@@ -10,6 +10,14 @@
   color: $darkCharcoal;
 }
 
-.required, .error-msg {
+.required, 
+.error-msg {
   color: red;
+}
+
+.flag {
+  // color: $darkGrey;
+  color: $darkCharcoal;
+  font-style: italic;
+  
 }

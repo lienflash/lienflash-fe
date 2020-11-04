@@ -27,6 +27,8 @@
   color: white;
   border-radius: 20px;
   box-shadow: 4px 4px 10px 1px black;
+  height: 6em;
+  width: 80%
 }
 
 .add:hover,
@@ -64,7 +66,7 @@
   font-size: large;
   border: none;
   color: $darkCharcoal;
-  margin-top: 80px;
+  margin-top: 5%;
   background: transparent;
   left: 50%;
 }

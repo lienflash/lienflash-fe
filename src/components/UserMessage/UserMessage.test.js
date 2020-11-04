@@ -26,7 +26,7 @@ describe('UserMessage component', () => {
 
   it('should display Submit Lien button when status is NOI filed', () => {
     const diff = 30
-    const status = 'NOI filed'
+    const status = 'NOI Filed'
 
     render(
       <MemoryRouter>
@@ -128,7 +128,7 @@ describe('UserMessage component', () => {
 
   it('Should trigger patch request if user hits confirm on Submit Lien button', () => {
     const diff = 30
-    const status = 'NOI filed'
+    const status = 'NOI Filed'
 
     const mockHandleClick = jest.fn()
 

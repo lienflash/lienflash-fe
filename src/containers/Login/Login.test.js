@@ -29,7 +29,7 @@ describe('Login', () => {
     const emailBox = screen.getByPlaceholderText('joe@gmail.com')
     const passwordLabel = screen.getByText('Password')
     const passwordBox = screen.getByPlaceholderText('Password')
-    const button = screen.getByRole('button', {name: 'Submit Login'})
+    const button = screen.getByRole('button', {name: 'Submit'})
 
     expect(emailLabel).toBeInTheDocument()
     expect(emailBox).toBeInTheDocument()
@@ -50,7 +50,7 @@ describe('Login', () => {
   it('should return an error message if input is wrong', async () => {
     const emailBox = screen.getByPlaceholderText('joe@gmail.com');
     const passwordBox = screen.getByPlaceholderText('Password')
-    const button = screen.getByRole('button', {name: 'Submit Login'})
+    const button = screen.getByRole('button', {name: 'Submit'})
 
     fireEvent.change(emailBox, {target: {value:''}})
     fireEvent.change(passwordBox, {target: {value: 'name'}})
@@ -64,7 +64,7 @@ describe('Login', () => {
   it('should return an error message if there is an error in post request', async () => {
     const emailBox = screen.getByPlaceholderText('joe@gmail.com');
     const passwordBox = screen.getByPlaceholderText('Password')
-    const button = screen.getByRole('button', {name: 'Submit Login'})
+    const button = screen.getByRole('button', {name: 'Submit'})
 
     fireEvent.change(emailBox, {target: {value:'taryn'}})
     fireEvent.change(passwordBox, {target: {value: 'name'}})

@@ -9,7 +9,7 @@ h2 {
   max-width: 120px;
   height: auto;
   font-size: 14px;
-   position: absolute;
+  position: absolute;
     top: 0;
     right: 10%;
 }
@@ -21,8 +21,6 @@ h2 {
   h2 { 
     font-size: 32px; 
   }
-
-
 
   .form { 
     height: 100%;
@@ -48,8 +46,17 @@ h2 {
   }
 
   .App {
-  margin-left: 400px;
-  margin-right: 400px;
+    margin-left: 400px;
+    margin-right: 400px;
+  }
+
+  .logout {  
+    max-width: 120px;
+    height: auto;
+    font-size: 14px;
+    position: absolute;
+      top: 0;
+      right: 10%;
   }
 }
 
@@ -85,8 +92,8 @@ h2 {
   }
 
   .App {
-  margin-left: 250px;
-  margin-right: 250px;
+    margin-left: 250px;
+    margin-right: 250px;
   }
 }
 
@@ -94,7 +101,7 @@ h2 {
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   h1 {
-  font-size: 36px; 
+    font-size: 36px; 
   }
   
   h2 { 
@@ -111,17 +118,17 @@ h2 {
   }
 
   .date-help-info {
-  padding: 14px 0px 14px 0px;
+    padding: 14px 0px 14px 0px;
   }   
 
-   .logout {  
-  max-width: 160px;
-  width: auto;
-  line-height: 16px;
-  font-size: 14px;
-  position: absolute;
-    top: 0;
-    right: 2%;
+  .logout {  
+    max-width: 160px;
+    width: auto;
+    line-height: 16px;
+    font-size: 14px;
+    position: absolute;
+      top: 0;
+      right: 5%;
   }
 }
 
@@ -129,7 +136,7 @@ h2 {
 
 @media only screen and (min-width: 421px) and (max-width: 767px) {
   h1 {
-  font-size: 34px; 
+    font-size: 34px; 
   }
   
   h2 { 
@@ -141,7 +148,7 @@ h2 {
   }
 
   .date-help-info {
-  padding: 14px 0px 14px 0px;
+    padding: 14px 0px 14px 0px;
   }
 
   .add,
@@ -151,27 +158,35 @@ h2 {
     font-size: 20px;
   }
 
-   .logout {  
-  max-width: 100px;
-  width: auto;
-  line-height: 14px;
-  font-size: 12px;
-  position: absolute;
-    top: 0;
-    right: 0;
+  .logout {  
+    max-width: 100px;
+    padding: 5px;
+    width: auto;
+    line-height: 14px;
+    font-size: 12px;
+    position: absolute;
+      top: 0;
+      right: 5%;
   }
 
   .login {
-  margin: 1em;
-  width: 70%;
+    margin: 1em;
+    width: 70%;
   }
 }
 
 /*  Smartphones in portrait mode  */
 
 @media only screen and (max-width: 420px) {
+
+ .logo { 
+    width: 50%; 
+    height: auto; 
+    align-self: flex-start;
+  }
+
   h1 {
-  font-size: 30px; 
+    font-size: 30px; 
   }
   
   h2 { 
@@ -197,23 +212,28 @@ h2 {
   .btn-submit
   .btn,
   .btn-secondary {
-   width: auto;
-   margin-top: 20px; 
-   font-size: 14px;
+    width: auto;
+    margin-top: 20px; 
+    font-size: 14px;
   }
 
   .logout {  
-  max-width: 55px;
-  width: auto;
-  line-height: 14px;
-  font-size: 12px;
-  position: absolute;
-    top: 0;
-    right: 0px;
+    max-width: 55px;
+    width: auto;
+    padding: 5px;
+    line-height: 14px;
+    font-size: 12px;
+    position: absolute;
+      top: 0;
+      right: 5%;
   }
 
   .login {
-  margin: 1em;
-  width: 80%;
+    margin: 1em;
+    width: 80%;
+  }
+
+  .install-info {
+    margin-top: 40%;
   }
 }

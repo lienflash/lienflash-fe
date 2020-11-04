@@ -206,7 +206,7 @@ describe('jobsReducer - labor', () => {
     expect(result).toEqual(newState)
   });
   it('should return the correct state if action is ALL_JOBS and date difference is greater than 10', () => {
-    const currentDate = new Date();
+    // const currentDate = new Date();
     const laterDate = new Date();
     const numberOfDaysToAdd = 11;
     laterDate.setDate(laterDate.getDate() - numberOfDaysToAdd);

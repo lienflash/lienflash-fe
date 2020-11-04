@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import '../../scss/styles.scss'
-import Homepage from '../../components/Homepage/Homepage'
+import Homepage from '../Homepage/Homepage'
 import LandingPage from '../../components/LandingPage/LandingPage'
 import Login from '../Login/Login';
 import Header from '../Header/Header'
 import Profile from '../Profile/Profile'
 import Jobs from '../Jobs/Jobs'
 import { Route, Redirect } from 'react-router-dom'
-import JobForm from '../../components/JobForm/JobForm';
+import JobForm from '../JobForm/JobForm';
 import JobDetails from '../JobDetails/JobDetails';
 import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';

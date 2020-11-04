@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import JobFormStepOne from '../JobFormStepOne/JobFormStepOne'
-import JobFormStepTwo from '../JobFormStepTwo/JobFormStepTwo'
+import JobFormStepOne from '../../components/JobFormStepOne/JobFormStepOne'
+import JobFormStepTwo from '../../components/JobFormStepTwo/JobFormStepTwo'
 import { useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { postNewJob } from '../../helpers/apiCalls'

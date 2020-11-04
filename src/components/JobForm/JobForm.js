@@ -4,13 +4,11 @@ import JobFormStepTwo from '../JobFormStepTwo/JobFormStepTwo'
 import { useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { postNewJob } from '../../helpers/apiCalls'
-import { Redirect } from 'react-router-dom'
 
 const JobForm = ({ updateJobAddedStatus }) => {
   const [input, setInput] = useState({})
   const [currentStep, updateStep] = useState(1)
   const [error, updateError] = useState('')
-  const [submitSuccessful, updateStatus] = useState(false);
   const user = useSelector(state => state.user)
   const history = useHistory();
 
@@ -18,8 +16,8 @@ const JobForm = ({ updateJobAddedStatus }) => {
     setInput({
     ...input,
     [e.currentTarget.name]: e.currentTarget.value
-  })
-}
+    })
+  }
 
   const checkRequiredFields = () => {
     if (!input.jobType
@@ -39,13 +37,12 @@ const JobForm = ({ updateJobAddedStatus }) => {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const newJob = input
-    postNewJob(newJob, user.id)
+    await postNewJob(newJob, user.id)
     .then(() => {
       updateJobAddedStatus(true)
-      updateStatus(true)
       history.push('/homepage')
     })
     .catch(error => {
@@ -88,7 +85,6 @@ const JobForm = ({ updateJobAddedStatus }) => {
           />
         </div>
       }
-      { submitSuccessful && <Redirect to='/'/>}
     </form>
   )
 }

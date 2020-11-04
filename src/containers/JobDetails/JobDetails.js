@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { updateJobStatus } from '../../helpers/apiCalls'
-import { Redirect } from 'react-router-dom'
 import UserMessage from '../../components/UserMessage/UserMessage'
 import PropTypes from 'prop-types';
-// need to add functionality to buttons and add tests for them
 
 function JobDetails(props) {
-  const { updateJobAddedStatus } = props
+  const { updateStatus } = props
+  const user = useSelector(state => state.user)
   const jobInfo = useSelector(state => state.jobInfo.attributes);
   const { id }  = useSelector(state => state.jobInfo);
-
-  const [updateSuccessful, updateStatus] = useState(false)
 
   const history = useHistory();
   const { job_type, job_site_name,
@@ -31,16 +28,16 @@ function JobDetails(props) {
     )
   }
 
-  const handleClick = (status) => {
+  const handleClick = async (status) => {
     const jobId = id
-    updateJobStatus(jobId, status)
-      .then(() => {
-        updateJobAddedStatus(true)
-        updateStatus(true)
-      })
-      .catch(error => {
-        alert('Sorry, we had an issue processing your request. Please refresh to try again.')
-      })
+    await updateJobStatus(user.id, jobId, status)
+    .then(() => {
+      updateStatus(true)
+      history.push('/homepage')
+    })
+    .catch(error => {
+      alert('Sorry, we had an issue processing your request. Please refresh to try again.')
+    })
   }
 
   const fillJobInfo = () => {
@@ -112,7 +109,6 @@ function JobDetails(props) {
             <UserMessage status={status} dateDifference={dateDifference} handleClick={handleClick}/>
           }
         </div>
-        { updateSuccessful && <Redirect to='/' />}
       </div>
     )
   }

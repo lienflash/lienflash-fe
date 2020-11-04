@@ -5,7 +5,7 @@ import { useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { postNewJob } from '../../helpers/apiCalls'
 
-const JobForm = ({ updateJobAddedStatus }) => {
+const JobForm = ({ updateStatus }) => {
   const [input, setInput] = useState({})
   const [currentStep, updateStep] = useState(1)
   const [error, updateError] = useState('')
@@ -42,7 +42,7 @@ const JobForm = ({ updateJobAddedStatus }) => {
     const newJob = input
     await postNewJob(newJob, user.id)
     .then(() => {
-      updateJobAddedStatus(true)
+      updateStatus(true)
       history.push('/homepage')
     })
     .catch(error => {

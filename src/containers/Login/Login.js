@@ -24,6 +24,7 @@ function Login() {
       postLogin(input)
         .then(response => {
           dispatch(setUser(response.data))
+          localStorage.setItem('token', response.data.attributes.token)
           history.push('/homepage')
         })
         .catch(error => {

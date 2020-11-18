@@ -17,7 +17,7 @@ function Header(props) {
   const logout = () => {
     dispatch(logoutUser())
     dispatch(clearJobs())
-
+    localStorage.removeItem('token')
   }
 
   return (

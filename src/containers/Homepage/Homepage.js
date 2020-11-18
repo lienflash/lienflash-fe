@@ -19,7 +19,7 @@ function Homepage({ statusUpdated, updateStatus }) {
   }, [])
 
   useEffect(() => {
-      getAllJobs(user.id)
+      getAllJobs(user.id, user.attributes.token)
         .then(data => {
           dispatch(setJobs(data.data))
           dispatch(resetErrorMsg());

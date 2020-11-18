@@ -1,5 +1,5 @@
 export const getAllJobs = (id) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`)
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs`)
     .then((response) => {
       if (!response.ok) {
         throw Error(response.statusText);
@@ -10,7 +10,7 @@ export const getAllJobs = (id) => {
 }
 
 export const postNewJob = async (newJob, id) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`, {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ export const postNewJob = async (newJob, id) => {
 }
 
 export const updateJobStatus = (id, jobId, newStatus) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs/${jobId}?status=${newStatus}`, {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs/${jobId}?status=${newStatus}`, {
     method: 'PATCH'
   })
   .then((response) => {
@@ -74,6 +74,36 @@ export const postLogin = (info) => {
   .then((response) => {
     if (!response.ok) {
       throw Error(response.statusText);
+    } else {
+      return response.json();
+    }
+  })
+}
+
+export const createUser = (info) => {
+  return fetch('https://lienflash-be.herokuapp.com/api/v1/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify({
+      name: info.userName,
+      business_name: info.companyName,
+      email: info.email,
+      business_work_number: info.workNumber,
+      business_cell_number: info.cellNumber,
+      business_address: info.businessAddress,
+      business_address_line2: info.businessAddressLine2,
+      business_city: info.businessCity,
+      business_state: info.businessState,
+      business_zip_code: info.businessZipCode,
+      password: info.password   
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw Error(response.statusText)
     } else {
       return response.json();
     }

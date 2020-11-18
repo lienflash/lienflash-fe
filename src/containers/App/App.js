@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../scss/styles.scss'
 import Homepage from '../Homepage/Homepage'
 import LandingPage from '../../components/LandingPage/LandingPage'
@@ -11,7 +11,8 @@ import JobForm from '../JobForm/JobForm';
 import JobDetails from '../JobDetails/JobDetails';
 import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';
-import {  getJobInfo } from '../../actions/actions'
+import { getUserProfile } from '../../helpers/apiCalls'
+import {  getJobInfo, setUser } from '../../actions/actions'
 import PropTypes from 'prop-types';
 
 function App() {
@@ -20,6 +21,22 @@ function App() {
   const allJobs = useSelector(state => state.allJobs);
   const errorMsg = useSelector(state => state.errorMessage);
   const user = useSelector(state => state.user.attributes)
+  const token = localStorage.token
+
+  useEffect(() => {
+    if (token) {
+      alert('found token')
+      console.log('reading token')
+      /* new code to be used when new endpoint is setup */
+      // getUserProfile(token)
+        // .then(data => {
+        //   dispatch(setUser(data.data))
+          // because it sets user, they should see dashboard
+      // })
+      //   .catch(error => alert('Error using token to set user'))
+      // error handling
+    }
+  })
 
   return (
     <div className="App">

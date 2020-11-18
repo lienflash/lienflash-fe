@@ -3,6 +3,7 @@ import '../../scss/styles.scss'
 import Homepage from '../Homepage/Homepage'
 import LandingPage from '../../components/LandingPage/LandingPage'
 import Login from '../Login/Login';
+import CreateUser from '../CreateUser/CreateUser';
 import Header from '../Header/Header'
 import Profile from '../Profile/Profile'
 import Jobs from '../Jobs/Jobs'
@@ -126,6 +127,14 @@ function App() {
                 </>
               )
             }}/>
+          <Route exact path="/create-user" render={() => {
+            return (
+              <>
+                <Header />
+                <CreateUser />
+              </>
+            )
+          }} />
             <Route render={() =>
               <Redirect to="/" />} />
             <Route exact path='/' render={() => {

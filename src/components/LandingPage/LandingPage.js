@@ -11,7 +11,9 @@ function LandingPage() {
       <Link to={'/login'}>
         <button className='primary-btn'>Login</button>
       </Link><br />
-      <button className='primary-btn'>Create Account</button>
+      <Link to={'/create-user'}>
+        <button className='primary-btn'>Create Account</button>
+      </Link>
     </div>
   )
 }

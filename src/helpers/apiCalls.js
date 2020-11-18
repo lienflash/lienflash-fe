@@ -1,3 +1,23 @@
+
+// user token to fetch current users profile info
+export const getUserProfile = (token) => {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user`, {
+  method: "GET",
+    headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      return response.json();
+    }
+  })
+} 
+
 export const getAllJobs = (id) => {
   return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`)
     .then((response) => {

@@ -28,7 +28,7 @@ function CreateUser() {
     const checked = checkRequiredFields();
     if(checked) {
       await createUser(input)
-        .then(data => {
+        .then(() => {
           history.push('/login')
         })
         .catch(error => {
@@ -38,7 +38,7 @@ function CreateUser() {
   }
 
   return (
-    <form >
+    <form>
       <div className='create-user-form'>
         <label>User Name<abbr className='required' aria-label='required'>*</abbr>
           <br />
@@ -89,6 +89,7 @@ function CreateUser() {
             type='text'
             name="business_address"
             aria-label='business-address'
+            placeholder='123 Sesame St.'
             maxLength='100'
             onChange={handleChange}
           /><br />
@@ -97,7 +98,7 @@ function CreateUser() {
           type='text'
           name="business_address_line2"
           aria-label='business-address-line-2'
-          placeholder='Apt/Suite'
+          placeholder='Suite 200'
           maxLength='100'
           onChange={handleChange}
         /><br />
@@ -171,7 +172,11 @@ function CreateUser() {
           <article className='error-msg'>{error}</article>
         }
         <br />
-          <button className='btn-secondary' type='button' onClick={handleSubmit}>Submit</button>
+        <input
+          type='Submit'
+          aria-label='submit form'
+          onClick={handleSubmit}
+        />
           <br />
       </div>
     </form>

@@ -30,6 +30,7 @@ function CreateUser() {
       await createUser(input)
         .then(() => {
           history.push('/login')
+          alert('You successfully created an account! Please login to continue.')
         })
         .catch(error => {
           alert('Sorry, we had an issue creating your account. Please try again later')

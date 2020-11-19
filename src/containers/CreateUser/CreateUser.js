@@ -15,7 +15,7 @@ function CreateUser() {
   }
 
   const checkRequiredFields = () => {
-    if (!input.userName || !input.companyName || !input.workNumber || ! input.cellNumber || !input.businessAddress || !input.businessAddressLine2 || !input.businessCity || !input.businessState || !input.businessZipCode || !input.email || !input.password) {
+    if (!input.name || !input.business_name || !input.business_work_number || ! input.business_cell_number || !input.business_address || !input.business_address_line2 || !input.business_city || !input.business_state || !input.business_zip_code || !input.email || !input.password || !input.password_confirmation) {
       updateError('Please complete required fields.')
     } else {
       updateError('');
@@ -23,14 +23,13 @@ function CreateUser() {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const checked = checkRequiredFields();
     if(checked) {
-      console.log(input)
-      createUser(input)
-        .then(() => {
-          history.pushState('/login')
+      await createUser(input)
+        .then(data => {
+          history.push('/login')
         })
         .catch(error => {
           alert('Sorry, we had an issue creating your account. Please try again later')
@@ -39,13 +38,13 @@ function CreateUser() {
   }
 
   return (
-    <>
+    <form >
       <div className='create-user-form'>
         <label>User Name<abbr className='required' aria-label='required'>*</abbr>
           <br />
           <input
             type='text'
-            name='userName'
+            name="name"
             placeholder='Joe Smith'
             aria-label='user-name'
             onChange={handleChange}
@@ -56,7 +55,7 @@ function CreateUser() {
           <br />
           <input
             type='text'
-            name='companyName'
+            name="business_name"
             placeholder="Joe's Business"
             aria-label='company-name'
             onChange={handleChange}
@@ -67,7 +66,7 @@ function CreateUser() {
           <br />
           <input
             type='number'
-            name='workNumber'
+            name="business_work_number"
             placeholder='3035557700'
             aria-label='work-number'
             onChange={handleChange}
@@ -78,7 +77,7 @@ function CreateUser() {
           <br />
           <input
             type='number'
-            name='cellNumber'
+            name="business_cell_number"
             placeholder='7205557700'
             aria-label='cell-number'
             onChange={handleChange}
@@ -88,7 +87,7 @@ function CreateUser() {
         <label>Business Address: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
             type='text'
-            name='businessAddress'
+            name="business_address"
             aria-label='business-address'
             maxLength='100'
             onChange={handleChange}
@@ -96,7 +95,7 @@ function CreateUser() {
         </label>
         <input
           type='text'
-          name='businessAddressLine2'
+          name="business_address_line2"
           aria-label='business-address-line-2'
           placeholder='Apt/Suite'
           maxLength='100'
@@ -105,7 +104,7 @@ function CreateUser() {
         <label>City: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
             type='text'
-            name='businessCity'
+            name="business_city"
             aria-label='business-address-city'
             style={{ width: '50%' }}
             maxLength='20'
@@ -115,7 +114,7 @@ function CreateUser() {
         <label>State: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
             type='text'
-            name='businessState'
+            name="business_state"
             aria-label='business-address-state'
             maxLength='20'
             style={{ width: '30%' }}
@@ -125,7 +124,7 @@ function CreateUser() {
         <label>Zip Code: <abbr className='required' aria-label='required'>*</abbr><br />
           <input
             type='text'
-            name='businessZipCode'
+            name="business_zip_code"
             aria-label='business-address-zip-code'
             inputMode='decimal'
             style={{ width: '30%' }}
@@ -133,17 +132,13 @@ function CreateUser() {
             onChange={handleChange}
           /><br />
         </label>
-        <br />
-        {error &&
-          <article className='error-msg'>{error}</article>
-        }
       </div>
       <div className='user-signin'>
           <label>Email<abbr className='required' aria-label='required'>*</abbr>
             <br />
             <input
               type='text'
-              name='email'
+              name="email"
               placeholder='joe@gmail.com'
               aria-label='email'
               onChange={handleChange}
@@ -154,17 +149,32 @@ function CreateUser() {
             <br />
             <input
               type='password'
-              name='password'
+              name="password"
               placeholder='Password'
               aria-label='password'
               onChange={handleChange}
             />
           </label>
           <br />
+        <label>Password Confirmation<abbr className='required' aria-label='required'>*</abbr>
+          <br />
+          <input
+            type='password'
+            name="password_confirmation"
+            placeholder='Retype password here'
+            aria-label='password-confirmation'
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        {error &&
+          <article className='error-msg'>{error}</article>
+        }
+        <br />
           <button className='btn-secondary' type='button' onClick={handleSubmit}>Submit</button>
           <br />
       </div>
-    </>
+    </form>
   )
 }
 

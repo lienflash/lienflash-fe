@@ -80,26 +80,13 @@ export const postLogin = (info) => {
   })
 }
 
-export const createUser = (info) => {
+export const createUser = async (info) => {
   return fetch('https://lienflash-be.herokuapp.com/api/v1/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Accept: 'application/json'
     },
-    body: JSON.stringify({
-      name: info.userName,
-      business_name: info.companyName,
-      email: info.email,
-      business_work_number: info.workNumber,
-      business_cell_number: info.cellNumber,
-      business_address: info.businessAddress,
-      business_address_line2: info.businessAddressLine2,
-      business_city: info.businessCity,
-      business_state: info.businessState,
-      business_zip_code: info.businessZipCode,
-      password: info.password   
-    })
+    body: JSON.stringify(info)
   })
   .then(response => {
     if (!response.ok) {

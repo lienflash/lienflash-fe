@@ -22,12 +22,12 @@ function Header(props) {
 
   return (
     <header>
-      {user === undefined &&
+      {currentPath === 'no-user' &&
         <Link to={'/'}>
           <img src={logo} className='logo' alt='lienflash logo'/>
         </Link>
       }
-      {user !== undefined &&
+      {currentPath === 'user' &&
         <>
           <Link to={'/homepage'} onClick={clearError}>
             <img src={logo} className='logo' alt='lienflash logo'/>
@@ -35,7 +35,7 @@ function Header(props) {
           <button className='btn logout' onClick={logout}>Log Out</button>
         </>
       }
-        {currentPath !== undefined && currentPath === 'filed'&&
+        {currentPath === 'filed'&&
             <div>
               <NavLink to={"/filedjobs/lien-eligible"} className='nav-button' activeClassName="selected" onClick={clearError}>
               Lien Eligible
@@ -45,7 +45,7 @@ function Header(props) {
               </NavLink>
             </div>
         }
-        {currentPath !== undefined && currentPath === 'eligible'&&
+        {currentPath === 'eligible'&&
             <div>
               <NavLink to={'/eligiblejobs/grace-period'} className='nav-button' activeClassName="selected" onClick={clearError}>
                 Grace Period

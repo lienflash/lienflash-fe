@@ -97,7 +97,7 @@ function App() {
             <Route exact path="/profile" render={() => {
               return (
                 <>
-                  <Header />
+                  <Header currentPath='user'/>
                   <Profile />
                 </>
               )
@@ -105,7 +105,7 @@ function App() {
             <Route exact path="/homepage" render={() => {
               return (
                 <>
-                  <Header />
+                  <Header currentPath='user'/>
                   <Homepage 
                     updateStatus={updateStatus} 
                     statusUpdated={statusUpdated}
@@ -122,7 +122,7 @@ function App() {
             <Route exact path="/login" render={() => {
               return (
                 <>
-                  <Header />
+                  <Header currentPath='no-user'/>
                   <Login />
                 </>
               )
@@ -130,7 +130,7 @@ function App() {
           <Route exact path="/create-user" render={() => {
             return (
               <>
-                <Header />
+                <Header currentPath='no-user'/>
                 <CreateUser />
               </>
             )

@@ -1,9 +1,8 @@
 
-// user token to fetch current users profile info
-export const getUserProfile = (token) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user`, {
+export const getUserProfile = async (token) => {
+  return await fetch(`https://lienflash-be.herokuapp.com/api/v1/users/verified`, {
   method: "GET",
-    headers: {
+  headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
       'Authorization': `Bearer ${token}`
@@ -19,29 +18,29 @@ export const getUserProfile = (token) => {
 } 
 
 export const getAllJobs = (id, token) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`, {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs`, {
   method: "GET",
-    headers: {
+  headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
     'Authorization': `Bearer ${token}`
   }
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        return response.json();
-      }
-    })
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      return response.json();
+    }
+  })
 }
 
 export const postNewJob = async (newJob, id, token) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`, {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-    Accept: 'application/json',
+      Accept: 'application/json',
       'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify(
@@ -79,7 +78,7 @@ export const postNewJob = async (newJob, id, token) => {
 }
 
 export const updateJobStatus = (id, jobId, newStatus, token) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs/${jobId}?status=${newStatus}`, {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs/${jobId}?status=${newStatus}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

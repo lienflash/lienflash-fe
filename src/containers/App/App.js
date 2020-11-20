@@ -24,17 +24,12 @@ function App() {
   const token = localStorage.token
 
   useEffect(() => {
-    if (token) {
-      alert('found token')
-      console.log('reading token')
-      /* new code to be used when new endpoint is setup */
-      // getUserProfile(token)
-        // .then(data => {
-        //   dispatch(setUser(data.data))
-          // because it sets user, they should see dashboard
-      // })
-      //   .catch(error => alert('Error using token to set user'))
-      // error handling
+    if (token && user === undefined) {
+      getUserProfile(token)
+        .then(data => {
+          dispatch(setUser(data.data))
+      })
+      .catch(error => alert('Error retrieving users profile'))
     }
   })
 
@@ -121,7 +116,7 @@ function App() {
               <Redirect to="/homepage" />} />
           </>
         }
-        {user === undefined &&
+        { (!token && user === undefined) &&
           <>
             <Route exact path="/login" render={() => {
               return (

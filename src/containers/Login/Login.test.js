@@ -61,7 +61,7 @@ describe('Login', () => {
         expect(message).toBeInTheDocument()
     })
   })
-  it('should return an error message if there is an error in post request', async () => {
+  it.skip('should return an error message if there is an error in post request', async () => {
     const emailBox = screen.getByPlaceholderText('joe@gmail.com');
     const passwordBox = screen.getByPlaceholderText('Password')
     const button = screen.getByRole('button', {name: 'Submit'})

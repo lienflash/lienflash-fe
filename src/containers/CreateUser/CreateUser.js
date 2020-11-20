@@ -15,7 +15,7 @@ function CreateUser() {
   }
 
   const checkRequiredFields = () => {
-    if (!input.name || !input.business_name || !input.business_work_number || ! input.business_cell_number || !input.business_address || !input.business_address_line2 || !input.business_city || !input.business_state || !input.business_zip_code || !input.email || !input.password || !input.password_confirmation) {
+    if (!input.name || !input.business_name || !input.business_work_number || ! input.business_cell_number || !input.business_address || !input.business_city || !input.business_state || !input.business_zip_code || !input.email || !input.password || !input.password_confirmation) {
       updateError('Please complete required fields.')
     } else {
       updateError('');
@@ -107,6 +107,7 @@ function CreateUser() {
           <input
             type='text'
             name="business_city"
+            placeholder='Denver'
             aria-label='business-address-city'
             style={{ width: '50%' }}
             maxLength='20'
@@ -117,6 +118,7 @@ function CreateUser() {
           <input
             type='text'
             name="business_state"
+            placeholder='CO'
             aria-label='business-address-state'
             maxLength='20'
             style={{ width: '30%' }}
@@ -127,6 +129,7 @@ function CreateUser() {
           <input
             type='text'
             name="business_zip_code"
+            placeholder='80020'
             aria-label='business-address-zip-code'
             inputMode='decimal'
             style={{ width: '30%' }}

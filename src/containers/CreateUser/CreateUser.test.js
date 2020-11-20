@@ -48,7 +48,7 @@ describe('CreateUser', () => {
     const passwordBox = screen.getByPlaceholderText('Password');
     const password2Label = screen.getByText('Password Confirmation');
     const password2Box = screen.getByPlaceholderText('Retype password here');
-    const button = screen.getByLabelText('submit form')
+    const button = screen.getByLabelText('submit form');
 
     expect(nameLabel).toBeInTheDocument()
     expect(nameBox).toBeInTheDocument()
@@ -75,26 +75,56 @@ describe('CreateUser', () => {
     expect(password2Box).toBeInTheDocument()
     expect(button).toBeInTheDocument()
   });
-  it.skip('should allow a user to enter information to create an account', () => {
+  it('should allow a user to enter information to create an account', () => {
+    const nameBox = screen.getByPlaceholderText('Joe Smith');
+    const businessBox = screen.getByPlaceholderText("Joe's Business")
+    const workNumberBox = screen.getByPlaceholderText('3035557700');
+    const cellNumberBox = screen.getByPlaceholderText('7205557700')
+    const addressBox = screen.getByPlaceholderText('123 Sesame St.');
+    const address2Box = screen.getByPlaceholderText('Suite 200');
+    const cityBox = screen.getByPlaceholderText('Denver')
+    const stateBox = screen.getByPlaceholderText('CO');
+    const zipBox = screen.getByPlaceholderText('80020');
     const emailBox = screen.getByPlaceholderText('joe@gmail.com');
-    const passwordBox = screen.getByPlaceholderText('Password')
+    const passwordBox = screen.getByPlaceholderText('Password');
+    const password2Box = screen.getByPlaceholderText('Retype password here');
 
+    fireEvent.change(nameBox, { target: { value: 'Taryn' } })
+    fireEvent.change(businessBox, { target: { value: "Taryn's Freelancing" } })
+    fireEvent.change(workNumberBox, { target: { value: '3035559999' } })
+    fireEvent.change(cellNumberBox, { target: { value: '7201113333'} })
+    fireEvent.change(addressBox, { target: { value: '230 Sesame St' } })
+    fireEvent.change(address2Box, { target: { value: 'Apt 3' } })
+    fireEvent.change(cityBox, { target: { value: 'Aurora' } })
+    fireEvent.change(stateBox, { target: { value: 'CO' } })
+    fireEvent.change(zipBox, { target: { value: '80101' } })
     fireEvent.change(emailBox, { target: { value: 'taryn@gmail.com' } })
     fireEvent.change(passwordBox, { target: { value: 'name' } })
+    fireEvent.change(password2Box, { target: { value: 'name' } })
 
+    expect(nameBox.value).toBe('Taryn')
+    expect(businessBox.value).toBe("Taryn's Freelancing")
+    expect(workNumberBox.value).toBe('3035559999')
+    expect(cellNumberBox.value).toBe('7201113333')
+    expect(addressBox.value).toBe('230 Sesame St')
+    expect(address2Box.value).toBe('Apt 3')
+    expect(cityBox.value).toBe('Aurora')
+    expect(stateBox.value).toBe('CO')
+    expect(zipBox.value).toBe('80101')
     expect(emailBox.value).toBe('taryn@gmail.com');
     expect(passwordBox.value).toBe('name')
+    expect(password2Box.value).toBe('name')
   })
-  it.skip('should return an error message if input is wrong', async () => {
+  it('should return an error message if input is wrong', async () => {
     const emailBox = screen.getByPlaceholderText('joe@gmail.com');
     const passwordBox = screen.getByPlaceholderText('Password')
-    const button = screen.getByRole('button', { name: 'Submit' })
+    const button = screen.getByLabelText('submit form');
 
     fireEvent.change(emailBox, { target: { value: '' } })
     fireEvent.change(passwordBox, { target: { value: 'name' } })
     fireEvent.click(button)
 
-    const message = await waitFor(() => screen.getByText('Please make sure you have input the correct email and password'))
+    const message = await waitFor(() => screen.getByText('Please complete required fields.'))
     await waitFor(() => {
       expect(message).toBeInTheDocument()
     })
@@ -102,13 +132,13 @@ describe('CreateUser', () => {
   it.skip('should return an error message if there is an error in post request', async () => {
     const emailBox = screen.getByPlaceholderText('joe@gmail.com');
     const passwordBox = screen.getByPlaceholderText('Password')
-    const button = screen.getByRole('button', { name: 'Submit' })
+    const button = screen.getByLabelText('submit form');
 
     fireEvent.change(emailBox, { target: { value: 'taryn' } })
     fireEvent.change(passwordBox, { target: { value: 'name' } })
     fireEvent.click(button)
 
-    const message = await waitFor(() => screen.getByText('Sorry, it looks like either your email or password were incorrect. Please try again.'))
+    const message = await waitFor(() => screen.getByText('Sorry, we had an issue creating your account. Please try again later'))
     await waitFor(() => {
       expect(message).toBeInTheDocument()
     })

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../scss/styles.scss'
 import Homepage from '../Homepage/Homepage'
 import LandingPage from '../../components/LandingPage/LandingPage'
@@ -11,7 +11,8 @@ import JobForm from '../JobForm/JobForm';
 import JobDetails from '../JobDetails/JobDetails';
 import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';
-import {  getJobInfo } from '../../actions/actions'
+import { getUserProfile } from '../../helpers/apiCalls'
+import {  getJobInfo, setUser } from '../../actions/actions'
 import PropTypes from 'prop-types';
 
 function App() {
@@ -20,6 +21,17 @@ function App() {
   const allJobs = useSelector(state => state.allJobs);
   const errorMsg = useSelector(state => state.errorMessage);
   const user = useSelector(state => state.user.attributes)
+  const token = localStorage.token
+
+  useEffect(() => {
+    if (token && user === undefined) {
+      getUserProfile(token)
+        .then(data => {
+          dispatch(setUser(data.data))
+      })
+      .catch(error => alert('Error retrieving users profile'))
+    }
+  })
 
   return (
     <div className="App">
@@ -104,7 +116,7 @@ function App() {
               <Redirect to="/homepage" />} />
           </>
         }
-        {user === undefined &&
+        { (!token && user === undefined) &&
           <>
             <Route exact path="/login" render={() => {
               return (

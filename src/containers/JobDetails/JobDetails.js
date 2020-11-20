@@ -30,7 +30,7 @@ function JobDetails(props) {
 
   const handleClick = async (status) => {
     const jobId = id
-    await updateJobStatus(user.id, jobId, status)
+    await updateJobStatus(user.id, jobId, status, user.attributes.token)
     .then(() => {
       updateStatus(true)
       history.push('/homepage')

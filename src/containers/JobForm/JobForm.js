@@ -41,7 +41,7 @@ const JobForm = ({ updateStatus }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const newJob = input
-    await postNewJob(newJob, user.id)
+    await postNewJob(newJob, user.id, user.attributes.token)
     .then(() => {
       updateStatus(true)
       history.push('/homepage')

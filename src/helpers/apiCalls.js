@@ -1,19 +1,47 @@
-export const getAllJobs = (id) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        return response.json();
-      }
-    })
+
+export const getUserProfile = async (token) => {
+  return await fetch(`https://lienflash-be.herokuapp.com/api/v1/users/verified`, {
+  method: "GET",
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      return response.json();
+    }
+  })
+} 
+
+export const getAllJobs = (id, token) => {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs`, {
+  method: "GET",
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    'Authorization': `Bearer ${token}`
+  }
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      return response.json();
+    }
+  })
 }
 
-export const postNewJob = async (newJob, id) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs`, {
+export const postNewJob = async (newJob, id, token) => {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify(
       {
@@ -49,9 +77,14 @@ export const postNewJob = async (newJob, id) => {
   })
 }
 
-export const updateJobStatus = (id, jobId, newStatus) => {
-  return fetch(`https://lienflash-be.herokuapp.com/api/v1/user/${id}/jobs/${jobId}?status=${newStatus}`, {
-    method: 'PATCH'
+export const updateJobStatus = (id, jobId, newStatus, token) => {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/users/${id}/jobs/${jobId}?status=${newStatus}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
   })
   .then((response) => {
     if (!response.ok) {

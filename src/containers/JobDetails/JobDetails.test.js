@@ -269,7 +269,7 @@ describe('JobDetails', () => {
             additional_info: null,
             job_id: '12345',
             status: 'NOI Requested',
-            user_id: 1
+            user_id: 1,
           }
         }
       }
@@ -313,7 +313,8 @@ describe('JobDetails', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        token: 'ehygyuj2'
       }
     }
 
@@ -352,7 +353,7 @@ describe('JobDetails', () => {
 
     fireEvent.click(confirmButton)
 
-    expect(updateJobStatus).toHaveBeenCalledWith(user.id, jobId, status)
+    expect(updateJobStatus).toHaveBeenCalledWith(user.id, jobId, status, user.attributes.token)
    
     await waitFor(() => expect(mockUpdateStatus).toHaveBeenCalled())
     await waitFor(() => expect(mockUpdateStatus).toHaveBeenCalledWith(true))

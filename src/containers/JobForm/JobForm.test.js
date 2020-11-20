@@ -27,7 +27,8 @@ describe('Form component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        token: 'ehygyuj2'
       }
     }
 
@@ -142,7 +143,7 @@ describe('Form component', () => {
       totalCost: '10000',
     }
 
-    expect(postNewJob).toHaveBeenCalledWith(newJob, user.id)
+    expect(postNewJob).toHaveBeenCalledWith(newJob, user.id, user.attributes.token)
 
     await waitFor(() => expect(mockHistoryPush).toHaveBeenCalledWith('/homepage'))
   })

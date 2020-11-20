@@ -39,7 +39,7 @@ function CreateUser() {
   }
 
   return (
-    <form>
+    <form className='form'>
       <div className='create-user-form'>
         <label>User Name<abbr className='required' aria-label='required'>*</abbr>
           <br />

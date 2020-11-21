@@ -112,3 +112,20 @@ export const postLogin = (info) => {
     }
   })
 }
+
+export const createUser = async (info) => {
+  return fetch('https://lienflash-be.herokuapp.com/api/v1/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(info)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw Error(response.statusText)
+    } else {
+      return response.json();
+    }
+  })
+}

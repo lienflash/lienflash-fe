@@ -3,6 +3,7 @@ import '../../scss/styles.scss'
 import Homepage from '../Homepage/Homepage'
 import LandingPage from '../../components/LandingPage/LandingPage'
 import Login from '../Login/Login';
+import CreateUser from '../CreateUser/CreateUser';
 import Header from '../Header/Header'
 import Profile from '../Profile/Profile'
 import Jobs from '../Jobs/Jobs'
@@ -96,7 +97,7 @@ function App() {
             <Route exact path="/profile" render={() => {
               return (
                 <>
-                  <Header />
+                  <Header currentPath='user'/>
                   <Profile />
                 </>
               )
@@ -104,7 +105,7 @@ function App() {
             <Route exact path="/homepage" render={() => {
               return (
                 <>
-                  <Header />
+                  <Header currentPath='user'/>
                   <Homepage 
                     updateStatus={updateStatus} 
                     statusUpdated={statusUpdated}
@@ -121,11 +122,19 @@ function App() {
             <Route exact path="/login" render={() => {
               return (
                 <>
-                  <Header />
+                  <Header currentPath='no-user'/>
                   <Login />
                 </>
               )
             }}/>
+          <Route exact path="/create-user" render={() => {
+            return (
+              <>
+                <Header currentPath='no-user'/>
+                <CreateUser />
+              </>
+            )
+          }} />
             <Route render={() =>
               <Redirect to="/" />} />
             <Route exact path='/' render={() => {

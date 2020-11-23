@@ -100,7 +100,8 @@ export const postLogin = (info) => {
   return fetch('https://lienflash-be.herokuapp.com/api/v1/login', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
     },
     body: JSON.stringify(info)
   })

@@ -25,7 +25,11 @@ function Login() {
         .then(response => {
           dispatch(setUser(response.data))
           localStorage.setItem('token', response.data.attributes.token)
-          history.push('/homepage')
+          if(response.data.attributes.role === 'default') {
+            history.push('/homepage')
+          } else if (response.data.attributes.role === 'admin') {
+            history.push('/admin-homepage')
+          }
         })
         .catch(error => {
           updateError('Sorry, it looks like either your email or password were incorrect. Please try again.')

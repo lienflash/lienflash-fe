@@ -7,9 +7,10 @@ import CreateUser from '../CreateUser/CreateUser';
 import Header from '../Header/Header'
 import Profile from '../Profile/Profile'
 import Jobs from '../Jobs/Jobs'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, useParams } from 'react-router-dom'
 import JobForm from '../JobForm/JobForm';
 import JobDetails from '../JobDetails/JobDetails';
+import AdminHomepage from '../AdminHomepage/AdminHomepage';
 import Error from '../../components/Error/Error';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserProfile } from '../../helpers/apiCalls'
@@ -36,7 +37,17 @@ function App() {
 
   return (
     <div className="App">
-      { user !== undefined &&
+      {(user !== undefined && user.role === 'admin') &&
+        <Route exact path="/admin-homepage" render={() => {
+          return (
+            <>
+              <Header currentPath='user' />
+              <AdminHomepage />
+            </>
+          )
+        }} />
+      }
+      { (user !== undefined && user.role === 'default') &&
           <>
             <Route exact path='/jobs/:eligibility/:dateDifference/:id' render={({match}) => {
               const jobId = match.params.id;
@@ -127,14 +138,14 @@ function App() {
                 </>
               )
             }}/>
-          <Route exact path="/create-user" render={() => {
-            return (
-              <>
-                <Header currentPath='no-user'/>
-                <CreateUser />
-              </>
-            )
-          }} />
+            <Route exact path="/create-user" render={({match}) => {
+              return (
+                <>
+                  <Header currentPath='no-user'/>
+                  <CreateUser />
+                </>
+              )
+            }} />
             <Route render={() =>
               <Redirect to="/" />} />
             <Route exact path='/' render={() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/lienflash-logo.png'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logoutUser, clearJobs, resetErrorMsg } from '../../actions/actions';
 import PropTypes from 'prop-types';
 

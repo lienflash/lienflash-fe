@@ -137,7 +137,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -309,6 +310,37 @@ describe('App component', () => {
         expect(message).toBeInTheDocument()
     })
   })
+  it.skip('should show the admin dashboard page on admin login', async () => {
+    //not working for some reason? Not sure what's going on
+    const user = {
+      id: 1,
+      attributes: {
+        name: 'Taryn',
+        email: 'taryn@gmail.com',
+        role: 'admin'
+      }
+    }
+
+    const store = mockStore({
+      user: user
+    })
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    // const header = await waitFor(() => screen.getByAltText('lienflash logo'))
+    // const logoutBtn = screen.getByRole('button', { name: 'Log Out'})
+    const placeholder = await waitFor(() => screen.getByText('Admin Dashboard'));
+
+    // expect(header).toBeInTheDocument()
+    // expect(logoutBtn).toBeInTheDocument()
+    expect(placeholder).toBeInTheDocument()
+  })
   it('should show the right number of jobs when user clicks on eligible button and goes to grace period', async () => {
     const allJobs = {
       gracePeriod: [{
@@ -341,7 +373,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -402,7 +435,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -466,7 +500,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -525,7 +560,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -566,7 +602,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -647,7 +684,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
     
@@ -765,7 +803,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -799,7 +838,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -892,7 +932,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -1010,7 +1051,8 @@ describe('App component', () => {
       id: 1,
       attributes: {
         name: 'Taryn',
-        email: 'taryn@gmail.com'
+        email: 'taryn@gmail.com',
+        role: 'default'
       }
     }
 
@@ -1050,8 +1092,10 @@ describe('App component', () => {
       </Provider>
     )
 
-    // const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
+    const header = await waitFor(() => screen.getByRole('heading', { name: 'What do you want to do?'}))
     const eligibleJobsButton = screen.getByRole('button', { name: 'NOI Eligible Jobs' })
+
+    expect(header).toBeInTheDocument();
 
     fireEvent.click(eligibleJobsButton);
 

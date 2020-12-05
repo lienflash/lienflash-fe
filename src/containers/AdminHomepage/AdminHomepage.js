@@ -61,7 +61,9 @@ function AdminHomepage() {
       field: 'completion_date',
       type: 'date',
       headerName: 'Date of Substantial Completion',
-      width: 200,
+      valueFormatter: (params) =>
+        params.value.split('T')[0],
+      width: 150,
     },
     {
       field: 'status',

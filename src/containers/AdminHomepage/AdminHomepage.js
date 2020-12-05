@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllUsersJobs } from '../../helpers/apiCalls'
 import { setAdminJobList, setErrorMsg, resetErrorMsg } from '../../actions/actions'
 
-
 function AdminHomepage() {
   const dispatch = useDispatch();
   const [viewDashboard, changeView] = useState(true)
@@ -28,6 +27,10 @@ function AdminHomepage() {
   const handleClick = (jobDetails) => {
     changeView(false)
     selectJob(jobDetails)
+  }
+
+  const handleStatusChange = () => {
+    // handle status changes w/ PATCH
   }
 
   const columns = [
@@ -80,9 +83,6 @@ function AdminHomepage() {
 
   return(
     <div>
-      { !viewDashboard &&
-        <AdminJobDetails jobDetails={job} changeView={changeView} />
-      }
       { viewDashboard &&
       <>
         <h2>Admin Dashboard</h2>
@@ -95,6 +95,9 @@ function AdminHomepage() {
           />
         </div>
       </>
+      }
+      { !viewDashboard &&
+        <AdminJobDetails jobDetails={job} changeView={changeView} handleStatusChange={handleStatusChange} />
       }
     </div>
   )

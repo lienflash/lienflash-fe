@@ -46,3 +46,11 @@ export const resetErrorMsg = () => {
     type: 'RESET_ERROR',
   }
 }
+
+// Admin actions 
+export const setAdminJobList = (jobs) => {
+  return {
+    type: 'ADMIN_JOB_LIST',
+    jobs
+  }
+}

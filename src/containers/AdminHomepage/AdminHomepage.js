@@ -3,7 +3,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import Button from '@material-ui/core/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllUsersJobs } from '../../helpers/apiCalls'
-import { setErrorMsg, resetErrorMsg } from '../../actions/actions'
+import { setAdminJobList, setErrorMsg, resetErrorMsg } from '../../actions/actions'
 
 
 function AdminHomepage() {
@@ -13,7 +13,7 @@ function AdminHomepage() {
   useEffect(() => {
     getAllUsersJobs(user.attributes.token)
       .then(data => {
-        console.log(data.data)
+        dispatch(setAdminJobList(data.data))
         dispatch(resetErrorMsg());
       })
       .catch(error => {

@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react'; 
 import { DataGrid } from '@material-ui/data-grid';
 import Button from '@material-ui/core/Button';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllUsersJobs } from '../../helpers/apiCalls'
+import { setErrorMsg, resetErrorMsg } from '../../actions/actions'
 
 
 function AdminHomepage() {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user)
+
+  useEffect(() => {
+    getAllUsersJobs(user.attributes.token)
+      .then(data => {
+        console.log(data.data)
+        dispatch(resetErrorMsg());
+      })
+      .catch(error => {
+        dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
+      })
+  })
 
   const columns = [
     {
@@ -41,6 +57,7 @@ function AdminHomepage() {
   ];
 
   // sample data for UI testing
+  // need an array of objects
   const rows = [
     {
       id: 1,

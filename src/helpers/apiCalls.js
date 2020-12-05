@@ -1,4 +1,3 @@
-
 export const getUserProfile = async (token) => {
   return await fetch(`https://lienflash-be.herokuapp.com/api/v1/users/verified`, {
   method: "GET",
@@ -129,4 +128,22 @@ export const createUser = async (info) => {
       return response.json();
     }
   })
+}
+
+export const getAllUsersJobs = (token) => {
+  return fetch(`https://lienflash-be.herokuapp.com/api/v1/admin/jobs`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      } else {
+        return response.json();
+      }
+    })
 }

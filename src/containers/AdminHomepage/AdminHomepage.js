@@ -9,7 +9,8 @@ import { setAdminJobList, setErrorMsg, resetErrorMsg } from '../../actions/actio
 function AdminHomepage() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user)
-
+  const jobList = useSelector(state => state.adminJobList)
+ 
   useEffect(() => {
     getAllUsersJobs(user.attributes.token)
       .then(data => {
@@ -17,9 +18,9 @@ function AdminHomepage() {
         dispatch(resetErrorMsg());
       })
       .catch(error => {
-        dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving your information. Refresh or try again later.'))
+        dispatch(setErrorMsg('Sorry, it looks like we are having some trouble retrieving the data. Please refresh or try again later.'))
       })
-  })
+  }, [dispatch, user.attributes.token])
 
   const columns = [
     {
@@ -40,7 +41,12 @@ function AdminHomepage() {
     {
       field: 'client_name',
       headerName: 'Client Name',
-      width: 250,
+      width: 200,
+    },
+    {
+      field: 'job_type',
+      headerName: 'Job Type',
+      width: 110,
     },
     {
       field: 'completion_date',
@@ -49,54 +55,24 @@ function AdminHomepage() {
       width: 200,
     },
     {
-      field: 'job_status',
+      field: 'status',
       headerName: 'Job Status',
       sortable: true,
+      width: 150,
+    },
+    {
+      field: 'job_site_contact_name',
+      headerName: 'Job Site Contact',
       width: 200,
     },
   ];
-
-  // sample data for UI testing
-  // need an array of objects
-  const rows = [
-    {
-      id: 1,
-      completion_date: '23/10/2020',
-      client_name: 'Bruce Craft',
-      job_status: 'NOI Requested',
-    },
-    {
-      id: 2,
-      completion_date: '12/11/2020',
-      client_name: 'Rachel McDee',
-      job_status: 'Lien Requested'
-    },
-    {
-      id: 3,
-      completion_date: '29/10/2020',
-      client_name: 'Nelly Grunge',
-      job_status: 'Lien Filed'
-    },
-    {
-      id: 4,
-      completion_date: '10/11/2020',
-      client_name: 'Beau Tiger',
-      job_status: 'Lien Requested'
-    },
-    {
-      id: 5,
-      completion_date: '03/11/2020',
-      client_name: 'Mary Lee Oswald',
-      job_status: 'NOI Requested'
-    },
-  ];
-
+  
   return(
     <div>
       <h2>Admin Dashboard</h2>
       <div style={{ height: 400, width: '100%', textAlign: 'left', marginLeft: 16 }}>
         <DataGrid
-          rows={rows} 
+          rows={jobList} 
           columns={columns}
           pageSize={5}  
           sortingOrder={['asc', 'desc', null]}

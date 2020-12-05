@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'; 
+import React, { useEffect, useState } from 'react'; 
+import AdminJobDetails from '../../components/AdminJobDetails/AdminJobDetails'
 import { DataGrid } from '@material-ui/data-grid';
 import Button from '@material-ui/core/Button';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,6 +9,8 @@ import { setAdminJobList, setErrorMsg, resetErrorMsg } from '../../actions/actio
 
 function AdminHomepage() {
   const dispatch = useDispatch();
+  const [viewDashboard, changeView] = useState(true)
+  const [job, selectJob] = useState({})
   const user = useSelector(state => state.user)
   const jobList = useSelector(state => state.adminJobList)
  
@@ -22,19 +25,25 @@ function AdminHomepage() {
       })
   }, [dispatch, user.attributes.token])
 
+  const handleClick = (jobDetails) => {
+    changeView(false)
+    selectJob(jobDetails)
+  }
+
   const columns = [
     {
       field: 'openJobButton',
       headerName: 'View Job Details',
       width: 150,
-      renderCell: () => (
+      renderCell: (RowParams) => (
           <Button
             variant="contained"
             color="primary"
             size="small"
             style={{ marginLeft: 16 }}
+            onClick={() => handleClick(RowParams.data)}
           >
-            Open
+          OPEN
         </Button>
       ),
     },
@@ -66,18 +75,25 @@ function AdminHomepage() {
       width: 200,
     },
   ];
-  
+
   return(
     <div>
-      <h2>Admin Dashboard</h2>
-      <div style={{ height: 400, width: '100%', textAlign: 'left', marginLeft: 16 }}>
-        <DataGrid
-          rows={jobList} 
-          columns={columns}
-          pageSize={5}  
-          sortingOrder={['asc', 'desc', null]}
-        />
-      </div>
+      { !viewDashboard &&
+        <AdminJobDetails jobDetails={job} changeView={changeView} />
+      }
+      { viewDashboard &&
+      <>
+        <h2>Admin Dashboard</h2>
+        <div style={{ height: 400, width: '100%', textAlign: 'left', marginLeft: 16 }}>
+          <DataGrid
+            rows={jobList} 
+            columns={columns}
+            pageSize={5}  
+            sortingOrder={['asc', 'desc', null]}  
+          />
+        </div>
+      </>
+      }
     </div>
   )
 }

@@ -50,7 +50,8 @@ describe('CreateUser', () => {
         job_type: 'labor & materials',
         job_site_name: 'Home',
         job_site_contact_name: 'Taryn',
-        job_site_address: '200 Washington St.', job_site_address_line_2: '', job_site_city: 'Denver',
+        job_site_address: '200 Washington St.', 
+        job_site_address_line_2: '', job_site_city: 'Denver',
         job_site_state: 'CO', job_site_zip_code: '80201', completion_date: "2020-10-01T04:05:06.000Z",
         material_cost: 200,
         labor_cost: 200,
@@ -86,5 +87,37 @@ describe('CreateUser', () => {
     const placeholder = screen.getByText('Admin Dashboard');
 
     expect(placeholder).toBeInTheDocument()
+  })
+
+  it('should display job information on the dashboard', () => {
+    getAllUsersJobs.mockResolvedValueOnce(allJobs)
+
+    const store = mockStore({
+      user: user,
+      adminJobList: allJobs
+    })
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <AdminHomepage />
+        </ MemoryRouter>
+      </Provider>
+    )
+
+    const viewDetailsHeader = screen.getByText('View Job Details')
+    const clientNameHeader = screen.getByText('Client Name')
+    const jobTypeHeader = screen.getByText('Job Type')
+    const nextButton = screen.getByLabelText('Next page')
+    // const jobStatusHeader = screen.getByText('Job Status')
+    // const dateHeader = screen.ByText('Date of Substantial Completion', { exact: false })
+  
+
+    expect(viewDetailsHeader).toBeInTheDocument()
+    expect(clientNameHeader).toBeInTheDocument()
+    expect(jobTypeHeader).toBeInTheDocument()
+    expect(nextButton).toBeInTheDocument()
+    // expect(jobStatusHeader).toBeInTheDocument()
+    // expect(dateHeader).toBeInTheDocument()
   })
 })

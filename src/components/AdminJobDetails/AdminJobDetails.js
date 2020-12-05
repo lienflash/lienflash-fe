@@ -1,13 +1,15 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 function AdminJobDetails(props) {
-  const { jobDetails, changeView } = props
+  const { jobDetails, changeView, handleStatusChange } = props
  
   return (
     <div className='container'>
       <button className='back-btn' onClick={() => changeView(true)}>
         Back
-    </button>
+      </button>
       <h2>Job Details</h2>
       <h3 className='bold'>Job Site Name: </h3><p> {jobDetails.job_site_name ? jobDetails.job_site_name : "n/a"}</p>
       <br />
@@ -59,6 +61,22 @@ function AdminJobDetails(props) {
       <p>{jobDetails.material_cost ? `$${jobDetails.material_cost}` : "n/a"}</p><br />
       <h3 className='bold'>Total Cost: </h3>
       <p>${jobDetails.total_cost}</p>
+   
+      <div>
+        {/* Put buttons in their own component or leave here? */}
+        <Popup trigger={<button className='btn-submit'>Remove Job</button>} position="top left">
+          {close => (
+            <section className="popup-msg">
+              Are you sure you want to remove this job?
+              <button className="close" onClick={close}>Close
+              &times;
+              </button>
+              <button className="confirm" onClick={() => handleStatusChange(5)}>Confirm
+              </button>
+            </section>
+          )}
+        </Popup>
+      </div>
     </div>
   )
 }

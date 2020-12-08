@@ -51,7 +51,7 @@ function AdminHomepage() {
       ),
     },
     {
-      field: 'client_name',
+      field: 'users_name',
       headerName: 'Client Name',
       width: 200,
     },
@@ -66,19 +66,14 @@ function AdminHomepage() {
       headerName: 'Date of Substantial Completion',
       valueFormatter: (params) =>
         params.value.split('T')[0],
-      width: 150,
+      width: 250,
     },
     {
       field: 'status',
       headerName: 'Job Status',
       sortable: true,
       width: 150,
-    },
-    {
-      field: 'job_site_contact_name',
-      headerName: 'Job Site Contact',
-      width: 200,
-    },
+    }
   ];
 
   return(

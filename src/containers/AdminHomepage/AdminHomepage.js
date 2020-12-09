@@ -73,6 +73,11 @@ function AdminHomepage() {
       headerName: 'Job Status',
       sortable: true,
       width: 150,
+    },
+    {
+      field: 'job_site_contact_name',
+      headerName: 'Job Site Contact',
+      width: 200,
     }
   ];
 

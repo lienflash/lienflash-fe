@@ -82,7 +82,7 @@ function AdminHomepage() {
   ];
 
   return(
-    <div>
+    <div className='admin-dashboard'>
       { viewDashboard &&
       <>
         <h2>Admin Dashboard</h2>

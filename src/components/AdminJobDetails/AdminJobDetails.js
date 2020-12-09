@@ -11,6 +11,8 @@ function AdminJobDetails(props) {
         Back
       </button>
       <h2>Job Details</h2>
+      <h3 className='bold'>Status: </h3><p>{jobDetails.status}</p>
+      <br /><br />
       <h3 className='bold'>Job Site Name: </h3><p> {jobDetails.job_site_name ? jobDetails.job_site_name : "n/a"}</p>
       <br />
       <h3 className='bold'>Job Site Contact Name: </h3>
@@ -63,7 +65,8 @@ function AdminJobDetails(props) {
       <p>${jobDetails.total_cost}</p>
    
       <div>
-        {/* Put buttons in their own component or leave here? */}
+        {/* REMOVE JOB BUTTON / STATUS CHANGE */}
+        {/* Render for all jobs: If cient wants to remove job (has been paid) */}
         <Popup trigger={<button className='btn-submit'>Remove Job</button>} position="top left">
           {close => (
             <section className="popup-msg">
@@ -76,6 +79,42 @@ function AdminJobDetails(props) {
             </section>
           )}
         </Popup>
+
+        {/* NOI FILED BUTTON / STATUS CHANGE */}
+        {/* if status is NOI requested render button */}
+        { (jobDetails.status ===  'NOI Requested') && 
+          <Popup trigger={<button className='btn-submit'>NOI Filed</button>} position="top left">
+            {close => (
+              <section className="popup-msg">
+                Please confirm that the NOI has been filed on behalf of {jobDetails.users_name}. 
+                <br />
+                <button className="close" onClick={close}>Close
+                &times;
+                </button>
+                <button className="confirm" onClick={() => handleStatusChange(0)}>Confirm
+                </button>
+              </section>
+            )}
+          </Popup>
+        }
+        
+        {/* LIEN FILED BUTTON / STATUS CHANGE */}
+        {/* if status is Lien Requested render button */}
+        { (jobDetails.status === 'Lien Requested') && 
+          <Popup trigger={<button className='btn-submit'>Lien Filed</button>} position="top left">
+            {close => (
+              <section className="popup-msg">
+                Please confirm that the Lien has been filed on behalf of {jobDetails.users_name}.
+                <br />
+                <button className="close" onClick={close}>Close
+                &times;
+                </button>
+                <button className="confirm" onClick={() => handleStatusChange(0)}>Confirm
+                </button>
+              </section>
+            )}
+          </Popup>
+        }
       </div>
     </div>
   )

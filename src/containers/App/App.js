@@ -41,7 +41,7 @@ function App() {
         <Route exact path="/admin-homepage" render={() => {
           return (
             <>
-              <Header currentPath='user' />
+              <Header currentPath={'admin'} />
               <AdminHomepage />
             </>
           )
@@ -56,7 +56,7 @@ function App() {
               dispatch(getJobInfo(jobId, dateDifference, eligibility, allJobs));
               return (
                 <>
-                  <Header />
+                  <Header currentPath={'user'} />
                   <JobDetails updateStatus={updateStatus}/>
                 </>
               )
@@ -64,7 +64,7 @@ function App() {
             <Route exact path="/addjob" render={() => {
               return (
                 <>
-                  <Header />
+                  <Header currentPath={'user'} />
                   <JobForm updateStatus={updateStatus} />
                 </>
               )
@@ -99,7 +99,7 @@ function App() {
             <Route exact path={"/filedjobs/release-eligible"} render={() => {
               return (
                 <>
-                  <Header currentPath="filed"/>
+                  <Header currentPath={"filed"}/>
                   <h2>Jobs Eligible for Lien Release</h2>
                   <Jobs />
                 </>
@@ -108,7 +108,7 @@ function App() {
             <Route exact path="/profile" render={() => {
               return (
                 <>
-                  <Header currentPath='user'/>
+                  <Header currentPath={'user'}/>
                   <Profile />
                 </>
               )
@@ -116,7 +116,7 @@ function App() {
             <Route exact path="/homepage" render={() => {
               return (
                 <>
-                  <Header currentPath='user'/>
+                  <Header currentPath={'user'} />
                   <Homepage 
                     updateStatus={updateStatus} 
                     statusUpdated={statusUpdated}
@@ -133,7 +133,7 @@ function App() {
             <Route exact path="/login" render={() => {
               return (
                 <>
-                  <Header currentPath='no-user'/>
+                  <Header currentPath={'no-user'}/>
                   <Login />
                 </>
               )
@@ -141,7 +141,7 @@ function App() {
             <Route exact path="/create-user" render={({match}) => {
               return (
                 <>
-                  <Header currentPath='no-user'/>
+                  <Header currentPath={'no-user'}/>
                   <CreateUser />
                 </>
               )

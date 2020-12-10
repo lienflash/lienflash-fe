@@ -50,6 +50,7 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
   it('should have a type of CLEAR_JOBS', () => {
     const expectedAction = {
       type: 'CLEAR_JOBS',
@@ -59,6 +60,7 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
   it('should have a type of SET_USER', () => {
     const info = {
       name: 'Taryn',
@@ -74,6 +76,7 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
   it('should have a type of LOGOUT_USER', () => {
     const expectedAction = {
       type: 'LOGOUT_USER'
@@ -83,6 +86,7 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
   it('should have a type of GET_INFO', () => {
 
     const jobId = "1"
@@ -175,4 +179,54 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   })
+
+  it('should have a type of ADMIN_JOB_LIST', () => {
+    const jobs = [
+      {
+        id: "1",
+        type: "job",
+        attributes: {
+          job_street: "\"123 Main St.\"",
+          job_city: "\"Denver\"",
+          job_state: "\"CO\"",
+          job_zip: "\"80218\"",
+          date_of_completion: "2020-01-01T04:05:06.000Z",
+          company_name: "\"Construction Co Inc LLC\"",
+          contact_name: "\"Tim\"",
+          material_cost: 100.0,
+          labor_cost: 200.0,
+          job_description: "\"New window\"",
+          job_id: "\"W1234\""
+        }
+      }
+    ];
+
+    const expectedAction = {
+      type: 'ADMIN_JOB_LIST',
+      jobs: [
+        {
+          id: "1",
+          type: "job",
+          attributes: {
+            job_street: "\"123 Main St.\"",
+            job_city: "\"Denver\"",
+            job_state: "\"CO\"",
+            job_zip: "\"80218\"",
+            date_of_completion: "2020-01-01T04:05:06.000Z",
+            company_name: "\"Construction Co Inc LLC\"",
+            contact_name: "\"Tim\"",
+            material_cost: 100.0,
+            labor_cost: 200.0,
+            job_description: "\"New window\"",
+            job_id: "\"W1234\""
+          }
+        }
+      ]
+    }
+
+    const result = actions.setAdminJobList(jobs);
+
+    expect(result).toEqual(expectedAction);
+  });
+
 })

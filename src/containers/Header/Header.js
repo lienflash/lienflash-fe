@@ -26,6 +26,14 @@ function Header(props) {
           <img src={logo} className='logo' alt='lienflash logo'/>
         </Link>
       }
+      {currentPath === 'admin' &&
+        <>
+          <Link to={'/admin-homepage'} onClick={clearError}>
+            <img src={logo} className='logo' alt='lienflash logo' />
+          </Link>
+          <button className='btn logout' onClick={logout}>Log Out</button>
+        </>
+      }
       {currentPath === 'user' &&
         <>
           <Link to={'/homepage'} onClick={clearError}>
@@ -35,16 +43,27 @@ function Header(props) {
         </>
       }
         {currentPath === 'filed'&&
-            <div>
-              <NavLink to={"/filedjobs/lien-eligible"} className='nav-button' activeClassName="selected" onClick={clearError}>
-              Lien Eligible
-              </NavLink>
-              <NavLink to={'/filedjobs/release-eligible'} className='nav-button' activeClassName="selected" onClick={clearError}>
-                Release Eligible
-              </NavLink>
-            </div>
+        <>
+          <Link to={'/homepage'} onClick={clearError}>
+            <img src={logo} className='logo' alt='lienflash logo'/>
+          </Link>
+          <button className='btn logout' onClick={logout}>Log Out</button>
+          <div>
+            <NavLink to={"/filedjobs/lien-eligible"} className='nav-button' activeClassName="selected" onClick={clearError}>
+            Lien Eligible
+            </NavLink>
+            <NavLink to={'/filedjobs/release-eligible'} className='nav-button' activeClassName="selected" onClick={clearError}>
+              Release Eligible
+            </NavLink>
+          </div>
+        </>
         }
         {currentPath === 'eligible'&&
+          <>
+            <Link to={'/homepage'} onClick={clearError}>
+              <img src={logo} className='logo' alt='lienflash logo' />
+            </Link>
+            <button className='btn logout' onClick={logout}>Log Out</button>
             <div>
               <NavLink to={'/eligiblejobs/grace-period'} className='nav-button' activeClassName="selected" onClick={clearError}>
                 Grace Period
@@ -53,6 +72,7 @@ function Header(props) {
                 NOI Eligible
               </NavLink>
             </div>
+          </>
         }
     </header>
   )

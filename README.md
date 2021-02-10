@@ -27,6 +27,10 @@ We have created an app that allows a user to create a job, track that job in the
 ## How to Use
 When a user logs in, they are brought to a homepage where they can add a job, check for Notice of Intent eligible jobs, check their lien filed jobs & release eligible jobs. Within the listed jobs, if they are in the correct time period, they can click a button to submit a request to an administrator to file their documents legally. Users can also check out their profile to see what their information is in the system.
 
+Users can also create an account if they don't already have one.
+
+Admin can log in and see all jobs all user's input, and see where they are in the lien process. They can get more details on a job and click a button to change where the job is in in the lien process if the admin has completed their paperwork for it.
+
 ## Background Information
 This was a client backed project built for lawyers. The focus for our MVP was to create a viable user interface to give our client a basis to build the app out more in the future.
 
@@ -35,6 +39,7 @@ This was a client backed project built for lawyers. The focus for our MVP was to
 - React 17
 - Redux 4
 - SASS/SCSS
+- Material UI data table for admin view
 
 ## Installation
 
@@ -75,13 +80,10 @@ In terminal, go to the project directory and run 'npm start' to open the project
 ![going to profile and logging out](/src/assets/profile-log-out.gif)
 
 ## Next Steps
-- Add token authorization on a user logging in
-- Add functionality for a user to create an account
 - Allow a user to edit their information - profile and jobs they've created
 - Improve PWA with background sync and push notifications
 - Enabling payment for user subscription & filing legal documents
 - Automatically finding correct county for jobs
-- Add an administrative view
 
 ## Authors
 
@@ -105,5 +107,3 @@ In terminal, go to the project directory and run 'npm start' to open the project
 [forks-url]: https://github.com/lienflash/lienflash-fe/network/members
 [stars-shield]: https://img.shields.io/github/stars/lienflash/lienflash-fe.svg?style=flat-square
 [stars-url]: https://github.com/lienflash/lienflash-fe/stargazers
-[issues-shield]: https://img.shields.io/github/issues/lienflash/lienflash-fet.svg?style=flat-square
-[issues-url]: https://github.com/lienflash/lienflash-fe/issues
